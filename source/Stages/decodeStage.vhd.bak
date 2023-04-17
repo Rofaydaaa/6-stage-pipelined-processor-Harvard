@@ -24,7 +24,7 @@ WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
   ALU_selection:out std_logic_vector(3 downto 0);
   data1,data2:out std_logic_vector(15 downto 0);
   rdst: out std_logic_vector(2 downto 0);
-  restOfInstruction_After:out std_logic_vector(15 downto 0)
+  restOfInstruction_After:out std_logic_vector(14 downto 0)
 );
 END  decodeStage;
 
@@ -81,7 +81,7 @@ PORT( clk,rst,en: std_logic;
         ALU_selection:in std_logic_vector(3 downto 0);
         data1,data2: in std_logic_vector(15 downto 0) ;
         rdst: in std_logic_vector(2 downto 0); 
-        restofIR: in  std_logic_vector(15 downto 0); 
+        restofIR: in  std_logic_vector(14 downto 0); 
  ------------------------------------------------------------------
         pushout: out std_logic;
         popout: out std_logic;
@@ -98,7 +98,7 @@ PORT( clk,rst,en: std_logic;
         ALU_selectionout:out std_logic_vector(3 downto 0);
         data1out,data2out: out std_logic_vector(15 downto 0); 
         rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(15 downto 0) 
+        restofIRout: out  std_logic_vector(14 downto 0) 
         
        
 );
@@ -110,8 +110,8 @@ signal data1wire,data2wire : std_logic_vector(15 downto 0);
 BEGIN
 
 CU :entity work.controlUnit port map (Instruction_After(31 downto 26),pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire,ALU_selectionwire);
-RF : entity work.registerFile port map (clk,rst,writeReg,en,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
-buff: entity work.decodeExcuteBuffer port map (clk,rst,en,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire,ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
+RF : entity work.registerFile port map (clk,rst,writeReg,en,Instruction_After(25 downto 23),Instruction_After(23 downto 21),WBvalue,data1wire,data2wire);
+buff: entity work.decodeExcuteBuffer port map (clk,rst,en,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire,ALU_selectionwire,data1wire,data2wire,Instruction_After(18 downto 16),Instruction_After(14 downto 0)
 ,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
 END arch;
