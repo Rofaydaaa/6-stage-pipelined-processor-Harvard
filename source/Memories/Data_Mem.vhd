@@ -56,7 +56,9 @@ IF Rst = '1' THEN
 ELSIF rising_edge(clk) THEN 
 IF Mem_Write = '1' THEN
    		ram(to_integer(unsigned((address)))) <= data_to_write;
- 	END IF;
+elsif Mem_read <='1' then
+               read_data <= ram(to_integer(unsigned((address))));
+elseif  read_data <= (others=>(others => '0'));
 END IF;
 END PROCESS;
 
@@ -70,5 +72,4 @@ AddSub0 : Add_Sub port map (Push_or_Pop,Push_or_NotPop,address_from_SP,Add_sub_R
 Push_or_Pop <= Push or Pop;
 Push_or_NotPop <= Push or (not Pop); 
 
-read_data <= ram(to_integer(unsigned((address)))) when Mem_read <='1';
 END Imp;
