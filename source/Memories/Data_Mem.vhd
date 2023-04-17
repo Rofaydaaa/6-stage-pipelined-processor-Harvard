@@ -31,7 +31,7 @@ component SP is port(
 input: in std_logic_vector (15 downto 0);
 output: out std_logic_vector (15 downto 0);
 Reset: in std_logic;
-Enable: in std_logic;
+--Enable: in std_logic;
 clk: in std_logic
 );
 end component;
@@ -63,7 +63,7 @@ END PROCESS;
 Mux0: Mux2by1 generic map (16) port map(address_from_ALU,address_from_SP,S_P,address);
 Mux1: Mux2by1 generic map (16) port map(write_data,data_from_call,call,data_to_write);
 
-SP0 : SP port map (Add_sub_Result,address_from_SP,rst,S_P,clk);
+SP0 : SP port map (Add_sub_Result,address_from_SP,rst,clk);
 
 AddSub0 : Add_Sub port map (Push_or_Pop,Push_or_NotPop,address_from_SP,Add_sub_Result); 
 
