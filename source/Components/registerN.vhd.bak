@@ -1,12 +1,12 @@
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
-ENTITY registerN IS
+ENTITY resgisterN IS
 PORT( clk,rst ,en: IN std_logic;
   d: IN std_logic_vector(15 downto 0);
  q : OUT std_logic_vector(15 downto 0));
-END registerN;
+END resgisterN;
 
-ARCHITECTURE arch OF registerN IS
+ARCHITECTURE arch OF resgisterN IS
 BEGIN PROCESS(clk,rst)
 BEGIN
 IF(rst = '1') THEN
