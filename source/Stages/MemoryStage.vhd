@@ -37,7 +37,7 @@ clk: in std_logic
 );
 end component;
 
-signal address: std_logic_vector(9 downto 0);
+signal address: std_logic_vector(15 downto 0);
 signal address_from_SP,Add_sub_Result,data_to_write: std_logic_vector(15 downto 0);
 signal Push_or_Pop,Push_or_NotPop: std_logic;
 
