@@ -74,7 +74,7 @@ begin
             "011100001000101010" when pop_operation,
             "001001000000001000" when ldm_operation,
             "011100000000001110" when ldd_operation,
-            "00000010000000001000" when std_operation,
+            "000010000000001000" when std_operation,
             "000000010000001010" when jz_operation,
             "000000010000011010" when jc_operation,
             "000000100000001010" when jmp_operation,
