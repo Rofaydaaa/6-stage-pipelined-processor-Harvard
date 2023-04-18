@@ -1,7 +1,7 @@
 Library IEEE;
 use ieee.std_logic_1164.all;
 
-ENTITY decodeExcuteBuffer IS
+ENTITY Decode_Excute_Buffer IS
 PORT( clk,rst,en: std_logic;
         push: in std_logic;
         pop: in std_logic;
@@ -44,10 +44,10 @@ PORT( clk,rst,en: std_logic;
         
        
 );
-END decodeExcuteBuffer;
+END Decode_Excute_Buffer;
 
 
-ARCHITECTURE imp OF decodeExcuteBuffer IS
+ARCHITECTURE imp OF Decode_Excute_Buffer IS
 BEGIN
 PROCESS (clk,rst)
 BEGIN

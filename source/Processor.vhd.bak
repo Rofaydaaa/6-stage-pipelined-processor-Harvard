@@ -4,8 +4,8 @@ use IEEE.STD_LOGIC_1164.all;
 ENTITY integeration IS
 PORT(
 clk,rst,en : IN std_logic;
-IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
-OUT_Ports: OUT STD_LOGIC_VECTOR(15 downto 0);
+IN_Ports: IN STD_LOGIC_VECTOR(16 downto 0);
+OUT_Ports: OUT STD_LOGIC_VECTOR(16 downto 0);
 Interrupt: IN STD_LOGIC
 );
 END integeration;
@@ -103,19 +103,19 @@ signal Rdst_after_MWBuffer: std_logic_vector (2 downto 0);
 signal WB_after_MWBuffer : std_logic;
 signal Data_out_after_MWBuffer,Read_data_after_MWBuffer: std_logic_vector (15 downto 0);
 signal Men_to_Regout_MWBuffer: std_logic;
-signal Intout_MWBuffer: std_logic;
+signal Intout_MWBuffer: std_logic;
 signal portFlagout_MWBuffer: std_logic;
 signal returnOIout_MWBuffer: std_logic;
-signal callout_MWBuffer: std_logic;
+signal callout_MWBuffer: std_logic;
 
 --WB stage
-signal WBvalue_WB: std_logic_vector(15 downto 0);
+signal WBvalue_WB: std_logic_vector( 15 downto 0);
 
 BEGIN
 F: entity work.Fetch port map(clk,rst,Instruction_out_Fetch);
 FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,rst,en,Instruction_out_Fetch,fetchOut_FDBUFFER);
 
-D: entity work.Decode port map(clk, rst, en, fetchOut_FDBUFFER, Rdst_after_MWBuffer, WBvalue_WB, push_Decode, pop_Decode,
+D: entity work.Decode port map(clk, rst, en, fetchOut_FDBUFFER, WB_after_MWBuffer, WBvalue_WB, push_Decode, pop_Decode,
   SP_Decode, WB_Decode, memRead_Decode, memWrite_Decode, EX_Decode, branch_Decode, portFlag_Decode, returnOI_Decode, call_Decode,
   No_Cond_Branch_Decode, ALU_selection_Decode, Men_to_Reg_Decode,
   Int_Decode, data1_Decode, data2_Decode, rdst_Decode, restOfInstruction_After_Decode);
@@ -134,7 +134,7 @@ SP_Decode, WB_Decode, memRead_Decode, memWrite_Decode, portFlag_Decode, returnOI
 M: entity work.MemoryStage port map(clk, rst, memReadOut_EMBuffer, memWriteOut_EMBuffer, SPOut_EMBuffer, pushOut_EMBuffer, popOut_EMBuffer, callOut_EMBuffer,
 WriteDataOut_EMBuffer, dataoutOut_EMBuffer, read_data_M);
 
-MMBuffer: entity work.Mem_Mem_Buffer port map(clk, rst, en, WBOut_EMBuffer, rdstOut_EMBuffer, dataoutOut_EMBuffer, read_data_M, Men_to_Regout_EMBuffer,Intout_EMBuffer, portFlagOut_EMBuffer, 
+MMBuffer: entity work.Mem_Mem_Buffer port map(clk, rst, en, WBOut_EMBuffer, rdstOut_EMBuffer, dataoutOut_EMBuffer, read_data_M, Intout_EMBuffer, portFlagOut_EMBuffer, 
  returnOIOut_EMBuffer, callOut_EMBuffer, Data_out_after_MMBuffer,Read_data_after_MMBuffer, Rdst_after_MMBuffer, WB_after_MMBuffer, Men_to_Regout_MMBuffer, Intout_MMBuffer, 
  portFlagout_MMBuffer, returnOIout_MMBuffer, callout_MMBuffer);
 

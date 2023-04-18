@@ -11,16 +11,17 @@ PORT(
     WB : in std_logic;
     memRead : in std_logic;
     memWrite : in std_logic;
-    EX :in std_logic;
-    branch :in std_logic;
     portFlag :in std_logic;
     returnOI :in std_logic;
     call :in std_logic;
+    Men_to_Reg:in std_logic;
+    Int:in std_logic;
+
+
     dataout : in std_logic_vector(15 downto 0); 
     WriteData : in std_logic_vector(15 downto 0);
-    CCR : in std_logic_vector(15 downto 0); 
     rdst : in std_logic_vector(2 downto 0); 
-    
+    --CCR : in std_logic_vector(15 downto 0); 
 
     -- BUFFER OUTPU
 
@@ -30,15 +31,17 @@ PORT(
     WBOut : out std_logic;
     memReadOut : out std_logic;
     memWriteOut : out std_logic;
-    EXOut : out std_logic;
-    branchOut : out std_logic;
     portFlagOut : out std_logic;
     returnOIOut : out std_logic;
     callOut : out std_logic;
+    Men_to_Regout:out std_logic;
+    Intout:out std_logic;
+
     dataoutOut : out std_logic_vector(15 downto 0); 
     WriteDataOut : out std_logic_vector(15 downto 0);
-    CCROut : out std_logic_vector(15 downto 0); 
     rdstOut : out std_logic_vector(2 downto 0)
+    --CCROut : out std_logic_vector(15 downto 0); 
+
 );
 END Execute_Memory_Buffer;
 
@@ -54,15 +57,15 @@ IF rst = '1' THEN
     WBout<='0';
     memReadout<='0';
     memWriteout<='0';
-    EXout<='0';
-    branchout<='0';
     portFlagout<='0';
     returnOIout<='0';
     callout<='0';
+    Men_to_Regout<='0';
+    Intout<='0';
 
     dataoutOut <= (OTHERS=>'0');
     WriteDataOut <= (OTHERS=>'0');
-    CCROut <= (OTHERS=>'0');
+    --CCROut <= (OTHERS=>'0');
     rdstOut <= (OTHERS=>'0');
 
 ELSIF falling_edge(clk) THEN
@@ -73,15 +76,15 @@ if (en='1') then
     WBout<=WB;
     memReadout<=memRead;
     memWriteout<=memWrite;
-    EXout<=EX;
-    branchout<=branch;
     portFlagout<=portFlag;
     returnOIout<=returnOI;
     callout<=call;
+    Men_to_Regout<=Men_to_Reg;
+    Intout<=Int;
 
     dataoutOut <= dataout;
     WriteDataOut <= WriteData;
-    CCROut <= CCR;
+    --CCROut <= CCR;
     rdstOut <= rdst;
 
 end if;

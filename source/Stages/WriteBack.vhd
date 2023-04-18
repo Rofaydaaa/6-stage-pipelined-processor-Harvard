@@ -2,16 +2,16 @@ Library IEEE;
 use ieee.std_logic_1164.all;
 USE IEEE.numeric_std.all;
 
-ENTITY writeBackStage IS
+ENTITY WriteBack IS
 PORT (
 readData,dataOut : in std_logic_vector( 15 downto 0);
 Men_to_Reg,portFlag:in std_logic;
 inPort : in std_logic_vector( 15 downto 0);
 WBvalue, outPort: out std_logic_vector( 15 downto 0)
 );
-END  writeBackStage;
+END  WriteBack;
 
-ARCHITECTURE arch OF writeBackStage IS
+ARCHITECTURE arch OF WriteBack IS
 
 signal outputwire:std_logic_vector(15 downto 0);
 BEGIN
