@@ -58,7 +58,9 @@ IF Mem_Write = '1' THEN
    		ram(to_integer(unsigned((address)))) <= data_to_write;
 elsif Mem_read <='1' then
                read_data <= ram(to_integer(unsigned((address))));
-elseif  read_data <= (others=>(others => '0'));
+else
+	read_data <= (others=>(others => '0'));
+End if;
 END IF;
 END PROCESS;
 

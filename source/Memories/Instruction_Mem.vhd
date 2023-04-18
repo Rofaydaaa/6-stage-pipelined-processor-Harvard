@@ -12,7 +12,7 @@ END ENTITY Instruction_Mem;
 
 ARCHITECTURE Imp OF Instruction_Mem is
 
- TYPE ram_type IS ARRAY(0 TO 1023) of std_logic_vector(15 DOWNTO 0);
+ TYPE ram_type IS ARRAY(0 TO 4096) of std_logic_vector(15 DOWNTO 0);
  SIGNAL ram : ram_type ;
 BEGIN
 

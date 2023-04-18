@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 ENTITY Fetch_Decode_Buffer IS
 PORT( Clk,Rst,en: IN std_logic;
+Instruction_IN: in std_logic_vector (31 downto 0);
+Instruction_After: out std_logic_vector (31 downto 0)
 
-Instruction_After: out std_logic_vector (31 downto 0);
-Instruction_IN: in std_logic_vector (31 downto 0)
 
 );
 END Fetch_Decode_Buffer;
