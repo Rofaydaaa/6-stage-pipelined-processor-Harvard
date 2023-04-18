@@ -1,0 +1,169 @@
+E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/ALU.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ALU
+-- Compiling architecture IMP_ALU of ALU
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decoder
+-- Compiling architecture bhv of decoder
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mem_Mem_Buffer
+-- Compiling architecture imp of Mem_Mem_Buffer
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Fetch_Decode_Buffer
+-- Compiling architecture imp of Fetch_Decode_Buffer
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Decode_Excute_Buffer
+-- Compiling architecture imp of Decode_Excute_Buffer
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Add_Sub.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Add_Sub.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Add_Sub
+-- Compiling architecture Imp of Add_Sub
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity registerN
+-- Compiling architecture arch of registerN
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity SP
+-- Compiling architecture Imp of SP
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Mux2x1.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Mux2x1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux2x1
+-- Compiling architecture arch of Mux2x1
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Execute_Memory_Buffer
+-- Compiling architecture imp of Execute_Memory_Buffer
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity N_BIT_ADDER
+-- Compiling architecture IMP of N_BIT_ADDER
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity SET_CCR
+-- Compiling architecture IMP of SET_CCR
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Mux2by1.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/Mux2by1.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mux2by1
+-- Compiling architecture when_else_mux of Mux2by1
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd {0 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity integeration
+-- Compiling architecture arch of integeration
+** Error: (vcom-13) Recompile work.fetch because ieee.std_logic_1164, ieee.numeric_std have changed.
+** Error (suppressible): E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(115): (vcom-1195) Cannot find expanded name "work.Fetch".
+** Error: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(115): Unknown expanded name.
+-- Loading entity Fetch_Decode_Buffer
+** Error: (vcom-11) Could not find work.decode.
+** Error (suppressible): E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(118): (vcom-1195) Cannot find expanded name "work.Decode".
+** Error: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(118): Unknown expanded name.
+** Error: (vcom-11) Could not find work.execute.
+** Error (suppressible): E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(125): (vcom-1195) Cannot find expanded name "work.Execute".
+** Error: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(125): Unknown expanded name.
+-- Loading entity Execute_Memory_Buffer
+** Error: (vcom-11) Could not find work.memorystage.
+** Error (suppressible): E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(134): (vcom-1195) Cannot find expanded name "work.MemoryStage".
+** Error: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(134): Unknown expanded name.
+-- Loading entity Mem_Mem_Buffer
+-- Loading entity Mem_WB_Buffer
+** Error: (vcom-11) Could not find work.writeback.
+** Error (suppressible): E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(145): (vcom-1195) Cannot find expanded name "work.WriteBack".
+** Error: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(145): Unknown expanded name.
+** Note: E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Processor.vhd(148): VHDL Compiler exiting
+
+} {8.0 9.0 10.0 11.0 12.0 13.0 14.0 16.0 17.0 18.0 19.0 20.0 21.0 22.0 24.0 25.0 26.0 27.0} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Mem_WB_Buffer
+-- Compiling architecture imp of Mem_WB_Buffer
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ONE_BIT_ADDER
+-- Compiling architecture IMP of ONE_BIT_ADDER
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PC
+-- Compiling architecture Imp of PC
+
+} {} {}} E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd {1 {vcom -work work -2002 -explicit -stats=none E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity CCR
+-- Compiling architecture IMP_CCR of CCR
+
+} {} {}}
