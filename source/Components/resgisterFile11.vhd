@@ -2,7 +2,7 @@ LIBRARY ieee;
 USE ieee.numeric_std.ALL;
 USE ieee.std_logic_1164.ALL;
 
-entity registerFile is
+entity registerFile11 is
     port (
        clk,rst: in std_logic;
        writeReg: in std_logic_vector(2 downto 0); --des
@@ -12,9 +12,9 @@ entity registerFile is
        data1,data2: out std_logic_vector(15 downto 0) --output 
        
     );
-end registerFile;
+end registerFile11;
 
-ARCHITECTURE arch of registerFile IS 
+ARCHITECTURE arch of registerFile11 IS 
 component  registerN IS
 PORT( clk,rst ,en: IN std_logic;
   d: IN std_logic_vector(15 downto 0);
@@ -28,6 +28,8 @@ port(
     en: IN std_logic
 );
 end component;
+
+
 signal wire1,wire2,wire3,wire4,wire5,wire6,wire7,wire8:  std_logic_vector(15 downto 0) ;
 signal decEN : std_logic_vector(7 downto 0) ;
 

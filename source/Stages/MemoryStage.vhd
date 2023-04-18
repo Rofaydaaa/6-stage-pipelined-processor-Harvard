@@ -56,9 +56,9 @@ IF Rst = '1' THEN
 
 ELSIF rising_edge(clk) THEN 
 IF Mem_Write = '1' THEN
-   		ram(to_integer(unsigned((address)))) <= data_to_write;
-elsif Mem_read <='1' then
-               read_data <= ram(to_integer(unsigned((address))));
+   		ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write;
+elsif Mem_read ='1' then
+               read_data <= ram(to_integer(unsigned((address(9 downto 0)))));
 else
 	--read_data <= (others=>(others => '0')); ???????
 	read_data <= (others => '0');
