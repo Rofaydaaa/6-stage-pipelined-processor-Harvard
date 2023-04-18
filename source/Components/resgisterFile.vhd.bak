@@ -33,6 +33,8 @@ signal decEN : std_logic_vector(7 downto 0) ;
 
 BEGIN
 decoderU : decoder port map (writeReg,decEN,WB);
+decoderU2 : decoder port map (writeReg,decEN,WB);
+U:registerN port map (clk,rst,decEN(0),WBvalue,wire1);
 
 U1: registerN port map (clk,rst,decEN(0),WBvalue,wire1);
 U2: registerN port map (clk,rst,decEN(1),WBvalue,wire2);
