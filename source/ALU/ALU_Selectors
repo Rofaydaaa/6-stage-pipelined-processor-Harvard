@@ -1,0 +1,13 @@
+ADD     0000
+SUB     0001
+INC     1100 (takes A & B and outputs A+1 )
+DEC     1101 (takes A & B and outputs A-1 )
+MOV     1110 (takes A & B and outputs A )
+NOT     1111 (takes A & B and outputs not A )
+AND     0010
+OR      0011
+SETC    0100 (takes A&B and outputs garbage but changes the carry flag to 1)
+CLRC    0110 (takes A&B and outputs garbage but changes the carry flag to 0)
+LDM     1000 (takes A & B and outputs B)
+RST     0101 (Make output = 0)
+NOP     1010 (Make sure to preserve all the flags, meaning it doesn't change)
