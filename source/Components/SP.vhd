@@ -20,7 +20,7 @@ PROCESS (Clk,Reset)
 BEGIN
 output<= sigOut;
 IF Reset = '1' THEN
-sigOut <= x"03FE";  -- =(2^10)-2
+sigOut <= x"03FD";  -- =(2^10)-1
 
 ELSIF rising_edge(Clk) THEN
 output<= sigOut;
