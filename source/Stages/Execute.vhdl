@@ -80,9 +80,9 @@ ARCHITECTURE IMP_Execute OF Execute IS
         end if;
         end process;
     
-        select_2nd_operand : Mux2by1 GENERIC MAP(16) PORT MAP(Data2, Immediate, EX, B_MUX_OUTPUT);
-        aluu : ALU GENERIC MAP(16) PORT MAP(Data1, B_MUX_OUTPUT, Sel, '0', ALU_OUTPUT, C_out);
-        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(rst, NOP_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
+        select_2nd_operand : work.Mux2by1 GENERIC MAP(16) PORT MAP(Data2, Immediate, EX, B_MUX_OUTPUT);
+        aluu : work.ALU GENERIC MAP(16) PORT MAP(Data1, B_MUX_OUTPUT, Sel, '0', ALU_OUTPUT, C_out);
+        set_CCRM: work.SET_CCR GENERIC MAP(16) PORT MAP(rst, NOP_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
 
         DataOut <= ALU_OUTPUT;
         PC_Source <= (FLAG_CCR(0) and Branch) or (FLAG_CCR(2) and Branch) or No_Cond_Jump;
