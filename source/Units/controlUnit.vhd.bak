@@ -13,6 +13,10 @@ entity controlUnit is
         memWrite: out std_logic;
         EX:out std_logic;
         branch:out std_logic;
+        portFlag:out std_logic;
+        returnOI:out std_logic;
+        call:out std_logic;
+        No_Cond_Branch:out std_logic;
         ALU_selection:out std_logic_vector(3 downto 0)
     
 
@@ -84,5 +88,9 @@ begin
     pop <= controlSignal(5);
     ALU_selection<= controlSignal(3 downto 0);
     branch <= controlSignal(10);
+    portFlag<=controlSignal(8);
+    returnOI<=controlSignal(7);
+    call<=controlSignal(4);
+    No_Cond_Branch<=controlSignal(11);
 
 end arch;

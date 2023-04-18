@@ -18,7 +18,7 @@ PORT( clk,rst,en: std_logic;
         ALU_selection:in std_logic_vector(3 downto 0);
         data1,data2: in std_logic_vector(15 downto 0) ;
         rdst: in std_logic_vector(2 downto 0); 
-        restofIR: in  std_logic_vector(14 downto 0); 
+        restofIR: in  std_logic_vector(15 downto 0); 
  ------------------------------------------------------------------
         pushout: out std_logic;
         popout: out std_logic;
@@ -35,7 +35,7 @@ PORT( clk,rst,en: std_logic;
         ALU_selectionout:out std_logic_vector(3 downto 0);
         data1out,data2out: out std_logic_vector(15 downto 0); 
         rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(14 downto 0) 
+        restofIRout: out  std_logic_vector(15 downto 0) 
         
        
 );
