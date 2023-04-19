@@ -19,7 +19,10 @@ Men_to_Regout:out std_logic;
 Intout:out std_logic;
 portFlagout:out std_logic;
 returnOIout:out std_logic;
-callout:out std_logic
+callout:out std_logic;
+
+IN_Port_IN: in std_logic_vector (15 downto 0);
+IN_Port_OUT: out std_logic_vector (15 downto 0)
 );
 END Mem_Mem_Buffer;
 
@@ -38,6 +41,7 @@ Intout<='0';
 portFlagout<='0';
 returnOIout<='0';
 callout<='0';
+IN_Port_OUT <= (OTHERS=>'0');
 
 ELSIF falling_edge(Clk) THEN
 if (en='1') then
@@ -50,6 +54,8 @@ Intout<=Int;
 portFlagout<=portFlag;
 returnOIout<=returnOI;
 callout<=call;
+IN_Port_OUT <= IN_Port_IN;
+
 end if;
 END IF;
 END PROCESS;

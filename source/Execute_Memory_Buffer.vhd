@@ -39,7 +39,10 @@ PORT(
 
     dataoutOut : out std_logic_vector(15 downto 0); 
     WriteDataOut : out std_logic_vector(15 downto 0);
-    rdstOut : out std_logic_vector(2 downto 0)
+    rdstOut : out std_logic_vector(2 downto 0);
+
+    IN_Port_IN: in std_logic_vector (15 downto 0);
+    IN_Port_OUT: out std_logic_vector (15 downto 0)
     --CCROut : out std_logic_vector(15 downto 0); 
 
 );
@@ -67,6 +70,7 @@ IF rst = '1' THEN
     WriteDataOut <= (OTHERS=>'0');
     --CCROut <= (OTHERS=>'0');
     rdstOut <= (OTHERS=>'0');
+    IN_Port_OUT <= (OTHERS=>'0');
 
 ELSIF falling_edge(clk) THEN
 if (en='1') then
@@ -86,6 +90,7 @@ if (en='1') then
     WriteDataOut <= WriteData;
     --CCROut <= CCR;
     rdstOut <= rdst;
+    IN_Port_OUT <= IN_Port_IN;
 
 end if;
 END IF;

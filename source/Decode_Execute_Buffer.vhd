@@ -40,7 +40,11 @@ PORT( clk,rst,en: std_logic;
         ALU_selectionout:out std_logic_vector(3 downto 0);
         data1out,data2out: out std_logic_vector(15 downto 0); 
         rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(15 downto 0) 
+        restofIRout: out  std_logic_vector(15 downto 0);
+        
+        
+        IN_Port_IN: in std_logic_vector (15 downto 0);
+        IN_Port_OUT: out std_logic_vector (15 downto 0)
         
        
 );
@@ -71,6 +75,7 @@ data1out <= (OTHERS=>'0');
 data2out <= (OTHERS=>'0');
 rdstout <= (OTHERS=>'0');
 restofIRout <= (OTHERS=>'0');
+IN_Port_OUT <= (OTHERS=>'0');
 
 ELSIF falling_edge(clk) THEN
 if (en='1') then
@@ -93,7 +98,7 @@ data1out <= data1;
 data2out <= data2;
 rdstout <= rdst;
 restofIRout <= restofIR;
-
+IN_Port_OUT <= IN_Port_IN;
 end if;
 END IF;
 END PROCESS;
