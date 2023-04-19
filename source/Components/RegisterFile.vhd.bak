@@ -7,7 +7,6 @@ entity RegisterFile is
        clk,rst: in std_logic;
        writeReg: in std_logic_vector(2 downto 0); --des
        WB: in std_logic; --enable
-       Men_to_reg: in std_logic;
        Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1and2 
        WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
        data1,data2: out std_logic_vector(15 downto 0) --output 
@@ -44,7 +43,7 @@ BEGIN
     	ram <= (others=>(others => '0'));
     ELSIF rising_edge(clk) THEN 
     --Write back
-        IF WB = '1' OR Men_to_reg='1' THEN
+        IF WB = '1' THEN
                    ram(to_integer(unsigned(writeReg))) <= WBvalue;
         End if;
     END IF;

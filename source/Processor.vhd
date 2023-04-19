@@ -115,7 +115,7 @@ BEGIN
 F: entity work.Fetch port map(clk,rst,Instruction_out_Fetch);
 FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,rst,en,Instruction_out_Fetch,fetchOut_FDBUFFER);
 
-D: entity work.Decode port map(clk, rst, WB_after_MWBuffer, fetchOut_FDBUFFER, Rdst_after_MWBuffer, WBvalue_WB, push_Decode, pop_Decode,
+D: entity work.Decode port map(clk, rst, WB_after_MWBuffer,Men_to_Regout_MWBuffer, fetchOut_FDBUFFER, Rdst_after_MWBuffer, WBvalue_WB, push_Decode, pop_Decode,
   SP_Decode, WB_Decode, memRead_Decode, memWrite_Decode, EX_Decode, branch_Decode, portFlag_Decode, returnOI_Decode, call_Decode,
   No_Cond_Branch_Decode, ALU_selection_Decode, Men_to_Reg_Decode,
   Int_Decode, data1_Decode, data2_Decode, rdst_Decode, restOfInstruction_After_Decode);
