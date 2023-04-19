@@ -41,6 +41,8 @@ PROCESS(clk,Rst) IS
 BEGIN
     IF Rst = '1' THEN 
     	ram <= (others=>(others => '0'));
+        data1 <= (others => '0');
+        data2 <= (others => '0');
     ELSIF rising_edge(clk) THEN 
     --Write back
         IF WB = '1' THEN

@@ -23,9 +23,9 @@ V2h<>dY13@4n<Hzhdz5@zF0
 !s100 _[D]o]]KSb>j>kBQWNkK?2
 Z7 OV;C;10.5b;63
 32
-Z8 !s110 1681875853
+Z8 !s110 1681919052
 !i10b 1
-Z9 !s108 1681875853.000000
+Z9 !s108 1681919051.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/Add_Sub.vhd|
 Z11 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/Add_Sub.vhd|
 !i113 1
@@ -51,7 +51,7 @@ R11
 R12
 R13
 Ealu
-Z15 w1681853331
+Z15 w1681900540
 R1
 R2
 R3
@@ -64,9 +64,9 @@ VHNc_dYL_7HACE_EF91mHh0
 !s100 TA>O;h2I[g]mYB8:Ue@Rc2
 R7
 32
-Z18 !s110 1681875854
+R8
 !i10b 1
-R9
+Z18 !s108 1681919052.000000
 Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ALU.vhd|
 Z20 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ALU.vhd|
 !i113 1
@@ -83,30 +83,30 @@ VFd@6Cihf8K9@a?Wo=N_J<0
 !s100 EFOJ?SUg`h;=2iNoTd=kk2
 R7
 32
-R18
+R8
 !i10b 1
-R9
+R18
 R19
 R20
 !i113 1
 R12
 R13
 Eccr
-R15
+Z21 w1681900588
 R2
 R3
 R4
-Z21 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd
-Z22 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd
+Z22 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd
+Z23 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd
 l0
 L10
 VDlf<mAAgNS<CT`iEajX[>3
 !s100 LbAG>ZmJ[BoQW]V@lD<DD3
 R7
 32
-R18
+R8
 !i10b 1
-Z23 !s108 1681875854.000000
+R18
 Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd|
 Z25 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/CCR.vhd|
 !i113 1
@@ -122,16 +122,16 @@ VHZ=oVe[f=UNzo3O@D:T4]1
 !s100 >LmULzaIGN?QYYlzBCnOa1
 R7
 32
-R18
+R8
 !i10b 1
-R23
+R18
 R24
 R25
 !i113 1
 R12
 R13
 Econtrolunit
-Z26 w1681857147
+Z26 w1681900787
 R1
 R2
 R3
@@ -144,9 +144,9 @@ VO<lAh9zCTf<2mQJ4n7`jc3
 !s100 jA6L0gQ0hIWc[ZhhWN4?:3
 R7
 32
-Z29 !s110 1681875856
+Z29 !s110 1681919055
 !i10b 1
-Z30 !s108 1681875856.000000
+Z30 !s108 1681919055.000000
 Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Units/controlUnit.vhd|
 Z32 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Units/controlUnit.vhd|
 !i113 1
@@ -172,7 +172,7 @@ R32
 R12
 R13
 Edecode
-Z36 w1681875271
+Z36 w1681900749
 R1
 R2
 R3
@@ -185,9 +185,9 @@ VHSV62FohU6UF4a_WVZV^j1
 !s100 I;DXzI`3k^MiF;>bJzJ243
 R7
 32
-Z39 !s110 1681875855
+Z39 !s110 1681919054
 !i10b 1
-Z40 !s108 1681875855.000000
+Z40 !s108 1681919053.000000
 Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Decode.vhd|
 Z42 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Decode.vhd|
 !i113 1
@@ -213,7 +213,7 @@ R42
 R12
 R13
 Edecode_excute_buffer
-Z44 w1681875229
+Z44 w1681900808
 R2
 R3
 R4
@@ -227,9 +227,9 @@ R7
 32
 R39
 !i10b 1
-R40
-Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd|
-Z48 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd|
+Z47 !s108 1681919054.000000
+Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd|
+Z49 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Decode_Execute_Buffer.vhd|
 !i113 1
 R12
 R13
@@ -245,19 +245,19 @@ R7
 32
 R39
 !i10b 1
-R40
 R47
 R48
+R49
 !i113 1
 R12
 R13
 Edecoder
-Z49 w1681811706
+Z50 w1681811706
 R2
 R3
 R4
-Z50 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd
-Z51 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd
+Z51 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd
+Z52 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd
 l0
 L4
 Vh[GGIDm[ZfFoD6bHfk<OZ2
@@ -267,8 +267,8 @@ R7
 R29
 !i10b 1
 R30
-Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd|
-Z53 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd|
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd|
+Z54 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/decoder.vhd|
 !i113 1
 R12
 R13
@@ -285,19 +285,19 @@ R7
 R29
 !i10b 1
 R30
-R52
 R53
+R54
 !i113 1
 R12
 R13
 Eexecute
-Z54 w1681875000
+Z55 w1681875000
 R1
 R2
 R3
 R4
-Z55 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd
-Z56 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd
+Z56 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd
+Z57 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd
 l0
 L5
 VUdCm3?bPPJMJ>_B]ZzZ8W1
@@ -306,9 +306,9 @@ R7
 32
 R39
 !i10b 1
-R40
-Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd|
-Z58 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd|
+R47
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd|
+Z59 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Execute.vhd|
 !i113 1
 R12
 R13
@@ -316,7 +316,7 @@ Aimp_execute
 R1
 R2
 R3
-Z59 DEx4 work 7 execute 0 22 UdCm3?bPPJMJ>_B]ZzZ8W1
+Z60 DEx4 work 7 execute 0 22 UdCm3?bPPJMJ>_B]ZzZ8W1
 l70
 L24
 VUbEYJ4Pe:4SHTWdM9;>ma3
@@ -325,19 +325,19 @@ R7
 32
 R39
 !i10b 1
-R40
-R57
+R47
 R58
+R59
 !i113 1
 R12
 R13
 Eexecute_memory_buffer
-Z60 w1681875098
+Z61 w1681900831
 R2
 R3
 R4
-Z61 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
-Z62 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
+Z62 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
+Z63 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
 l0
 L4
 VK>8HPXWN6Im@z3Kf0h0>X0
@@ -346,16 +346,16 @@ R7
 32
 R39
 !i10b 1
-R40
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd|
-Z64 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd|
+R47
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd|
+Z65 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd|
 !i113 1
 R12
 R13
 Aimp
 R2
 R3
-Z65 DEx4 work 21 execute_memory_buffer 0 22 K>8HPXWN6Im@z3Kf0h0>X0
+Z66 DEx4 work 21 execute_memory_buffer 0 22 K>8HPXWN6Im@z3Kf0h0>X0
 l53
 L52
 VUS1IEfKf^_hL6TP9i]?X]0
@@ -364,20 +364,20 @@ R7
 32
 R39
 !i10b 1
-R40
-R63
+R47
 R64
+R65
 !i113 1
 R12
 R13
 Efetch
-Z66 w1681812381
+Z67 w1681812381
 R1
 R2
 R3
 R4
-Z67 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd
-Z68 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd
+Z68 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd
+Z69 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd
 l0
 L5
 VjXf3TGHkk>SlUCz[G>C1?1
@@ -386,20 +386,20 @@ R7
 32
 R8
 !i10b 1
-R9
-Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd|
-Z70 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd|
+R18
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd|
+Z71 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Fetch.vhd|
 !i113 1
 R12
 R13
 Aimp
-Z71 DEx4 work 15 instruction_mem 0 22 CAUH`e[zdizbh@>4Q1G^W1
+Z72 DEx4 work 15 instruction_mem 0 22 CAUH`e[zdizbh@>4Q1G^W1
 R14
-Z72 DEx4 work 2 pc 0 22 Kh4?5b51LCHQeL8jVIonn3
+Z73 DEx4 work 2 pc 0 22 Kh4?5b51LCHQeL8jVIonn3
 R1
 R2
 R3
-Z73 DEx4 work 5 fetch 0 22 jXf3TGHkk>SlUCz[G>C1?1
+Z74 DEx4 work 5 fetch 0 22 jXf3TGHkk>SlUCz[G>C1?1
 l17
 L12
 V7z0FNdc83Y<BNglPeQX<P1
@@ -408,70 +408,70 @@ R7
 32
 R8
 !i10b 1
-R9
-R69
+R18
 R70
+R71
 !i113 1
 R12
 R13
 Efetch_decode_buffer
-Z74 w1681875104
+Z75 w1681875104
 R2
 R3
 R4
-Z75 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd
-Z76 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd
+Z76 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd
+Z77 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd
 l0
 L4
 VQk<QShgTh^^@h@YFmY<820
 !s100 9TcZX3mAZO@A`EkW6ZMLW0
 R7
 32
-R8
+Z78 !s110 1681919051
 !i10b 1
 R9
-Z77 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd|
-Z78 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd|
+Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd|
+Z80 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Fetch_Decode_Buffer.vhd|
 !i113 1
 R12
 R13
 Aimp
 R2
 R3
-Z79 DEx4 work 19 fetch_decode_buffer 0 22 Qk<QShgTh^^@h@YFmY<820
+Z81 DEx4 work 19 fetch_decode_buffer 0 22 Qk<QShgTh^^@h@YFmY<820
 l16
 L15
 VLo^@fkeHYE_Wjz;k;S<2^2
 !s100 F?clUX5n6UT_@@SFl^=IT1
 R7
 32
-R8
+R78
 !i10b 1
 R9
-R77
-R78
+R79
+R80
 !i113 1
 R12
 R13
 Einstruction_mem
-Z80 w1681812013
+Z82 w1681900665
 R1
 R2
 R3
 R4
-Z81 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd
-Z82 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd
+Z83 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd
+Z84 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd
 l0
 L5
 VCAUH`e[zdizbh@>4Q1G^W1
 !s100 6<H;SzPLGdYbZfOJ_A=af2
 R7
 32
-R8
+R78
 !i10b 1
 R9
-Z83 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd|
-Z84 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd|
+Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd|
+Z86 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Memories/Instruction_Mem.vhd|
 !i113 1
 R12
 R13
@@ -479,28 +479,28 @@ Aimp
 R1
 R2
 R3
-R71
+R72
 l17
 L13
 VFkNM^On6LZ7ed@YA3X6e_2
 !s100 Rz0:adM4GoGE56SCC2mz?2
 R7
 32
-R8
+R78
 !i10b 1
 R9
-R83
-R84
+R85
+R86
 !i113 1
 R12
 R13
 Eintegeration
-Z85 w1681875005
+Z87 w1681900942
 R2
 R3
 R4
-Z86 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd
-Z87 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd
+Z88 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd
+Z89 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd
 l0
 L4
 VmHF^IIiC=I9aSaaAhT?:i3
@@ -509,23 +509,23 @@ R7
 32
 R39
 !i10b 1
-R40
-Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd|
-Z89 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd|
+R47
+Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd|
+Z91 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Processor.vhd|
 !i113 1
 R12
 R13
 Aarch
-Z90 DEx4 work 9 writeback 0 22 D04^T?;7Sl7W98BOLdKa_1
-Z91 DEx4 work 13 mem_wb_buffer 0 22 LIZAo0o=d6d7Vj=8W2D<L3
-Z92 DEx4 work 14 mem_mem_buffer 0 22 ;4h0GR^^8[:F[TgT:^[PF0
-Z93 DEx4 work 11 memorystage 0 22 [c0N=3Uon[^^zcRV6=N_90
-R65
-R59
+Z92 DEx4 work 9 writeback 0 22 D04^T?;7Sl7W98BOLdKa_1
+Z93 DEx4 work 13 mem_wb_buffer 0 22 LIZAo0o=d6d7Vj=8W2D<L3
+Z94 DEx4 work 14 mem_mem_buffer 0 22 ;4h0GR^^8[:F[TgT:^[PF0
+Z95 DEx4 work 11 memorystage 0 22 [c0N=3Uon[^^zcRV6=N_90
+R66
+R60
 R43
-R79
+R81
 R1
-R73
+R74
 R2
 R3
 DEx4 work 12 integeration 0 22 mHF^IIiC=I9aSaaAhT?:i3
@@ -537,98 +537,98 @@ R7
 32
 R39
 !i10b 1
-R40
-R88
-R89
+R47
+R90
+R91
 !i113 1
 R12
 R13
 Emem_mem_buffer
-Z94 w1681875114
+Z96 w1681875114
 R2
 R3
 R4
-Z95 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd
-Z96 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd
+Z97 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd
+Z98 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd
 l0
 L4
 V;4h0GR^^8[:F[TgT:^[PF0
 !s100 ;kPMdYnmo]U5Mb:]`fT9`1
 R7
 32
-R29
+R39
 !i10b 1
-R40
-Z97 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd|
-Z98 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd|
+R47
+Z99 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd|
+Z100 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_Mem_Buffer.vhd|
 !i113 1
 R12
 R13
 Aimp
 R2
 R3
-R92
+R94
 l31
 L30
 VHLGO4azX5@5;P>KDa]=Ki3
 !s100 3n0DX^@3_jKkXZ?Dkd;R:0
 R7
 32
-R29
+R39
 !i10b 1
-R40
-R97
-R98
+R47
+R99
+R100
 !i113 1
 R12
 R13
 Emem_wb_buffer
-Z99 w1681875122
+Z101 w1681900918
 R2
 R3
 R4
-Z100 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd
-Z101 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd
+Z102 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd
+Z103 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd
 l0
 L4
 VLIZAo0o=d6d7Vj=8W2D<L3
 !s100 S@NUgkP8JRQ80VRGlGDVS0
 R7
 32
-R29
+R39
 !i10b 1
-R30
-Z102 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd|
-Z103 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd|
+R47
+Z104 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd|
+Z105 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Mem_WB_Buffer.vhd|
 !i113 1
 R12
 R13
 Aimp
 R2
 R3
-R91
+R93
 l33
 L32
 V16SPhe<J<2Ve91;?hbTk60
 !s100 7CoJ^Ih72ab:l4@2QLWm:2
 R7
 32
-R29
+R39
 !i10b 1
-R30
-R102
-R103
+R47
+R104
+R105
 !i113 1
 R12
 R13
 Ememorystage
-R15
+Z106 w1681903320
 R1
 R2
 R3
 R4
-Z104 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
-Z105 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
+Z107 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
+Z108 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
 l0
 L5
 V[c0N=3Uon[^^zcRV6=N_90
@@ -637,9 +637,9 @@ R7
 32
 R39
 !i10b 1
-R40
-Z106 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd|
-Z107 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd|
+R47
+Z109 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd|
+Z110 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd|
 !i113 1
 R12
 R13
@@ -647,39 +647,39 @@ Aimp
 R1
 R2
 R3
-R93
+R95
 l50
 L15
-V:2z^kK=UEIl76lJW;<zQ?3
-!s100 :R`2Sj8VP:BV3EF3H84Le2
+VAHXMe8FIcWlEaWD=J[@IR3
+!s100 ]aco@k^:8?<7cQFlX1IIi1
 R7
 32
 R39
 !i10b 1
-R40
-R106
-R107
+R47
+R109
+R110
 !i113 1
 R12
 R13
 Emux2by1
-Z108 w1681855111
+Z111 w1681855111
 R2
 R3
 R4
-Z109 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd
-Z110 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd
+Z112 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd
+Z113 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd
 l0
 L4
 VXBgX`EPS4fE8W`fdRaSg]3
 !s100 dmBkQXTB5WKF7FjXk5o0f2
 R7
 32
-R18
+Z114 !s110 1681919053
 !i10b 1
-R23
-Z111 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd|
-Z112 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd|
+R40
+Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd|
+Z116 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2by1.vhd|
 !i113 1
 R12
 R13
@@ -693,71 +693,71 @@ V1<:LH`9AEoJ:^iB^]RDAK1
 !s100 @<;e_?eMzVLPV:C;W6Oen2
 R7
 32
-R18
+R114
 !i10b 1
-R23
-R111
-R112
+R40
+R115
+R116
 !i113 1
 R12
 R13
 Emux2x1
-Z113 w1681855110
+Z117 w1681855110
 R2
 R3
 R4
-Z114 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd
-Z115 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd
+Z118 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd
+Z119 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd
 l0
 L4
 V^Mjd<=z_ES=`JNYJYSXZ00
 !s100 a@KLG`lWi@F8F19gEEWQL3
 R7
 32
-R18
+R114
 !i10b 1
-R23
-Z116 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd|
-Z117 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd|
+R40
+Z120 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd|
+Z121 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/Mux2x1.vhd|
 !i113 1
 R12
 R13
 Aarch
 R2
 R3
-Z118 DEx4 work 6 mux2x1 0 22 ^Mjd<=z_ES=`JNYJYSXZ00
+Z122 DEx4 work 6 mux2x1 0 22 ^Mjd<=z_ES=`JNYJYSXZ00
 l16
 L15
 VBKkH^M73_71ILFU20^2iX2
 !s100 ZHgiVB^KZHHQ=bUNEFRR63
 R7
 32
-R18
+R114
 !i10b 1
-R23
-R116
-R117
+R40
+R120
+R121
 !i113 1
 R12
 R13
 En_bit_adder
-R15
+Z123 w1681853331
 R2
 R3
 R4
-Z119 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
-Z120 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
+Z124 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
+Z125 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
 l0
 L4
 VcOB^L33^AEckkJk5<@h>U1
 !s100 QhJWDA?;b`mX=?AJONao30
 R7
 32
-R18
+R8
 !i10b 1
-R23
-Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd|
-Z122 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd|
+R18
+Z126 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd|
+Z127 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd|
 !i113 1
 R12
 R13
@@ -771,32 +771,32 @@ V5RZ[GVKzFOz2mE9l0;^AK1
 !s100 TL[OUgZQORf8>^YB4EUZ;3
 R7
 32
-R18
+R8
 !i10b 1
-R23
-R121
-R122
+R18
+R126
+R127
 !i113 1
 R12
 R13
 Eone_bit_adder
-R15
+R123
 R2
 R3
 R4
-Z123 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd
-Z124 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd
+Z128 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd
+Z129 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd
 l0
 L4
 VkKSCDkQUnj>_F@FXOjSjM2
 !s100 m@f;^13FPB>HeMA9@I@@d3
 R7
 32
-R18
+R8
 !i10b 1
-R23
-Z125 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd|
-Z126 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd|
+R18
+Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd|
+Z131 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/ONE_BIT_ADDER.vhd|
 !i113 1
 R12
 R13
@@ -810,22 +810,22 @@ VVGmU_?VLg[kkN][ooLWZF0
 !s100 CVKFQ8F[1n[Hb2O0?;>8L3
 R7
 32
-R18
+R8
 !i10b 1
-R23
-R125
-R126
+R18
+R130
+R131
 !i113 1
 R12
 R13
 Epc
-Z127 w1681706469
+Z132 w1681706469
 R1
 R2
 R3
 R4
-Z128 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd
-Z129 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd
+Z133 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd
+Z134 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd
 l0
 L5
 VKh4?5b51LCHQeL8jVIonn3
@@ -834,9 +834,9 @@ R7
 32
 R8
 !i10b 1
-R9
-Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd|
-Z131 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd|
+R18
+Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd|
+Z136 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/PC.vhd|
 !i113 1
 R12
 R13
@@ -844,7 +844,7 @@ Aimp
 R1
 R2
 R3
-R72
+R73
 l14
 L13
 V[;K[gAlmI9D4WZdXHnGSc0
@@ -853,31 +853,31 @@ R7
 32
 R8
 !i10b 1
-R9
-R130
-R131
+R18
+R135
+R136
 !i113 1
 R12
 R13
 Eregisterfile
-Z132 w1681855106
+Z137 w1681919038
 R3
 R2
 R1
 R4
-Z133 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd
-Z134 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd
+Z138 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd
+Z139 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd
 l0
 L5
 VGT_VBl=U8>ib@kn?:RDAT2
 !s100 C>5V>VMbMDE9[N24Y7PNh2
 R7
 32
-R18
+R114
 !i10b 1
-R23
-Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd|
-Z136 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd|
+R40
+Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd|
+Z141 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/RegisterFile.vhd|
 !i113 1
 R12
 R13
@@ -888,107 +888,107 @@ R1
 DEx4 work 12 registerfile 0 22 GT_VBl=U8>ib@kn?:RDAT2
 l37
 L17
-V_h<@cho[>4PC`GZei3S^T0
-!s100 T;6cQLo][1f?O@YbU`^`e0
+V1al=R^3^@bF?KFnWooKA51
+!s100 `N8WZe0[FgU91D3NCT?FA2
 R7
 32
-R18
+R114
 !i10b 1
-R23
-R135
-R136
+R40
+R140
+R141
 !i113 1
 R12
 R13
 Eregistern
-Z137 w1681836146
+Z142 w1681836146
 R2
-Z138 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z143 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 22
-Z139 dE:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard
-Z140 8E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd
-Z141 FE:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd
+Z144 dE:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard
+Z145 8E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd
+Z146 FE:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd
 l0
 L3 1
 VMIR0_DF]e1GSPRd8@HT;k0
 !s100 M05bl92E=2U>^^L>U2omg2
-Z142 OV;C;2020.1;71
+Z147 OV;C;2020.1;71
 32
-Z143 !s110 1681836150
+Z148 !s110 1681836150
 !i10b 1
-Z144 !s108 1681836150.000000
-Z145 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd|
-Z146 !s107 E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd|
+Z149 !s108 1681836150.000000
+Z150 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd|
+Z151 !s107 E:/Martina/Senior1-2ndTerm/Arch/6-stage-pipelined-processor-Harvard/source/Components/registerN.vhd|
 !i113 1
 R12
 R13
 Aarch
 R2
-R138
+R143
 DEx4 work 9 registern 0 22 MIR0_DF]e1GSPRd8@HT;k0
 !i122 22
 l10
-Z147 L9 12
+Z152 L9 12
 V`Ym@Th@ggJHfT>4jzYGkX1
 !s100 WHkoI][YY[GnP8Y0a6YOQ1
-R142
+R147
 32
-R143
+R148
 !i10b 1
-R144
-R145
-R146
+R149
+R150
+R151
 !i113 1
 R12
 R13
 Eresgistern
-Z148 w1681832128
+Z153 w1681832128
 R2
-R138
+R143
 !i122 10
-R139
-R140
-R141
+R144
+R145
+R146
 l0
 L3 1
 VXT[a=?i1iTXZSKD3ghD541
 !s100 kHE8i7PjOXg`0OUdPeCFC1
-R142
+R147
 32
-Z149 !s110 1681835448
+Z154 !s110 1681835448
 !i10b 1
-Z150 !s108 1681835448.000000
-R145
-R146
+Z155 !s108 1681835448.000000
+R150
+R151
 !i113 1
 R12
 R13
 Aarch
 R2
-R138
+R143
 DEx4 work 10 resgistern 0 22 XT[a=?i1iTXZSKD3ghD541
 !i122 10
 l10
-R147
+R152
 VX<PhJ4aG<=n>0>>oH5^:n3
 !s100 m^kP[OKB=[AC8jnCla83_1
-R142
+R147
 32
-R149
+R154
 !i10b 1
+R155
 R150
-R145
-R146
+R151
 !i113 1
 R12
 R13
 Eset_ccr
-Z151 w1681874970
+Z156 w1681900565
 R2
 R3
 R4
-Z152 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
-Z153 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
+Z157 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
+Z158 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
 l0
 L9
 VZKLghKCCHl;^Ageoa3CUm1
@@ -997,9 +997,9 @@ R7
 32
 R8
 !i10b 1
-R9
-Z154 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd|
-Z155 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd|
+R18
+Z159 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd|
+Z160 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd|
 !i113 1
 R12
 R13
@@ -1015,31 +1015,31 @@ R7
 32
 R8
 !i10b 1
-R9
-R154
-R155
+R18
+R159
+R160
 !i113 1
 R12
 R13
 Esp
-R15
+R123
 R1
 R2
 R3
 R4
-Z156 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd
-Z157 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd
+Z161 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd
+Z162 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd
 l0
 L5
 VbcY_bLMk2Wa]_[`FzWUB83
 !s100 ]Ve>?z1e@NW;a=Rh:b_TE2
 R7
 32
-R18
+R114
 !i10b 1
-R23
-Z158 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd|
-Z159 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd|
+R40
+Z163 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd|
+Z164 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Components/SP.vhd|
 !i113 1
 R12
 R13
@@ -1054,53 +1054,53 @@ VTlGWNb7k0[E_4EW108hLT2
 !s100 nb:GHbJf2o:Wj0LMo[K^[2
 R7
 32
-R18
+R114
 !i10b 1
-R23
-R158
-R159
+R40
+R163
+R164
 !i113 1
 R12
 R13
 Ewriteback
-R15
+Z165 w1681900767
 R1
 R2
 R3
 R4
-Z160 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd
-Z161 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd
+Z166 8G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd
+Z167 FG:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd
 l0
 L5
 VD04^T?;7Sl7W98BOLdKa_1
 !s100 WBniEXOMIcFXfbnckR2cZ3
 R7
 32
-R18
+R114
 !i10b 1
-R23
-Z162 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd|
-Z163 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd|
+R40
+Z168 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd|
+Z169 !s107 G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/WriteBack.vhd|
 !i113 1
 R12
 R13
 Aarch
-R118
+R122
 R1
 R2
 R3
-R90
+R92
 l17
 L14
 VUB<19AeGe;L;JZ9UV[z_o1
 !s100 lXD:C:in^JJS1jkz]gGE_1
 R7
 32
-R18
+R114
 !i10b 1
-R23
-R162
-R163
+R40
+R168
+R169
 !i113 1
 R12
 R13

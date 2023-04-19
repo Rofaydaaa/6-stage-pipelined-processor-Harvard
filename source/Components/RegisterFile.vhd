@@ -41,8 +41,16 @@ PROCESS(clk,Rst) IS
 BEGIN
     IF Rst = '1' THEN 
     	ram <= (others=>(others => '0'));
-        data1 <= (others => '0');
-        data2 <= (others => '0');
+    ELSIF rising_edge(clk) THEN 
+    --Write back
+        IF WB = '1' THEN
+                   ram(to_integer(unsigned(writeReg))) <= WBvalue;
+        End if;
+    END IF;
+END PROCESS;
+    -- read data        
+        data1 <= ram(to_integer(unsigned(Rsrc1)))when rst <= '0' else (others => '0');
+        data2 <= ram(to_integer(unsigned(Rsrc2)))when rst <= '0' else (others => '0');
 
 
 
@@ -57,16 +65,5 @@ BEGIN
     --         data1 <= ram(to_integer(unsigned(Rsrc1)));
     --         data2 <= ram(to_integer(unsigned(Rsrc2)));
     --     End if;
-
-    ELSIF rising_edge(clk) THEN 
-    --Write back
-        IF WB = '1' THEN
-                   ram(to_integer(unsigned(writeReg))) <= WBvalue;
-        End if;
-    -- read data        
-        data1 <= ram(to_integer(unsigned(Rsrc1)));
-        data2 <= ram(to_integer(unsigned(Rsrc2)));
-    END IF;
-END PROCESS;
 
 end arch;
