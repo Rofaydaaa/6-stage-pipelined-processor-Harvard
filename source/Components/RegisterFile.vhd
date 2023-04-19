@@ -43,15 +43,29 @@ BEGIN
     	ram <= (others=>(others => '0'));
         data1 <= (others => '0');
         data2 <= (others => '0');
+
+
+
+-- The problem here is that when there is a write back signal available, el code msh bydkhol fi el else w beltaly data1 w data2 msh by3rfo y2ro mn el ram
+-- we will fix it by taking data1 and data2 out of else
+    -- ELSIF rising_edge(clk) THEN 
+    --     --Write back
+    --     IF WB = '1' THEN
+    --        		ram(to_integer(unsigned(writeReg))) <= WBvalue;
+    --     -- read data        
+    --     else
+    --         data1 <= ram(to_integer(unsigned(Rsrc1)));
+    --         data2 <= ram(to_integer(unsigned(Rsrc2)));
+    --     End if;
+
     ELSIF rising_edge(clk) THEN 
-        --Write back
+    --Write back
         IF WB = '1' THEN
-           		ram(to_integer(unsigned(writeReg))) <= WBvalue;
-        -- read data        
-        else
-            data1 <= ram(to_integer(unsigned(Rsrc1)));
-            data2 <= ram(to_integer(unsigned(Rsrc2)));
+                   ram(to_integer(unsigned(writeReg))) <= WBvalue;
         End if;
+    -- read data        
+        data1 <= ram(to_integer(unsigned(Rsrc1)));
+        data2 <= ram(to_integer(unsigned(Rsrc2)));
     END IF;
 END PROCESS;
 
