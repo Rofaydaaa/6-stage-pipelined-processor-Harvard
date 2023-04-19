@@ -1,4 +1,13 @@
-G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
+G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Decode.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/Decode.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Decode
+-- Compiling architecture arch of Decode
+
+} {} {}} G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Stages/MemoryStage.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -7,14 +16,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity MemoryStage
 -- Compiling architecture Imp of MemoryStage
 
-} {} {}} G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Execute_Memory_Buffer
--- Compiling architecture imp of Execute_Memory_Buffer
-
 } {} {}} G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/SET_CCR.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
 -- Loading package STANDARD
@@ -22,6 +23,14 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Loading package std_logic_1164
 -- Compiling entity SET_CCR
 -- Compiling architecture IMP of SET_CCR
+
+} {} {}} G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/Execute_Memory_Buffer.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Execute_Memory_Buffer
+-- Compiling architecture imp of Execute_Memory_Buffer
 
 } {} {}} G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd {1 {vcom -work work -2002 -explicit -stats=none G:/Sem8/Arch/Project/6-stage-pipelined-processor-Harvard/source/ALU/N_BIT_ADDER.vhd
 Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
