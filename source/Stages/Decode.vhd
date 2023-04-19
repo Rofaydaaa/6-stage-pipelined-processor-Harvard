@@ -26,10 +26,7 @@ WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
   Int:out std_logic;
   data1,data2:out std_logic_vector(15 downto 0);
   rdst: out std_logic_vector(2 downto 0);
-  restOfInstruction_After:out std_logic_vector(15 downto 0);
-
-  --IN_Port_IN: in std_logic_vector (15 downto 0);
-  --IN_Port_OUT: out std_logic_vector (15 downto 0)
+  restOfInstruction_After:out std_logic_vector(15 downto 0)
 );
 END  Decode;
 
@@ -114,10 +111,8 @@ PORT( clk,rst,en: std_logic;
         ALU_selectionout:out std_logic_vector(3 downto 0);
         data1out,data2out: out std_logic_vector(15 downto 0); 
         rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(15 downto 0); 
+        restofIRout: out  std_logic_vector(15 downto 0) 
         
-        IN_Port_IN: in std_logic_vector (15 downto 0);
-        IN_Port_OUT: out std_logic_vector (15 downto 0)
        
 );
 END COMPONENT;
