@@ -28,8 +28,8 @@ WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
   rdst: out std_logic_vector(2 downto 0);
   restOfInstruction_After:out std_logic_vector(15 downto 0);
 
-  IN_Port_IN: in std_logic_vector (15 downto 0);
-  IN_Port_OUT: out std_logic_vector (15 downto 0)
+  --IN_Port_IN: in std_logic_vector (15 downto 0);
+  --IN_Port_OUT: out std_logic_vector (15 downto 0)
 );
 END  Decode;
 
@@ -134,6 +134,6 @@ BEGIN
 CU : controlUnit port map (Instruction_After(31 downto 26),pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire ,ALU_selectionwire);
 RF : registerFile port map (clk,rst,writeReg,en,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
 buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire ,ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
-,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int ,ALU_selection,data1,data2,rdst, restOfInstruction_After, IN_Port_IN, IN_Port_OUT);
+,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int ,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
 END arch;
