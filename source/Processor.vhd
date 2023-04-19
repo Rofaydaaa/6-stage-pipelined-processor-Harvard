@@ -15,8 +15,6 @@ ARCHITECTURE arch OF integeration IS
 ---Define the signals for output of every stage and buffer
 --Signal namming formal (outputvar_stageNameOrBuffer)
 
---Signals for IN_PORTS passed to all buffer
-signal IN_Port_FDBuffer, IN_Port_DEBuffer, IN_Port_EMBuffer, IN_Port_MMBuffer, IN_Port_MWBuffer: std_logic_vector(15 downto 0);
 
 --Fetch stage
 signal Instruction_out_Fetch: STD_LOGIC_VECTOR(31 downto 0);
@@ -44,8 +42,6 @@ signal data1_Decode,data2_Decode: std_logic_vector(15 downto 0);
 signal rdst_Decode: std_logic_vector(2 downto 0);
 signal restOfInstruction_After_Decode: std_logic_vector(15 downto 0);
 
-
---buffer of decode stage is in in decode stage modulee  3ashan yasmine 3yza kda
 -- --DEBuffer
 -- signal pushout_DEBuffer: std_logic;
 -- signal popout_DEBuffer: std_logic;
@@ -117,12 +113,12 @@ signal WBvalue_WB: std_logic_vector(15 downto 0);
 
 BEGIN
 F: entity work.Fetch port map(clk,rst,Instruction_out_Fetch);
-FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,rst,en,Instruction_out_Fetch,fetchOut_FDBUFFER, IN_Ports, IN_Port_FDBuffer);
+FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,rst,en,Instruction_out_Fetch,fetchOut_FDBUFFER);
 
 D: entity work.Decode port map(clk, rst, WB_after_MWBuffer, fetchOut_FDBUFFER, Rdst_after_MWBuffer, WBvalue_WB, push_Decode, pop_Decode,
   SP_Decode, WB_Decode, memRead_Decode, memWrite_Decode, EX_Decode, branch_Decode, portFlag_Decode, returnOI_Decode, call_Decode,
   No_Cond_Branch_Decode, ALU_selection_Decode, Men_to_Reg_Decode,
-  Int_Decode, data1_Decode, data2_Decode, rdst_Decode, restOfInstruction_After_Decode, IN_Port_FDBuffer,IN_Port_DEBuffer);
+  Int_Decode, data1_Decode, data2_Decode, rdst_Decode, restOfInstruction_After_Decode);
   
 --DEBuffer: entity work.Decode_Execute_Buffer port map(clk, rst, en, );
 
@@ -133,20 +129,20 @@ EMBuffer: entity work.Execute_Memory_Buffer port map(clk, rst, en, push_Decode, 
 SP_Decode, WB_Decode, memRead_Decode, memWrite_Decode, portFlag_Decode, returnOI_Decode, call_Decode,
  Men_to_Reg_Decode, Int_Decode, DataOut_Execute, data1_Decode, rdst_Decode, pushOut_EMBuffer, popOut_EMBuffer, SPOut_EMBuffer, WBOut_EMBuffer, 
  memReadOut_EMBuffer, memWriteOut_EMBuffer, portFlagOut_EMBuffer, returnOIOut_EMBuffer, callOut_EMBuffer, 
- Men_to_Regout_EMBuffer, Intout_EMBuffer, dataoutOut_EMBuffer, WriteDataOut_EMBuffer, rdstOut_EMBuffer, IN_Port_DEBuffer, IN_Port_EMBuffer);
+ Men_to_Regout_EMBuffer, Intout_EMBuffer, dataoutOut_EMBuffer, WriteDataOut_EMBuffer, rdstOut_EMBuffer);
 
 M: entity work.MemoryStage port map(clk, rst, memReadOut_EMBuffer, memWriteOut_EMBuffer, SPOut_EMBuffer, pushOut_EMBuffer, popOut_EMBuffer, callOut_EMBuffer,
 WriteDataOut_EMBuffer, dataoutOut_EMBuffer, read_data_M);
 
 MMBuffer: entity work.Mem_Mem_Buffer port map(clk, rst, en, WBOut_EMBuffer, rdstOut_EMBuffer, dataoutOut_EMBuffer, read_data_M, Men_to_Regout_EMBuffer,Intout_EMBuffer, portFlagOut_EMBuffer, 
  returnOIOut_EMBuffer, callOut_EMBuffer, Data_out_after_MMBuffer,Read_data_after_MMBuffer, Rdst_after_MMBuffer, WB_after_MMBuffer, Men_to_Regout_MMBuffer, Intout_MMBuffer, 
- portFlagout_MMBuffer, returnOIout_MMBuffer, callout_MMBuffer, IN_Port_EMBuffer, IN_Port_MMBuffer);
+ portFlagout_MMBuffer, returnOIout_MMBuffer, callout_MMBuffer);
 
 MwBuffer: entity work.Mem_WB_Buffer port map(clk, rst, en, WB_after_MMBuffer,Data_out_after_MMBuffer,Read_data_after_MMBuffer, Rdst_after_MMBuffer, Men_to_Regout_MMBuffer, Intout_MMBuffer, 
  portFlagout_MMBuffer, returnOIout_MMBuffer, callout_MMBuffer, Rdst_after_MWBuffer, WB_after_MWBuffer, Data_out_after_MWBuffer, Read_data_after_MWBuffer, Men_to_Regout_MWBuffer, Intout_MWBuffer, 
- portFlagout_MWBuffer, returnOIout_MWBuffer, callout_MWBuffer, IN_Port_MMBuffer, IN_Port_MWBuffer);
+ portFlagout_MWBuffer, returnOIout_MWBuffer, callout_MWBuffer);
 
-WB: entity work.WriteBack port map(Read_data_after_MWBuffer, Data_out_after_MWBuffer, Men_to_Regout_MWBuffer, portFlagout_MWBuffer, IN_Port_MWBuffer, WBvalue_WB, OUT_Ports);
+WB: entity work.WriteBack port map(Read_data_after_MWBuffer, Data_out_after_MWBuffer, Men_to_Regout_MWBuffer, portFlagout_MWBuffer, IN_Ports, WBvalue_WB, OUT_Ports);
 
 
 END arch;
