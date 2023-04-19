@@ -1,6 +1,6 @@
 vsim -gui work.integeration
 #Load memory
-mem load -i D:/senior1-sem2/Architecture/6-stage-pipelined-processor-Harvard/InstructionMemory.mem /integeration/F/Instruction_Mem0/ram
+mem load -i D:/senior1-sem2/Architecture/6-stage-pipelined-processor-Harvard/test.mem /integeration/F/Instruction_Mem0/ram
 
 #add main waves
 
@@ -67,7 +67,17 @@ sim:/integeration/callout_MMBuffer \
 sim:/integeration/callOut_EMBuffer \
 sim:/integeration/call_Decode \
 sim:/integeration/branch_Decode \
-sim:/integeration/ALU_selection_Decode
+sim:/integeration/ALU_selection_Decode \
+
+sim:/integeration/E/set_CCRM/rst \
+sim:/integeration/E/set_CCRM/Previous_caryy \
+sim:/integeration/E/set_CCRM/NOP_FLAG \
+sim:/integeration/E/set_CCRM/n \
+sim:/integeration/E/set_CCRM/FLAG_OUT \
+sim:/integeration/E/set_CCRM/Flag_Calc \
+sim:/integeration/E/set_CCRM/F_ALU \
+sim:/integeration/E/set_CCRM/Cout_ALU \
+sim:/integeration/E/set_CCRM/clk
 
 #Force 
 force -freeze sim:/integeration/rst 1 0

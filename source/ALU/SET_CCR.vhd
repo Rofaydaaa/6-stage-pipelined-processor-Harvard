@@ -28,7 +28,7 @@ BEGIN
 	begin
 		if (rst = '1') then
 			Previous_caryy <= "000";
-		elsif (falling_edge(Clk)) then
+		elsif (rising_edge(Clk)) then
 			Previous_caryy <= Flag_Calc;
 		end if;
 	end process;
@@ -41,12 +41,12 @@ BEGIN
 	--Negative Flag
 	--
 	Flag_Calc(1) <= '0' when rst='1'
-	else Previous_caryy(2) when NOP_FLAG = '1'
+	else Previous_caryy(1) when NOP_FLAG = '1'
 	else F_ALU(n -1);
 
 	--Zero Flag
 	Flag_Calc(0) <= '0' when rst = '1'
-	else Previous_caryy(2) when NOP_FLAG = '1'
+	else Previous_caryy(0) when NOP_FLAG = '1'
 	else '1' when F_ALU="0000000000000000"
 	else '0';
 
