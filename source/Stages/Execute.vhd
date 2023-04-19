@@ -5,7 +5,7 @@ USE ieee.numeric_std.ALL;
 ENTITY Execute IS
   GENERIC (n : INTEGER := 16);
   PORT (
-    rst : IN STD_LOGIC;
+    clk,rst : IN STD_LOGIC;
     Data1, Data2 : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
     Immediate : IN STD_LOGIC_VECTOR (n - 1 DOWNTO 0);
 
@@ -47,7 +47,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
     COMPONENT SET_CCR IS
     GENERIC (n : INTEGER := 16);
 	PORT (
-        rst : IN STD_LOGIC;
+        clk,rst : IN STD_LOGIC;
 		NOP_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag
         F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
@@ -82,7 +82,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
     
         select_2nd_operand : Mux2by1 GENERIC MAP(16) PORT MAP(Data2, Immediate, EX, B_MUX_OUTPUT);
         aluu : ALU GENERIC MAP(16) PORT MAP(Data1, B_MUX_OUTPUT, Sel, '0', ALU_OUTPUT, C_out);
-        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(rst, NOP_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
+        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
 
         DataOut <= ALU_OUTPUT;
         PC_Source <= (FLAG_CCR(0) and Branch) or (FLAG_CCR(2) and Branch) or No_Cond_Jump;

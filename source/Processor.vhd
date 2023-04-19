@@ -122,7 +122,7 @@ D: entity work.Decode port map(clk, rst, WB_after_MWBuffer, fetchOut_FDBUFFER, R
   
 --DEBuffer: entity work.Decode_Execute_Buffer port map(clk, rst, en, );
 
-E: entity work.Execute port map(rst, data1_Decode, data2_Decode, restOfInstruction_After_Decode, ALU_selection_Decode, EX_Decode, branch_Decode, 
+E: entity work.Execute port map(clk,rst, data1_Decode, data2_Decode, restOfInstruction_After_Decode, ALU_selection_Decode, EX_Decode, branch_Decode, 
  No_Cond_Branch_Decode, PC_Source_Execute, DataOut_Execute);
 
 EMBuffer: entity work.Execute_Memory_Buffer port map(clk, rst, en, push_Decode, pop_Decode,

@@ -9,7 +9,7 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY SET_CCR IS
     GENERIC (n : INTEGER := 16);
 	PORT (
-		rst : IN STD_LOGIC;
+		clk,rst : IN STD_LOGIC;
 		NOP_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag
         	F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
@@ -20,24 +20,36 @@ END ENTITY SET_CCR;
 ARCHITECTURE IMP OF SET_CCR IS
 
 SIGNAL Previous_caryy : STD_LOGIC_VECTOR(2 DOWNTO 0);
+SIGNAL Flag_Calc : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 BEGIN
 
+	process(clk,rst)
+	begin
+		if (rst = '1') then
+			Previous_caryy <= "000";
+		elsif (falling_edge(Clk)) then
+			Previous_caryy <= Flag_Calc;
+		end if;
+	end process;
+
 	--Carry Flag
-	FLAG_OUT(2) <= '0' when rst ='1'
+	Flag_Calc(2) <= '0' when rst ='1'
 	else Cout_ALU when NOP_FLAG = '0'
 	else Previous_caryy(2);
 
 	--Negative Flag
 	--
-	FLAG_OUT(1) <= '0' when rst='1'
+	Flag_Calc(1) <= '0' when rst='1'
 	else Previous_caryy(2) when NOP_FLAG = '1'
 	else F_ALU(n -1);
 
 	--Zero Flag
-	FLAG_OUT(0) <= '0' when rst = '1'
+	Flag_Calc(0) <= '0' when rst = '1'
 	else Previous_caryy(2) when NOP_FLAG = '1'
 	else '1' when F_ALU="0000000000000000"
 	else '0';
+
+	FLAG_OUT <= Flag_Calc;
 
 END IMP;
