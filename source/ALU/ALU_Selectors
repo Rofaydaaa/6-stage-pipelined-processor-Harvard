@@ -1,4 +1,4 @@
-ADD     0010
+ADD     0111
 SUB     0001
 INC     1100 (takes A & B and outputs A+1 )
 DEC     1101 (takes A & B and outputs A-1 )
