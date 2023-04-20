@@ -48,7 +48,7 @@ BEGIN
     F <= (OTHERS => '0') when sel = "0101"
     -- 2. ADD
         else
-        S_add when sel = "0000"
+        S_add when sel = "0010"
     -- 3. SUB
         else
         S_sub when sel = "0001"
@@ -80,7 +80,7 @@ BEGIN
         (OTHERS => '0');
 
     -- 1. ADD
-    cout <= C_add when sel = "0000"
+    cout <= C_add when sel = "0010"
     -- 2. SUB
         else
         C_sub when sel = "0001"

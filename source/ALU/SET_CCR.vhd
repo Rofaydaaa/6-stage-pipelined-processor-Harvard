@@ -10,7 +10,7 @@ ENTITY SET_CCR IS
     GENERIC (n : INTEGER := 16);
 	PORT (
 		clk,rst : IN STD_LOGIC;
-		NOP_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag
+		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
         	F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
 		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
@@ -35,7 +35,7 @@ BEGIN
 
 	--Carry Flag
 	Flag_Calc(2) <= '0' when rst ='1'
-	else Cout_ALU when NOP_FLAG = '0'
+	else Cout_ALU when (NOP_FLAG = '0' and  UNCHANGE_CARRY = '0')
 	else Previous_caryy(2);
 
 	--Negative Flag
@@ -47,7 +47,7 @@ BEGIN
 	--Zero Flag
 	Flag_Calc(0) <= '0' when rst = '1'
 	else Previous_caryy(0) when NOP_FLAG = '1'
-	else '1' when F_ALU="0000000000000000"
+	else '1' when (F_ALU="0000000000000000" and FIRSTTIME_FLAG = '0')
 	else '0';
 
 	FLAG_OUT <= Flag_Calc;

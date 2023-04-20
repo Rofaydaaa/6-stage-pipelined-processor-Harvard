@@ -48,7 +48,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
     GENERIC (n : INTEGER := 16);
 	PORT (
         clk,rst : IN STD_LOGIC;
-		NOP_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag
+		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
         F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
 		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
@@ -64,25 +64,49 @@ ARCHITECTURE IMP_Execute OF Execute IS
     SIGNAL ALU_OUTPUT : STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
     SIGNAL C_out : STD_LOGIC;
     SIGNAL NOP_FLAG : STD_LOGIC;
+    SIGNAL UNCHANGE_CARRY : STD_LOGIC;
+    SIGNAL FIRSTTIME_FLAG : STD_LOGIC;
     SIGNAL FLAG_CCR : STD_LOGIC_VECTOR(2 DOWNTO 0);
 
 
     BEGIN 
 
-        -- Check if the selectors are add, sub, inc, dec,clearcarry, setcarry then the NOP_FLAG is 0, other, it will keep the previous value of flag
-        -- When calling the module of set_ccr, because this operations doesn't affect the carry flag
+        -- NOP_FLAG indicates the operations that doesn't change IN the CCR
         process(sel)
         begin
-            if sel = "0000" or sel = "0001" or sel = "1100" or sel = "1101" or sel = "0110" or sel = "0100" then
-                NOP_FLAG <= '0';
-            else
+            if sel = "1010" or sel = "1110" or sel = "1000" then
                 NOP_FLAG <= '1';
+            else
+                NOP_FLAG <= '0';
         end if;
         end process;
+
+        -- UNCHANGE_CARRY indicates the operations that doesn't change IN the Carry flag
+        --not, or, and
+        process(sel)
+        begin
+            if sel = "1111" or sel = "0010" or sel = "0011" then
+                UNCHANGE_CARRY <= '1';
+            else
+                UNCHANGE_CARRY <= '0';
+        end if;
+        end process;
+
+        -- FIRSTTIME_FLAG indicates that this is the first time to run simulation so it will make the flag 0 even if fout = "0000"
     
+        process(sel)
+        begin
+            if sel = "0000" then
+                FIRSTTIME_FLAG <= '1';
+            else
+                FIRSTTIME_FLAG <= '0';
+        end if;
+        end process;
+
+
         select_2nd_operand : Mux2by1 GENERIC MAP(16) PORT MAP(Data2, Immediate, EX, B_MUX_OUTPUT);
         aluu : ALU GENERIC MAP(16) PORT MAP(Data1, B_MUX_OUTPUT, Sel, '0', ALU_OUTPUT, C_out);
-        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
+        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
 
         DataOut <= ALU_OUTPUT;
         PC_Source <= (FLAG_CCR(0) and Branch) or (FLAG_CCR(2) and Branch) or No_Cond_Jump;
