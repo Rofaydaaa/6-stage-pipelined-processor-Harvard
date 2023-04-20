@@ -90,9 +90,12 @@ BEGIN
     -- 4. DEC
         else
         C_dec when sel = "1101"
-    -- 5. SETC --> Set carry flag to 1 and output garbage
+    -- 5. SETC --> Set carry flag to 1 
         else
         '1' when sel = "0100"
+    -- 6. CLRC --> set carry flag to 1
+        else
+        '0' when sel = "0110"   
         else
         cin;
 

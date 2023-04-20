@@ -69,14 +69,14 @@ ARCHITECTURE IMP_Execute OF Execute IS
 
     BEGIN 
 
-        -- Check if the selectors are "1010" meaning no operation, then the NOP_FLAG is 1, it will keep the previous value of flag
-        -- When calling the module of set_ccr
+        -- Check if the selectors are add, sub, inc, dec,clearcarry, setcarry then the NOP_FLAG is 0, other, it will keep the previous value of flag
+        -- When calling the module of set_ccr, because this operations doesn't affect the carry flag
         process(sel)
         begin
-            if sel = "1010" then
-                NOP_FLAG <= '1';
-            else
+            if sel = "0000" or sel = "0001" or sel = "1100" or sel = "1101" or sel = "0110" or sel = "0100" then
                 NOP_FLAG <= '0';
+            else
+                NOP_FLAG <= '1';
         end if;
         end process;
     
