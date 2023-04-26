@@ -48,7 +48,7 @@ BEGIN
     F <= (OTHERS => '0') when sel = "0101"
     -- 2. ADD
         else
-        S_add when sel = "0000"
+        S_add when sel = "0111"
     -- 3. SUB
         else
         S_sub when sel = "0001"
@@ -80,7 +80,7 @@ BEGIN
         (OTHERS => '0');
 
     -- 1. ADD
-    cout <= C_add when sel = "0000"
+    cout <= C_add when sel = "0111"
     -- 2. SUB
         else
         C_sub when sel = "0001"
@@ -90,9 +90,12 @@ BEGIN
     -- 4. DEC
         else
         C_dec when sel = "1101"
-    -- 5. SETC --> Set carry flag to 1 and output garbage
+    -- 5. SETC --> Set carry flag to 1 
         else
         '1' when sel = "0100"
+    -- 6. CLRC --> set carry flag to 1
+        else
+        '0' when sel = "0110"   
         else
         cin;
 
