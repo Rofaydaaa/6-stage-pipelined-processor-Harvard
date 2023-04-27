@@ -6,3 +6,6 @@ work/_lib1_10.qtl
 *.wlf
 *.mti
 *.wlf
+
+# ignore bak files
+*.bak
