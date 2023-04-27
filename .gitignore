@@ -6,6 +6,7 @@ work/
 *.wlf
 *.mti
 *.wlf
+*.mpf
 
 # ignore bak files
 *.bak
