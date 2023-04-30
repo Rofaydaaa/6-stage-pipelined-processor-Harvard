@@ -19,7 +19,7 @@ Men_to_Regout:out std_logic;
 Intout:out std_logic;
 portFlagout:out std_logic;
 returnOIout:out std_logic;
-callout:out std_logic;
+callout:out std_logic
 
 --IN_Port_IN: in std_logic_vector (15 downto 0);
 --IN_Port_OUT: out std_logic_vector (15 downto 0)

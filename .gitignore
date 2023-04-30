@@ -1,8 +1,12 @@
 
-work/_lib1_10.qtl
+work/
 *.wlf
 *.qdb
 *.qpg
 *.wlf
 *.mti
 *.wlf
+*.mpf
+
+# ignore bak files
+*.bak
