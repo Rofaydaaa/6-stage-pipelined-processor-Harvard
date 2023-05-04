@@ -27,7 +27,7 @@ entity controlUnit is
 end controlUnit;
 
 architecture arch of controlUnit is
-    constant nop_operation : std_logic_vector(5 downto 0) := "000001";
+    constant nop_operation : std_logic_vector(5 downto 0) := "000000";
     constant setc_operation : std_logic_vector(5 downto 0) := "000010";
     constant clrc_operation : std_logic_vector(5 downto 0) := "000011";
     constant out_operation : std_logic_vector(5 downto 0) := "000100";
