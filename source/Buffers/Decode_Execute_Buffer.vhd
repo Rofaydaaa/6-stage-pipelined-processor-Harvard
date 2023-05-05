@@ -18,7 +18,7 @@ PORT( clk,rst,en: std_logic;
         Men_to_Reg:in std_logic;
         Int:in std_logic;
         ------------------ new wires---------------------------
-         Ret:in std_logic;
+         Rti:in std_logic;
          Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWire : in std_logic_vector(15 downto 0);
          forCall : in std_logic;
@@ -47,7 +47,7 @@ PORT( clk,rst,en: std_logic;
         Men_to_Regout:out std_logic;
         Intout:out std_logic;
 ------------------ new wires---------------------------
-         Retout:out std_logic;
+         Rtiout:out std_logic;
          Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWireout : out std_logic_vector(15 downto 0);
          forCallout : out std_logic;
@@ -83,7 +83,7 @@ callout<='0';
 No_Cond_Branchout<='0';
 Men_to_Regout<='0';
 Intout<='0';
-Retout<='0';
+Rtiout<='0';
 forCallout<='0';
 Rsrc1out <= (OTHERS=>'0');
 Rsrc2out  <= (OTHERS=>'0');
@@ -101,7 +101,7 @@ pushout<=push;
 popout<=pop;
 SPout<=SP;
 WBout<=WB;
- Retout<= Ret;
+
 memReadout<=memRead;
 memWriteout<=memWrite;
 EXout<=EX;
@@ -112,6 +112,7 @@ callout<=call;
 No_Cond_Branchout<=No_Cond_Branch;
 Men_to_Regout<=Men_to_Reg;
 Intout<=Int;
+Rtiout<=Rti;
 ALU_selectionout <= ALU_selection;
 data1out <= data1;
 data2out <= data2;
