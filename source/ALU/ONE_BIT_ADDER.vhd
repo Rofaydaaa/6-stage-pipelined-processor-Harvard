@@ -1,3 +1,11 @@
+----------------------------------------------------------
+--  string s = "Roufy was here, coding in peace <3 <3"; --
+--  string deleteIt = "od";                             --
+--  size_t pos = str.find(deleteIt);                    --
+--  s.replace(pos, deleteIt.length(), "ry");            --
+--  cout<<s;                                            --
+----------------------------------------------------------
+
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
 

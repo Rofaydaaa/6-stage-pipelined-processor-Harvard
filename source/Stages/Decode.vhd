@@ -33,7 +33,7 @@ IN_Port: out STD_LOGIC_VECTOR(15 downto 0);
   data1,data2:out std_logic_vector(15 downto 0);
   rdst: out std_logic_vector(2 downto 0);
   restOfInstruction_After:out std_logic_vector(15 downto 0);
-  Ret:out std_logic;
+  Rti:out std_logic;
   Rsrc1,Rsrc2: out std_logic_vector(2 downto 0);--adress of src1 and src2 
   memoryWire : out std_logic_vector(15 downto 0);
   forCall : out std_logic;
@@ -65,7 +65,7 @@ COMPONENT controlUnit is
         No_Cond_Branch:out std_logic;
         Men_to_Reg:out std_logic;
         Int:out std_logic;
-        Ret:out std_logic;
+        Rti:out std_logic;
 
         ALU_selection:out std_logic_vector(3 downto 0)
     
@@ -103,7 +103,7 @@ PORT( clk,rst,en: std_logic;
         Men_to_Reg:in std_logic;
         Int:in std_logic;
         ------------------ new wires---------------------------
-         Ret:in std_logic;
+         Rti:in std_logic;
          Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWire : in std_logic_vector(15 downto 0);
          forCall : in std_logic;
@@ -132,7 +132,7 @@ PORT( clk,rst,en: std_logic;
         Men_to_Regout:out std_logic;
         Intout:out std_logic;
 ------------------ new wires---------------------------
-         Retout:out std_logic;
+         Rtiout:out std_logic;
          Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWireout : out std_logic_vector(15 downto 0);
          forCallout : out std_logic;
@@ -152,15 +152,15 @@ END COMPONENT;
 -------------------------------------------End Components-------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
-signal pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Retwire,forCallwire :std_logic;
+signal pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire,forCallwire :std_logic;
 signal ALU_selectionwire : std_logic_vector(3 downto 0);
 signal Rsrc1wire,Rsrc2wire:std_logic_vector(2 downto 0);
 signal data1wire,data2wire ,memoryWirewire,IN_Portswire: std_logic_vector(15 downto 0);
 BEGIN
 
-CU : controlUnit port map (Instruction_After(31 downto 26),stopCU,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Retwire ,ALU_selectionwire);
+CU : controlUnit port map (Instruction_After(31 downto 26),stopCU,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire ,ALU_selectionwire);
 RF : registerFile port map (clk,rst,writeReg,en,Men_to_regin,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
-buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Retwire,Rsrc1wire,Rsrc2wire,memoryWirewire,forCallwire,flushSignal,resetSignal,IN_Portswire, ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
-,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Ret,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
+buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire,Rsrc1wire,Rsrc2wire,memoryWirewire,forCallwire,flushSignal,resetSignal,IN_Portswire, ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
+,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Rti,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
 END arch;

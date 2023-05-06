@@ -1,3 +1,11 @@
+----------------------------------------------------------
+--  string s = "Roufy was here, coding in peace <3 <3"; --
+--  string deleteIt = "od";                             --
+--  size_t pos = str.find(deleteIt);                    --
+--  s.replace(pos, deleteIt.length(), "ry");            --
+--  cout<<s;                                            --
+----------------------------------------------------------
+
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 
@@ -11,7 +19,7 @@ ENTITY SET_CCR IS
 	PORT (
 		clk,rst : IN STD_LOGIC;
 		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
-        	F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
+        F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
 		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
 		);
