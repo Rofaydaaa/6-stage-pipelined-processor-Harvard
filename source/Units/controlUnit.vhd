@@ -5,6 +5,7 @@ use ieee.numeric_std.all;
 entity controlUnit is
     port (
         opcode: in std_logic_vector(5 downto 0);
+        stopCU: in std_logic;
         push: out std_logic;
         pop: out std_logic;
         SP: out std_logic;
@@ -19,6 +20,7 @@ entity controlUnit is
         No_Cond_Branch:out std_logic;
         Men_to_Reg:out std_logic;
         Int:out std_logic;
+        Rti:out std_logic;
 
         ALU_selection:out std_logic_vector(3 downto 0)
     
@@ -27,7 +29,7 @@ entity controlUnit is
 end controlUnit;
 
 architecture arch of controlUnit is
-    constant nop_operation : std_logic_vector(5 downto 0) := "000001";
+    constant nop_operation : std_logic_vector(5 downto 0) := "000000";
     constant setc_operation : std_logic_vector(5 downto 0) := "000010";
     constant clrc_operation : std_logic_vector(5 downto 0) := "000011";
     constant out_operation : std_logic_vector(5 downto 0) := "000100";
@@ -52,36 +54,74 @@ architecture arch of controlUnit is
     constant call_operation : std_logic_vector(5 downto 0) := "010111";
     constant ret_operation : std_logic_vector(5 downto 0) := "011000";
     constant rti_operation : std_logic_vector(5 downto 0) := "011001";
-    signal controlSignal: std_logic_vector(17 downto 0);
+    constant int_operation : std_logic_vector(5 downto 0) := "011010";
+    signal controlSignal: std_logic_vector(18 downto 0);
 begin
-    with opcode select
-        controlSignal <=
-            "000000000000001010" when nop_operation,
-            "000000000000000100" when setc_operation,
-            "000000000000001010" when clrc_operation,
-            "000000000000001110" when out_operation,
-            "001000000100001010" when in_operation,
-            "001000000000001100" when inc_operation,
-            "001000000000001101" when dec_operation,
-            "001000000000001111" when not_operation,
-            "001000000000001110" when mov_operation,
-            "001000000000000000" when add_operation,
-            "001001000000000000" when iadd_operation,
-            "001000000000000001" when sub_operation,
-            "001000000000000010" when and_operation,
-            "001000000000000011" when or_operation,
-            "000010001001001010" when push_operation,
-            "011100001000101010" when pop_operation,
-            "001001000000001000" when ldm_operation,
-            "011100000000001110" when ldd_operation,
-            "000010000000001000" when std_operation,
-            "000000010000001010" when jz_operation,
-            "000000010000011010" when jc_operation,
-            "000000100000001010" when jmp_operation,
-            "000000101001011010" when call_operation,
-            "000100001010101010" when ret_operation,
-            "000100001000001010" when rti_operation,
-            "000000000000000000" when others;
+process(stopCU,opcode)
+begin
+  IF stopCU = '1' THEN
+   controlSignal<= "0000000000000000000";
+   ELSIF stopCU = '0' THEN
+ 
+  case opcode is
+    when nop_operation =>
+      controlSignal <= "0000000000000001010";
+    when setc_operation =>
+      controlSignal <= "0000000000000000100";
+    when clrc_operation =>
+      controlSignal <= "0000000000000001010";
+    when out_operation =>
+      controlSignal <= "0000000000000001110";
+    when in_operation =>
+      controlSignal <= "0001000000100001010";
+    when inc_operation =>
+      controlSignal <= "0001000000000001100";
+    when dec_operation =>
+      controlSignal <= "0001000000000001101";
+    when not_operation =>
+      controlSignal <= "0001000000000001111";
+    when mov_operation =>
+      controlSignal <= "0001000000000001110";
+    when add_operation =>
+      controlSignal <= "0001000000000000000";
+    when iadd_operation =>
+      controlSignal <= "0001001000000000000";
+    when sub_operation =>
+      controlSignal <= "0001000000000000001";
+    when and_operation =>
+      controlSignal <= "0001000000000000010";
+    when or_operation =>
+      controlSignal <= "0001000000000000011";
+    when push_operation =>
+      controlSignal <= "0000010001001001010";
+    when pop_operation =>
+      controlSignal <= "0011100001000101010";
+    when ldm_operation =>
+      controlSignal <= "0001001000000001000";
+    when ldd_operation =>
+      controlSignal <= "0011100000000001110";
+    when std_operation =>
+      controlSignal <= "0000010000000001000";
+    when jz_operation =>
+      controlSignal <= "0000000010000001010";
+    when jc_operation =>
+      controlSignal <= "0000000010000011010";
+    when jmp_operation =>
+      controlSignal <= "0000000100000001010";
+    when call_operation =>
+      controlSignal <= "0000000101001011010";
+    when ret_operation =>
+      controlSignal <= "0000100001010101010";
+    when rti_operation =>
+      controlSignal <= "1000100001000001010";
+    when int_operation =>
+      controlSignal <= "0100000001001001010";
+    when others =>
+      controlSignal <= "0000000000000000000";
+  end case;
+
+end if;
+end process;
     WB <= controlSignal(15);
     memRead <= controlSignal(14);
     memWrite <= controlSignal(13);
@@ -97,5 +137,6 @@ begin
     No_Cond_Branch<=controlSignal(11);
     Men_to_Reg<=controlSignal(16);
     Int<=controlSignal(17);
+    Rti<=controlSignal(18);
 
 end arch;
