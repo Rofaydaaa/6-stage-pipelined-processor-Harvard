@@ -8,7 +8,7 @@ entity HDUstructural is port(
   memWriteDE: IN std_logic; --memWrite from decode excute stage
   memWriteFD: IN std_logic; --memWrite from excute memory stage
   freeze_pc: out std_logic; --freeze the pc
-  nop: out std_logic; --send a nop to the buffer as in disable the buffer
+  
   stopCU: out std_logic --send a signal to control unit =1
   
 );
@@ -25,11 +25,11 @@ begin
     begin
         if (memRead = '1' or memWrite = '1') then
             freeze_pc <= '1';
-            nop <= '1';
+            
             stopCU <= '1';
         else
             freeze_pc <= '0';
-            nop <= '0';
+            
             stopCU <= '0';
         end if;
     end process;

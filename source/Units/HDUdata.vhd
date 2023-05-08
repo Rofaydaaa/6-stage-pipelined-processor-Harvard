@@ -20,11 +20,11 @@ process(rdstDE,rdstEM,memReadDE,memReadEM,Rsrc1,Rsrc2)
 BEGIN
    if ((memReadDE = '1' and ((rdstDE = Rsrc1) or (rdstDE = Rsrc2)))or (memReadEM = '1' and ((rdstEM = Rsrc1) or (rdstEM = Rsrc2))) ) then
         freeze_pc <= '1';
-        nop <= '1';
+       
         stopCU <= '1';
     else
         freeze_pc <= '0';
-        nop <= '0';
+        
         stopCU <= '0';
     end if;
 end process;
