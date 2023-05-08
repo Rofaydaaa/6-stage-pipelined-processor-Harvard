@@ -24,7 +24,15 @@ PORT(
     call :in std_logic;
     Men_to_Reg:in std_logic;
     Int:in std_logic;
-
+     ------------------ new wires---------------------------
+     Rti:in std_logic;
+     Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
+     memoryWire : in std_logic_vector(15 downto 0);
+     forCall : in std_logic;
+     flushSignal: in std_logic; --unhandled yet
+     resetSignal: in std_logic; --unhandled yet
+     IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
+    -------------------------------------------------
 
     dataout : in std_logic_vector(15 downto 0); 
     WriteData : in std_logic_vector(15 downto 0);
@@ -44,6 +52,13 @@ PORT(
     callOut : out std_logic;
     Men_to_Regout:out std_logic;
     Intout:out std_logic;
+   ------------------ new wires---------------------------
+   Rtiout:out std_logic;
+   Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
+   memoryWireout : out std_logic_vector(15 downto 0);
+   forCallout : out std_logic;
+   IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
+-------------------------------------------------
 
     dataoutOut : out std_logic_vector(15 downto 0); 
     WriteDataOut : out std_logic_vector(15 downto 0);
@@ -61,7 +76,7 @@ ARCHITECTURE imp OF Execute_Memory_Buffer IS
 BEGIN
 PROCESS (clk,rst)
 BEGIN
-IF rst = '1' THEN
+IF rst = '1' or flushSignal='1' THEN
     pushout<='0';
     popout<='0';
     SPout<='0';
@@ -73,13 +88,16 @@ IF rst = '1' THEN
     callout<='0';
     Men_to_Regout<='0';
     Intout<='0';
-
+    Rtiout<='0';
+    forCallout<='0';
+    Rsrc1out <= (OTHERS=>'0');
+    Rsrc2out  <= (OTHERS=>'0');
+    memoryWireout<=(OTHERS=>'0');
     dataoutOut <= (OTHERS=>'0');
     WriteDataOut <= (OTHERS=>'0');
     --CCROut <= (OTHERS=>'0');
     rdstOut <= (OTHERS=>'0');
-    --IN_Port_OUT <= (OTHERS=>'0');
-
+    IN_Portsout<=(OTHERS=>'0');
 ELSIF falling_edge(clk) THEN
 if (en='1') then
     pushout<=push;
@@ -93,7 +111,12 @@ if (en='1') then
     callout<=call;
     Men_to_Regout<=Men_to_Reg;
     Intout<=Int;
-
+    Rtiout<=Rti;
+    Rsrc1out <=Rsrc1;
+    Rsrc2out  <= Rsrc2;
+    memoryWireout<=memoryWire;
+    IN_Portsout<=IN_Ports;
+    forCallout<=forCall;
     dataoutOut <= dataout;
     WriteDataOut <= WriteData;
     --CCROut <= CCR;
