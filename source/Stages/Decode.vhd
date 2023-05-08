@@ -5,7 +5,7 @@ USE IEEE.numeric_std.all;
 ENTITY Decode IS
 PORT (
 clk,Rst,en: IN std_logic;
-Men_to_regin:IN std_logic;
+reg_to_regin:IN std_logic;
 Instruction_After: in std_logic_vector (31 downto 0);
 writeReg: in std_logic_vector(2 downto 0); --des
 WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
@@ -158,7 +158,7 @@ signal data1wire,data2wire ,memoryWirewire,IN_Portswire: std_logic_vector(15 dow
 BEGIN
 
 CU : controlUnit port map (Instruction_After(31 downto 26),stopCU,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire ,ALU_selectionwire);
-RF : registerFile port map (clk,rst,writeReg,en,Men_to_regin,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
+RF : registerFile port map (clk,rst,writeReg,en,reg_to_regin,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
 buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire,Rsrc1wire,Rsrc2wire,memoryWirewire,forCallwire,flushSignal,resetSignal,IN_Portswire, ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
 ,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Rti,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 

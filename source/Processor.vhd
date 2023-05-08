@@ -12,104 +12,92 @@ END integeration;
 
 ARCHITECTURE arch OF integeration IS
 
----Define the signals for output of every stage and buffer
---Signal namming formal (outputvar_stageNameOrBuffer)
 
+--Flush signals
+signal Flush_withtOr : std_logic;
+signal Flush_WithoutOr : std_logic;
 
---Fetch stage
-signal Instruction_out_Fetch: STD_LOGIC_VECTOR(31 downto 0);
+---Define the signals for input of every buffer
+--F/D
 
---FDBuffer
-signal fetchOut_FDBuffer:std_logic_vector(31 downto 0);
+--D/E
+signal DE_For_call: std_logic_vector(15 downto 0);
+signal DE_RTI: std_logic;
+signal DE_RET: std_logic;
+signal DE_WB_MemtoReg         : std_logic;     
+signal DE_Call            : std_logic;
+signal DE_Push            : std_logic;
+signal DE_Pop               : std_logic;
+signal DE_INT               : std_logic;
+signal DE_WB_RegToReg       : std_logic;
+signal DE_memRead: std_logic;
+signal DE_memWrite: std_logic;
+signal DE_SP              : std_logic;
+signal DE_Branch            : std_logic;
+signal DE_Imm                 : std_logic;
+signal DE_In_port             : std_logic_vector(15 downto 0);
+signal DE_SelectionLines      : std_logic_vector(3 downto 0);    
+signal DE_No_cond_jum         : std_logic;      
+signal DE_Data1               : std_logic_vector(15 downto 0);        
+signal DE_Data_2              : std_logic_vector(15 downto 0);      
+signal DE_ImmediateValue      : std_logic_vector(15 downto 0);        
+signal DE_RS1                 : std_logic_vector(2 downto 0);          
+signal DE_RS2                 : std_logic_vector(2 downto 0);              
+signal DE_Rdst                : std_logic_vector(2 downto 0);                
+signal DE_M1                  : std_logic_vector(15 downto 0);            
 
---Decode stage
-signal push_Decode: std_logic;
-signal pop_Decode: std_logic;
-signal SP_Decode: std_logic;
-signal WB_Decode: std_logic;
-signal memRead_Decode: std_logic;
-signal memWrite_Decode: std_logic;
-signal EX_Decode: std_logic;
-signal branch_Decode: std_logic;
-signal portFlag_Decode: std_logic;
-signal returnOI_Decode: std_logic;
-signal call_Decode: std_logic;
-signal No_Cond_Branch_Decode: std_logic;
-signal ALU_selection_Decode: std_logic_vector(3 downto 0);
-signal Men_to_Reg_Decode: std_logic;
-signal Int_Decode: std_logic;
-signal data1_Decode,data2_Decode: std_logic_vector(15 downto 0);
-signal rdst_Decode: std_logic_vector(2 downto 0);
-signal restOfInstruction_After_Decode: std_logic_vector(15 downto 0);
+--E/M1
+signal EM_for_call: std_logic_vector(15 downto 0);
+signal EM_RTI: std_logic;
+signal EM_RET: std_logic;
+signal EM_PUSH: std_logic;
+signal EM_POP: std_logic;
+signal EM_Call: std_logic;
+signal EM_INT: std_logic;
+signal EM_WB_MemtoReg: std_logic;
+signal EM_WB_RegtoReg: std_logic;
+signal EM_In_port: std_logic;
+signal EM_memRead: std_logic;
+signal EM_memWrite: std_logic;
+signal EM_SP: std_logic;
+signal EM_data_out: std_logic_vector(15 downto 0);
+signal EM_data1: std_logic_vector(15 downto 0);
+signal EM_Rdst: std_logic_vector(2 downto 0);
+signal EM_M1: std_logic_vector(15 downto 0);
 
--- --DEBuffer
--- signal pushout_DEBuffer: std_logic;
--- signal popout_DEBuffer: std_logic;
--- signal SPout_DEBuffer: std_logic;
--- signal WBout_DEBuffer: std_logic;
--- signal memReadout_DEBuffer: std_logic;
--- signal memWriteout_DEBuffer: std_logic;
--- signal EXout_DEBuffer: std_logic;
--- signal branchout_DEBuffer: std_logic;
--- signal portFlagout_DEBuffer: std_logic;
--- signal returnOIout_DEBuffer: std_logic;
--- signal callout_DEBuffer: std_logic;
--- signal No_Cond_Branchout_DEBuffer: std_logic;
--- signal Men_to_Regout_DEBuffer: std_logic;
--- signal Intout_DEBuffer: std_logic;
--- signal ALU_selectionout_DEBuffer: std_logic_vector(3 downto 0);
--- signal data1out_DEBuffer,data2out_DEBuffer: std_logic_vector(15 downto 0); 
--- signal rdstout_DEBuffer: std_logic_vector(2 downto 0); 
--- signal restofIRout_DEBuffer:  std_logic_vector(15 downto 0); 
+--M1/M2
+signal MM_RTI: std_logic;
+signal MM_call: std_logic;
+signal MM_RET: std_logic;
+signal MM_INT: std_logic;
+signal MM_WB_MemtoReg: std_logic;
+signal MM_WB_RegtoReg: std_logic;
+signal MM_memRead: std_logic;
+signal MM_memWrite: std_logic;
+signal MM_data32: std_logic(31 downto 0);
+signal MM_data_out: std_logic_vector(15 downto 0);
+signal MM_Rdst: std_logic_vector(2 downto 0);
+signal MM_M1: std_logic_vector(15 downto 0);
+signal MM_InPort: std_logic_vector(15 downto 0);
 
---Execute stage
-signal PC_Source_Execute : STD_LOGIC;
-signal DataOut_Execute : STD_LOGIC_VECTOR (15 DOWNTO 0);
+--MemWB
+signal MWB_RTI: std_logic;
+signal MWB_call: std_logic;
+signal MWB_memRead: std_logic;
+signal MWB_memWrite: std_logic;
+signal MWB_RET: std_logic;
+signal MWB_INT: std_logic;
+signal MWB_WB_MemtoReg: std_logic;
+signal MWB_WB_RegtoReg: std_logic;
+signal MWB_ReadData: std_logic(31 downto 0);
+signal MWB_data_out: std_logic_vector(15 downto 0);
+signal MWB_InPort: std_logic_vector(15 downto 0); 
+signal MWB_Rdst: std_logic_vector(2 downto 0);
+signal MWB_M1: std_logic_vector(15 downto 0);
 
---EMBuffer
-signal pushOut_EMBuffer : std_logic;
-signal popOut_EMBuffer : std_logic;
-signal SPOut_EMBuffer : std_logic;
-signal WBOut_EMBuffer : std_logic;
-signal memReadOut_EMBuffer : std_logic;
-signal memWriteOut_EMBuffer : std_logic;
-signal portFlagOut_EMBuffer : std_logic;
-signal returnOIOut_EMBuffer : std_logic;
-signal callOut_EMBuffer : std_logic;
-signal Men_to_Regout_EMBuffer: std_logic;
-signal Intout_EMBuffer: std_logic;
-signal dataoutOut_EMBuffer : std_logic_vector(15 downto 0); 
-signal WriteDataOut_EMBuffer : std_logic_vector(15 downto 0);
-signal rdstOut_EMBuffer :std_logic_vector(2 downto 0);
---signal CCROut_EMBuffer : std_logic_vector(15 downto 0); 
+--Define signals for input of every stage
+--Ay stage gayelha input mn bara 8ir el buffer
 
---Memory stage
-
-signal read_data_M: std_logic_vector (15 downto 0);
-
---MMBuffer
-
-signal Data_out_after_MMBuffer,Read_data_after_MMBuffer: std_logic_vector (15 downto 0);
-signal Rdst_after_MMBuffer: std_logic_vector (2 downto 0);
-signal WB_after_MMBuffer: std_logic;
-signal Men_to_Regout_MMBuffer: std_logic;
-signal Intout_MMBuffer: std_logic;
-signal portFlagout_MMBuffer: std_logic;
-signal returnOIout_MMBuffer: std_logic;
-signal callout_MMBuffer: std_logic;
-
---MWBuffer
-signal Rdst_after_MWBuffer: std_logic_vector (2 downto 0);
-signal WB_after_MWBuffer : std_logic;
-signal Data_out_after_MWBuffer,Read_data_after_MWBuffer: std_logic_vector (15 downto 0);
-signal Men_to_Regout_MWBuffer: std_logic;
-signal Intout_MWBuffer: std_logic;
-signal portFlagout_MWBuffer: std_logic;
-signal returnOIout_MWBuffer: std_logic;
-signal callout_MWBuffer: std_logic;
-
---WB stage
-signal WBvalue_WB: std_logic_vector(15 downto 0);
 
 BEGIN
 F: entity work.Fetch port map(clk,rst,Instruction_out_Fetch);
