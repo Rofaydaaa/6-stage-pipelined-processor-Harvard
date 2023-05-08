@@ -9,7 +9,6 @@ entity HDUdata is port(
   memReadEM: IN std_logic; --memRead from excute memory stage
   Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
   freeze_pc: out std_logic; --freeze the pc
-  nop: out std_logic; --send a nop to the buffer as in disable the buffer
   stopCU: out std_logic --send a signal to control unit =1
 
 );
