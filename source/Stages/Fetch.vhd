@@ -11,6 +11,7 @@ Branch_Addr: IN std_logic_vector (15 downto 0);
 M_Of_1: IN std_logic_vector (15 downto 0);
 WB_Rdst: IN std_logic_vector (15 downto 0);
 WB_data: IN std_logic_vector (15 downto 0);
+For_Call: OUT std_logic_vector (15 downto 0);
 Instruction: out std_logic_vector (31 downto 0)
 );
 END ENTITY Fetch;
@@ -34,5 +35,7 @@ ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result,Branch_
 Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_from_Int_Reg,pc_out,Intermediate_Inst);
 
 Instruction <= Intermediate_Inst;
+
+For_Call <= Add_sub_Result;
 
 END Imp;
