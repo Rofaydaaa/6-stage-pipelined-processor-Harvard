@@ -68,7 +68,7 @@ ARCHITECTURE imp OF Decode_Excute_Buffer IS
 BEGIN
 PROCESS (clk,rst)
 BEGIN
-IF rst = '1' THEN
+IF rst = '1' or flushSignal='1' THEN
 pushout<='0';
 popout<='0';
 SPout<='0';

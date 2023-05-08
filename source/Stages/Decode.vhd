@@ -33,7 +33,6 @@ IN_Port: out STD_LOGIC_VECTOR(15 downto 0);
   data1,data2:out std_logic_vector(15 downto 0);
   rdst: out std_logic_vector(2 downto 0);
   restOfInstruction_After:out std_logic_vector(15 downto 0);
-  Rti:out std_logic;
   Rsrc1,Rsrc2: out std_logic_vector(2 downto 0);--adress of src1 and src2 
   memoryWire : out std_logic_vector(15 downto 0);
   forCall : out std_logic;
