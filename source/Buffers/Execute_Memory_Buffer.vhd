@@ -26,11 +26,9 @@ PORT(
     Int:in std_logic;
      ------------------ new wires---------------------------
      Rti:in std_logic;
-     Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
      memoryWire : in std_logic_vector(15 downto 0);
-     forCall : in std_logic;
+     forCall : in std_logic_vector(15 downto 0);
      flushSignal: in std_logic; --unhandled yet
-     resetSignal: in std_logic; --unhandled yet
      IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
     -------------------------------------------------
 
@@ -54,9 +52,8 @@ PORT(
     Intout:out std_logic;
    ------------------ new wires---------------------------
    Rtiout:out std_logic;
-   Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
    memoryWireout : out std_logic_vector(15 downto 0);
-   forCallout : out std_logic;
+   forCallout : out std_logic_vector(15 downto 0);
    IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
 -------------------------------------------------
 
@@ -89,9 +86,7 @@ IF rst = '1' or flushSignal='1' THEN
     Men_to_Regout<='0';
     Intout<='0';
     Rtiout<='0';
-    forCallout<='0';
-    Rsrc1out <= (OTHERS=>'0');
-    Rsrc2out  <= (OTHERS=>'0');
+    forCallout<=(OTHERS=>'0');
     memoryWireout<=(OTHERS=>'0');
     dataoutOut <= (OTHERS=>'0');
     WriteDataOut <= (OTHERS=>'0');
@@ -112,8 +107,6 @@ if (en='1') then
     Men_to_Regout<=Men_to_Reg;
     Intout<=Int;
     Rtiout<=Rti;
-    Rsrc1out <=Rsrc1;
-    Rsrc2out  <= Rsrc2;
     memoryWireout<=memoryWire;
     IN_Portsout<=IN_Ports;
     forCallout<=forCall;

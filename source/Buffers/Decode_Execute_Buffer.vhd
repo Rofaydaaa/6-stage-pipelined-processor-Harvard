@@ -21,7 +21,7 @@ PORT( clk,rst,en: std_logic;
          Rti:in std_logic;
          Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWire : in std_logic_vector(15 downto 0);
-         forCall : in std_logic;
+         forCall : in std_logic_vector(15 downto 0);
          flushSignal: in std_logic; --unhandled yet
          resetSignal: in std_logic; --unhandled yet
          IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
@@ -50,7 +50,7 @@ PORT( clk,rst,en: std_logic;
          Rtiout:out std_logic;
          Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
          memoryWireout : out std_logic_vector(15 downto 0);
-         forCallout : out std_logic;
+         forCallout : out std_logic_vector(15 downto 0);
          IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
 -------------------------------------------------
 
@@ -84,7 +84,7 @@ No_Cond_Branchout<='0';
 Men_to_Regout<='0';
 Intout<='0';
 Rtiout<='0';
-forCallout<='0';
+forCallout<= (OTHERS=>'0');
 Rsrc1out <= (OTHERS=>'0');
 Rsrc2out  <= (OTHERS=>'0');
 memoryWireout<=(OTHERS=>'0');

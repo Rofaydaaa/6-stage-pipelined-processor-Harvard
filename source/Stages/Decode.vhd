@@ -12,7 +12,7 @@ WBvalue: in std_logic_vector(15 downto 0); --value coming back from the WB blobk
 flushSignal: in std_logic; --unhandled yet
 resetSignal: in std_logic; --unhandled yet
 stopCU: in std_logic;
-forCallinput : in std_logic;
+forCallinput : in std_logic_vector(15 downto 0);
 IN_Port: in STD_LOGIC_VECTOR(15 downto 0);
 --OUTS
   push: out std_logic;
@@ -36,7 +36,7 @@ IN_Port: in STD_LOGIC_VECTOR(15 downto 0);
   restOfInstruction_After:out std_logic_vector(15 downto 0);
   Rsrc1,Rsrc2: out std_logic_vector(2 downto 0);--adress of src1 and src2 
   memoryWire : out std_logic_vector(15 downto 0);
-  forCall : out std_logic;
+  forCall : out std_logic_vector(15 downto 0);
   IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0)
 );
 END  Decode;
@@ -88,63 +88,61 @@ end COMPONENT;
 
 COMPONENT Decode_Excute_Buffer IS
 PORT( clk,rst,en: std_logic;
-        push: in std_logic;
-        pop: in std_logic;
-        SP: in std_logic;
-        WB: in std_logic;
-        memRead: in std_logic;
-        memWrite: in std_logic;
-        EX:in std_logic;
-        branch:in std_logic;
-        portFlag:in std_logic;
-        returnOI:in std_logic;
-        call:in std_logic;
-        No_Cond_Branch:in std_logic;
-        Men_to_Reg:in std_logic;
-        Int:in std_logic;
-        ------------------ new wires---------------------------
-         Rti:in std_logic;
-         Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
-         memoryWire : in std_logic_vector(15 downto 0);
-         forCall : in std_logic;
-         flushSignal: in std_logic; --unhandled yet
-         resetSignal: in std_logic; --unhandled yet
-         IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
-        -------------------------------------------------
-        ALU_selection:in std_logic_vector(3 downto 0);
-        data1,data2: in std_logic_vector(15 downto 0) ;
-        rdst: in std_logic_vector(2 downto 0); 
-        restofIR: in  std_logic_vector(15 downto 0); 
-        
- ------------------------------------------------------------------
-        pushout: out std_logic;
-        popout: out std_logic;
-        SPout: out std_logic;
-        WBout: out std_logic;
-        memReadout: out std_logic;
-        memWriteout: out std_logic;
-        EXout:out std_logic;
-        branchout:out std_logic;
-        portFlagout:out std_logic;
-        returnOIout:out std_logic;
-        callout:out std_logic;
-        No_Cond_Branchout:out std_logic;
-        Men_to_Regout:out std_logic;
-        Intout:out std_logic;
------------------- new wires---------------------------
-         Rtiout:out std_logic;
-         Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
-         memoryWireout : out std_logic_vector(15 downto 0);
-         forCallout : out std_logic;
-         IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
--------------------------------------------------
-
-        ALU_selectionout:out std_logic_vector(3 downto 0);
-        data1out,data2out: out std_logic_vector(15 downto 0); 
-        rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(15 downto 0) 
-        
-       
+      push: in std_logic;
+      pop: in std_logic;
+      SP: in std_logic;
+      WB: in std_logic;
+      memRead: in std_logic;
+      memWrite: in std_logic;
+      EX:in std_logic;
+      branch:in std_logic;
+      portFlag:in std_logic;
+      returnOI:in std_logic;
+      call:in std_logic;
+      No_Cond_Branch:in std_logic;
+      Men_to_Reg:in std_logic;
+      Int:in std_logic;
+      ------------------ new wires---------------------------
+       Rti:in std_logic;
+       Rsrc1,Rsrc2: in std_logic_vector(2 downto 0);--adress of src1 and src2 
+       memoryWire : in std_logic_vector(15 downto 0);
+       forCall : in std_logic_vector(15 downto 0);
+       flushSignal: in std_logic; --unhandled yet
+       resetSignal: in std_logic; --unhandled yet
+       IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
+      -------------------------------------------------
+      ALU_selection:in std_logic_vector(3 downto 0);
+      data1,data2: in std_logic_vector(15 downto 0) ;
+      rdst: in std_logic_vector(2 downto 0); 
+      restofIR: in  std_logic_vector(15 downto 0); 
+      
+      ------------------------------------------------------------------
+      pushout: out std_logic;
+      popout: out std_logic;
+      SPout: out std_logic;
+      WBout: out std_logic;
+      memReadout: out std_logic;
+      memWriteout: out std_logic;
+      EXout:out std_logic;
+      branchout:out std_logic;
+      portFlagout:out std_logic;
+      returnOIout:out std_logic;
+      callout:out std_logic;
+      No_Cond_Branchout:out std_logic;
+      Men_to_Regout:out std_logic;
+      Intout:out std_logic;
+      ------------------ new wires---------------------------
+       Rtiout:out std_logic;
+       Rsrc1out,Rsrc2out: out std_logic_vector(2 downto 0);--adress of src1 and src2 
+       memoryWireout : out std_logic_vector(15 downto 0);
+       forCallout : out std_logic_vector(15 downto 0);
+       IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
+      -------------------------------------------------
+      
+      ALU_selectionout:out std_logic_vector(3 downto 0);
+      data1out,data2out: out std_logic_vector(15 downto 0); 
+      rdstout: out std_logic_vector(2 downto 0); 
+      restofIRout: out  std_logic_vector(15 downto 0) 
 );
 END COMPONENT;
 
