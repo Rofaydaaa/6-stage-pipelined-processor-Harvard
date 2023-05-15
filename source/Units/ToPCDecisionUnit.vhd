@@ -6,7 +6,7 @@ PORT (
         Add: IN std_logic_vector(15 DOWNTO 0);
         Branch_Address: IN std_logic_vector(15 DOWNTO 0);
         M_of_1: IN std_logic_vector(15 DOWNTO 0);
-        WB_Rdst: IN std_logic_vector(15 DOWNTO 0);
+        WB_Data_For_Call: IN std_logic_vector(15 DOWNTO 0);
         WB_Data: IN std_logic_vector(15 DOWNTO 0);
 		Int,Call,Ret,Branch: IN std_logic;
 		To_PC: OUT std_logic_vector(15 DOWNTO 0));
@@ -19,7 +19,7 @@ begin
     if(Int='1') then
         To_PC <= M_of_1;
     elsif(Call='1') then
-        To_PC <= WB_Rdst;
+        To_PC <= WB_Data_For_Call;
     elsif(Ret='1') then
         To_PC <= WB_Data;
     elsif(Branch='1') then
