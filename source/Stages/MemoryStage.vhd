@@ -6,8 +6,6 @@ ENTITY MemoryStage IS
 PORT (
 clk,Rst, Mem_Read,Mem_Write, S_P,Push,Pop,call,RTI,INT: IN std_logic;
 Write_data,address_from_ALU,data_from_call, PC_for_int: in std_logic_vector (15 downto 0);
-CCR,Rdst: out std_logic_vector (2 downto 0);
-
 --read data was 16 in phase 1
 read_data: out std_logic_vector (31 downto 0) 
 );

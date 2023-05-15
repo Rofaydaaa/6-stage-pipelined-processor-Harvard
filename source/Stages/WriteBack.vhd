@@ -4,7 +4,7 @@ USE IEEE.numeric_std.all;
 
 ENTITY WriteBack IS
 PORT (
-     readData : in std_logic_vector( 31 downto 0);
+readData : in std_logic_vector( 31 downto 0);
 dataOut : in std_logic_vector( 15 downto 0);
 Men_to_Reg,portFlag:in std_logic;
 inPort : in std_logic_vector( 15 downto 0);

@@ -11,8 +11,8 @@ Branch_Addr: IN std_logic_vector (15 downto 0);
 M_Of_1: IN std_logic_vector (15 downto 0);
 WB_Data_For_Call: IN std_logic_vector (15 downto 0);
 WB_data: IN std_logic_vector (15 downto 0);
-For_Call: OUT std_logic_vector (15 downto 0);
 Imm_From_Decode_stage: IN std_logic;
+For_Call: OUT std_logic_vector (15 downto 0);
 Instruction: out std_logic_vector (31 downto 0);
 PC_for_INT: out std_logic_vector (15 downto 0)
 );

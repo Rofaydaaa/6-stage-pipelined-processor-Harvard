@@ -38,7 +38,10 @@ IN_Port: in STD_LOGIC_VECTOR(15 downto 0);
   Rsrc1,Rsrc2: out std_logic_vector(2 downto 0);--adress of src1 and src2 
   memoryWire : out std_logic_vector(15 downto 0);
   forCall : out std_logic_vector(15 downto 0);
-  IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0)
+  IN_Portsout: out STD_LOGIC_VECTOR(15 downto 0);
+
+  memRead_CU: out std_logic;
+  memWrite_CU: out std_logic
 );
 END  Decode;
 
@@ -163,4 +166,6 @@ RF : registerFile port map (clk,rst,writeReg,en,reg_to_regin,Instruction_After(2
 buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire,Instruction_After(25 downto 23),Instruction_After(22 downto 20),Instruction_After(31 downto 16),forCallinput,flushSignal,resetSignal,IN_Port, ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
 ,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Rti,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
+memRead_CU <= memReadwire;
+memWrite_CU <= =memWritewire;
 END arch;
