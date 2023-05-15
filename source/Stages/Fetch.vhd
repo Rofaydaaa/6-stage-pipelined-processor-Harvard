@@ -9,7 +9,7 @@ clk,Rst,Int_from_WB,Call,Ret,Branch: IN std_logic;
 freeze_hdu_data,freeze_hdu_structural: IN std_logic;
 Branch_Addr: IN std_logic_vector (15 downto 0);
 M_Of_1: IN std_logic_vector (15 downto 0);
-WB_Rdst: IN std_logic_vector (15 downto 0);
+WB_Data_For_Call: IN std_logic_vector (15 downto 0);
 WB_data: IN std_logic_vector (15 downto 0);
 For_Call: OUT std_logic_vector (15 downto 0);
 Imm_From_Decode_stage: IN std_logic;
@@ -41,7 +41,7 @@ AddSUB0 : entity work.Add_Sub port map ('0',b"01",pc_out,Add_sub_Result1);
 AddSUB1:  entity work.Add_Sub port map ('0',b"10",pc_out,Add_sub_Result2);
 Mux2by10 : Mux2by1 GENERIC MAP(16) PORT MAP(Add_sub_Result1, Add_sub_Result2, Imm_From_Decode_stage, Add_sub_Result_final);
 
-ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,Branch_Addr,M_Of_1,WB_Rdst,WB_data,Int_from_WB,Call,Ret,Branch,To_PC);
+ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,Branch_Addr,M_Of_1,WB_Data_For_Call,WB_data,Int_from_WB,Call,Ret,Branch,To_PC);
 
 Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_from_Int_Reg,pc_out,Intermediate_Inst);
 
