@@ -13,7 +13,8 @@ WB_Rdst: IN std_logic_vector (15 downto 0);
 WB_data: IN std_logic_vector (15 downto 0);
 For_Call: OUT std_logic_vector (15 downto 0);
 Imm_From_Decode_stage: IN std_logic;
-Instruction: out std_logic_vector (31 downto 0)
+Instruction: out std_logic_vector (31 downto 0);
+PC_for_INT: out std_logic_vector (15 downto 0)
 );
 END ENTITY Fetch;
 
@@ -47,5 +48,7 @@ Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_from_Int_Re
 Instruction <= Intermediate_Inst;
 
 For_Call <= Add_sub_Result_final;
+
+PC_for_INT <= pc_out;
 
 END Imp;
