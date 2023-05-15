@@ -4,6 +4,7 @@ use ieee.numeric_std.all;
 
 entity controlUnit is
     port (
+        interuptSignal: in std_logic;
         opcode: in std_logic_vector(5 downto 0);
         stopCU: in std_logic;
         push: out std_logic;
@@ -54,15 +55,18 @@ architecture arch of controlUnit is
     constant call_operation : std_logic_vector(5 downto 0) := "010111";
     constant ret_operation : std_logic_vector(5 downto 0) := "011000";
     constant rti_operation : std_logic_vector(5 downto 0) := "011001";
-    constant int_operation : std_logic_vector(5 downto 0) := "011010";
+    constant int_operation : std_logic_vector(5 downto 0) := "011010"; --int has no opcode it should be just a wire and that wire if equal 1 ,release that control signal
     signal controlSignal: std_logic_vector(18 downto 0);
 begin
-process(stopCU,opcode)
+process(stopCU,opcode,interuptSignal)
 begin
   IF stopCU = '1' THEN
    controlSignal<= "0000000000000000000";
    ELSIF stopCU = '0' THEN
- 
+    IF interuptSignal = '1' THEN
+    controlSignal <= "0100000001001001010";
+
+    ELSE
   case opcode is
     when nop_operation =>
       controlSignal <= "0000000000000001010";
@@ -120,6 +124,7 @@ begin
       controlSignal <= "0000000000000000000";
   end case;
 
+end if;
 end if;
 end process;
     WB <= controlSignal(15);
