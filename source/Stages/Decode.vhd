@@ -167,5 +167,5 @@ buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,
 ,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Rti,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
 memRead_CU <= memReadwire;
-memWrite_CU <= =memWritewire;
+memWrite_CU <=memWritewire;
 END arch;

@@ -16,7 +16,7 @@ call:in std_logic;
 RTI: in std_logic;
 RET: in std_logic;
 
-IN_Port_IN: out std_logic_vector (15 downto 0);
+IN_Port_IN: in std_logic_vector (15 downto 0);
 
 --Data_out: is data from ALU after being buffered
 --Read_data: is data from memory
@@ -35,7 +35,7 @@ callout: out std_logic;
 RETout: out std_logic;
 RTIout: out std_logic;
 
-IN_Port_OUT: out std_logic_vector (15 downto 0);
+IN_Port_OUT: out std_logic_vector (15 downto 0)
 );
 END Mem_WB_Buffer;
 

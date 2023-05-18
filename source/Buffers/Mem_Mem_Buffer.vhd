@@ -37,9 +37,9 @@ portFlagout:out std_logic;
 
 callout: out std_logic;
 RETout: out std_logic;
-RTIout: out std_logic
+RTIout: out std_logic;
 
-IN_Port_OUT: out std_logic_vector (15 downto 0);
+IN_Port_OUT: out std_logic_vector (15 downto 0)
 );
 END Mem_Mem_Buffer;
 
