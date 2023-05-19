@@ -56,10 +56,12 @@ ENTITY Execute IS
     M2WB_Dest:IN std_logic_vector(2 DOWNTO 0);
     M2WB_DataOut:IN std_logic_vector(15 DOWNTO 0); --M2WB_dataOut and M2WB_Inport, both hdkhlohom el WB_value of WB stage
     M2WB_InPort_Data: IN std_logic_vector(15 DOWNTO 0);
+    M2WB_CCR_Data: IN std_logic_vector(15 DOWNTO 0);
 
     --Output Control signals
     PC_Source : OUT STD_LOGIC;
-    DataOut : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+    DataOut : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+    CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
   );
 END Execute;
 
@@ -129,6 +131,14 @@ ARCHITECTURE IMP_Execute OF Execute IS
             out1 : OUT std_logic_vector (n-1 DOWNTO 0));
     END COMPONENT;
 
+    COMPONENT Sign_Extend IS
+    PORT( 
+        in_signal : in std_logic_vector(2 downto 0);
+        out_signal : out std_logic_vector(15 downto 0)
+    );
+    END COMPONENT;
+
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------END Components---------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -144,7 +154,8 @@ ARCHITECTURE IMP_Execute OF Execute IS
     SIGNAL FLAG_CCR : STD_LOGIC_VECTOR(2 DOWNTO 0);
     sIGNAL FRWD_OUT_S1 : std_logic_vector(2 DOWNTO 0); --selector signals of muxDataA (the A of the ALU)
     sIGNAL FRWD_OUT_S2 : std_logic_vector(2 DOWNTO 0); --selector signal of muxDataB (the A of the ALU)
-
+    SIGNAL CCR_EXTENDED_SIGNAL_temp : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SIGNAL CCR_EXTENDED_SIGNAL : STD_LOGIC_VECTOR(15 DOWNTO 0);
 
     BEGIN 
 
@@ -191,7 +202,24 @@ ARCHITECTURE IMP_Execute OF Execute IS
         aluu : ALU GENERIC MAP(16) PORT MAP(Data_A, Data_B, DE_SelectionLines, '0', ALU_OUTPUT, C_out);
         
         set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
-        DataOut <= ALU_OUTPUT;
+    
+        ExtendCCR: Sign_Extend PORT MAP(FLAG_CCR, CCR_EXTENDED_SIGNAL_temp);
+
+        --Handle the CCR_OUT in case of jump if zero we should set the zero flag to 0 after it
+        --Handle the CCR_OUT in case of jump if carry we should set the carry flag to 0 after it
+        CCR_EXTENDED_SIGNAL <=  CCR_EXTENDED_SIGNAL_temp(15 downto 1) & '0' WHEN (FLAG_CCR(0)='1' and   DE_Branch = '1')
+        ELSE  CCR_EXTENDED_SIGNAL_temp(15 downto 3) & '0' & CCR_EXTENDED_SIGNAL_temp(1 downto 0) WHEN (FLAG_CCR(2)='1' and DE_Branch='1')
+        ELSE CCR_EXTENDED_SIGNAL_temp;
+        
+
+        --Set data out in case of return interrupt to be the flag_CCR
+        DataOut <=  CCR_EXTENDED_SIGNAL WHEN (DE_INT = '1') 
+        ELSE ALU_OUTPUT;
+        
+        --Set CCR in case of return interrupt
+        CCR_OUT <=  M2WB_CCR_Data WHEN (M2WB_RTI = '1') 
+        ELSE CCR_EXTENDED_SIGNAL;
+
         PC_Source <= (FLAG_CCR(0) and DE_Branch) or (FLAG_CCR(2) and DE_Branch) or DE_No_Cond_Jump;
 
 
