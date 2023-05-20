@@ -23,7 +23,7 @@ PORT( clk,rst,en: std_logic;
          memoryWire : in std_logic_vector(15 downto 0);
          forCall : in std_logic_vector(15 downto 0);
          flushSignal: in std_logic; --unhandled yet
-         resetSignal: in std_logic; --unhandled yet
+        
          IN_Ports: IN STD_LOGIC_VECTOR(15 downto 0);
         -------------------------------------------------
         ALU_selection:in std_logic_vector(3 downto 0);
