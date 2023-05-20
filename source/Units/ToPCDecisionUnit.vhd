@@ -14,7 +14,7 @@ END ENTITY ToPCDecisionUnit;
 
 ARCHITECTURE arch of ToPCDecisionUnit IS 
 begin
-process(Int,Call,Ret,Branch)
+process(Int,Call,Ret,Branch,Add,Branch_Address,M_of_1,WB_Data_For_Call,WB_Data)
 begin
     if(Int='1') then
         To_PC <= M_of_1;
