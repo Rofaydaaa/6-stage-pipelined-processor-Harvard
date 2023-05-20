@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity HDUstructural is port(
+  rst: IN std_logic;
   memReadDE: IN std_logic; --memRead from decode excute stage
   memReadFD: IN std_logic; --memRead from excute memory stage
   memWriteDE: IN std_logic; --memWrite from decode excute stage
@@ -21,8 +22,14 @@ begin
     memRead <= memReadDE when memReadFD = '0' else memReadFD;
     memWrite <= memWriteDE when memWriteFD = '0' else memWriteFD;
 
-    process (memRead, memWrite)
+    process (rst,memRead, memWrite)
     begin
+        if (rst = '1') then
+            freeze_pc <= '0';
+            
+            stopCU <= '0';
+        else
+
         if (memRead = '1' or memWrite = '1') then
             freeze_pc <= '1';
             
@@ -31,6 +38,7 @@ begin
             freeze_pc <= '0';
             
             stopCU <= '0';
+            end if;
         end if;
     end process;
 end arch;

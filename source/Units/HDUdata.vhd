@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity HDUdata is port(
+  rst: IN std_logic;
   rdstDE: IN std_logic_vector(2 downto 0); 
   rdstEM: IN std_logic_vector(2 downto 0); 
   memReadDE: IN std_logic; --memRead from decode excute stage
@@ -16,8 +17,13 @@ end entity;
 
 Architecture arch of HDUdata is
 begin
-process(rdstDE,rdstEM,memReadDE,memReadEM,Rsrc1,Rsrc2)  
+process(rst,rdstDE,rdstEM,memReadDE,memReadEM,Rsrc1,Rsrc2)  
 BEGIN
+    if (rst = '1') then
+      freeze_pc <= '0';
+      
+      stopCU <= '0';
+    else
    if ((memReadDE = '1' and ((rdstDE = Rsrc1) or (rdstDE = Rsrc2)))or (memReadEM = '1' and ((rdstEM = Rsrc1) or (rdstEM = Rsrc2))) ) then
         freeze_pc <= '1';
        
@@ -27,5 +33,6 @@ BEGIN
         
         stopCU <= '0';
     end if;
+    end if; 
 end process;
 end arch;
