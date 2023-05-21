@@ -43,7 +43,7 @@ end CUmux;
 
 architecture arch of CUmux is
 begin
-    process(stopCU)
+    process(stopCU, push, pop, SP, WB, memRead, memWrite, EX, branch, portFlag, returnOI, call, No_Cond_Branch, Men_to_Reg, Int, Ret, ALU_selection)
     begin
         if stopCU = '1' then 
             pushout <= '0';
@@ -62,7 +62,7 @@ begin
             Intout <= '0';
             Retout <= '0';
             ALU_selectionout <= (others => '0');
-        else
+        elsif stopCU = '0' then 
             pushout <= push;
             popout <= pop;
             SPout <= SP;
