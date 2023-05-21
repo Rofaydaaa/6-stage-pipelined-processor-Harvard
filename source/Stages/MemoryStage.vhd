@@ -59,6 +59,7 @@ signal add : std_logic_vector(9 downto 0);
 
  TYPE ram_type IS ARRAY(0 TO 1023) of std_logic_vector(15 DOWNTO 0);
  SIGNAL ram : ram_type ;
+ SIGNAL POP_Or_RTI : std_logic;
 
 BEGIN
 
@@ -68,33 +69,33 @@ IF Rst = '1' THEN
 	ram <= (others=>(others => '0'));
 
 ELSIF rising_edge(clk) THEN 
-if  (Mem_Write = '1' and  INT_or_RTI='1') THEN
-                ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
-                ram(to_integer(unsigned(address(9 downto 0))) +1)<= data_to_write(31 downto 16);
-elsif Mem_Write = '1' THEN
-   		ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
+	if  (Mem_Write = '1' and  INT_or_RTI='1') THEN  -- write in 2 consecutive addresses
+					ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
+					ram(to_integer(unsigned(address(9 downto 0))) +1)<= data_to_write(31 downto 16);
+	elsif Mem_Write = '1' THEN -- write in 1 address
+			ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
 
-elsif  (Mem_read = '1' and  INT_or_RTI='1') THEN
-               read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
-               read_data(31 downto 16) <=  ram(to_integer(unsigned(address(9 downto 0))) +1);
-elsif Mem_read ='1' then
-               read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
-               read_data(31 downto 16) <=(others => '0');
-else
-	read_data <= (others => '0');
-end if;
+	elsif  (Mem_read = '1' and  INT_or_RTI='1') THEN -- read from 2 consecutive addresses
+				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
+				read_data(31 downto 16) <=  ram(to_integer(unsigned(address(9 downto 0))) +1);
+	elsif Mem_read ='1' then -- read from 1 address
+				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
+				read_data(31 downto 16) <=(others => '0');
+	else
+		read_data <= (others => '0');
+	end if;
 end if;
 END PROCESS;
 
-Mux0: Mux2by1 generic map (16) port map(address_from_ALU,address_from_SP,S_P,address);
+Mux0: Mux4by1 generic map (16) port map(address_from_ALU,address_from_SP,Add_sub_Result,POP_Or_RTI,S_P,address); -- normal address vs SP
 --Mux1: Mux2by1 generic map (16) port map(write_data,data_from_call,call,data_to_write);
 Mux1: Mux4by1 generic map (32) port map(write_data32, data_from_call32, Data_concatenated,INT,call,data_to_write);
 
 Push_or_Pop_extend<= '0'&Push_or_Pop;
 MuxSP: Mux2by1 generic map (2) port map(Push_or_Pop_extend, b"10", INT_or_RTI, one_or_two);
 
-
-SP0 : SP port map (Add_sub_Result,address_from_SP,rst,clk);
+				-- in             out
+SP0 : SP port map (Add_sub_Result,address_from_SP,rst,clk); -- outputs SP at clk rising edge
 
 AddSub0 : Add_Sub port map ( Push_or_NotPop,one_or_two ,address_from_SP,Add_sub_Result); 
 
@@ -102,6 +103,7 @@ Push_or_Pop <= Push or Pop;
 Push_or_NotPop <= Push or (not Pop); 
 
 INT_or_RTI <= INT or RTI;
+POP_Or_RTI <= Pop or RTI;
 
 --PC from [31:16], Data from [15:0] 
 Data_concatenated<=PC_for_int & address_from_ALU;
