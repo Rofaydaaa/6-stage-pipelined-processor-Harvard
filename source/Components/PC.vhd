@@ -23,7 +23,8 @@ IF Rst = '1' THEN
     output<= M_Of_0;
     ram(0) <= M_Of_0;
 ELSIF freeze_hdu_data = '1' OR freeze_hdu_structural= '1' THEN
-    output<= ram(0);
+    output<= std_logic_vector(unsigned(ram(0)) - 1);
+    --output <= ram(0);
 ELSIF rising_edge(Clk) THEN
     output<= input;
     ram(0) <= input;
