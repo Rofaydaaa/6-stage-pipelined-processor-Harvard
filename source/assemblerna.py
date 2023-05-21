@@ -88,9 +88,7 @@ def mainfunc():
                     pass
 
             elif (words[0] in oneOperandinst):
-                if (words[0] == "IN" or words[0] == "POP" or words[0] == "JZ" or words[0]
-
-                        == "JC" or words[0] == "JMP" or words[0] == "CALL"):
+                if (words[0] == "IN" or words[0] == "POP"):
                     if words[1] in registers:
                         correctInstructions[index] = opCodes[words[0]
                                                              ]+"000000"+registers[words[1]]+"0"
@@ -99,6 +97,17 @@ def mainfunc():
                         # handle the case where the key does not exist
                         pass
                 elif (words[0] == "OUT" or words[0] == "PUSH"):
+                    if words[1] in registers:
+                        correctInstructions[index] = opCodes[words[0]
+                                                             ]+registers[words[1]]+"0000000"
+                        index += 1
+                    else:
+                        # handle the case where the key does not exist
+                        pass
+
+                elif (words[0] == "JZ" or words[0]
+
+                        == "JC" or words[0] == "JMP" or words[0] == "CALL"):
                     if words[1] in registers:
                         correctInstructions[index] = opCodes[words[0]
                                                              ]+registers[words[1]]+"0000000"
