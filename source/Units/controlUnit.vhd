@@ -21,10 +21,7 @@ entity controlUnit is
         Men_to_Reg:out std_logic;
         Int:out std_logic;
         Rti:out std_logic;
-
         ALU_selection:out std_logic_vector(3 downto 0)
-    
-
     );
 end controlUnit;
 
@@ -84,9 +81,9 @@ begin
     when mov_operation =>
       controlSignal <= "0001000000000001110";
     when add_operation =>
-      controlSignal <= "0001000000000000010";
+      controlSignal <= "0001000000000000111";
     when iadd_operation =>
-      controlSignal <= "0001001000000000010";
+      controlSignal <= "0001001000000000111";
     when sub_operation =>
       controlSignal <= "0001000000000000001";
     when and_operation =>
