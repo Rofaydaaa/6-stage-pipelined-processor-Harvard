@@ -18,13 +18,14 @@ signal sigOut:std_logic_vector(15 downto 0);
 BEGIN
 PROCESS (Clk,Reset)
 BEGIN
-output<= sigOut;
+
 IF Reset = '1' THEN
 sigOut <= x"03FF";  -- =(2^10)-1
 
 ELSIF rising_edge(Clk) THEN
-output<= sigOut;
+sigOut<= input;
 END IF;
 
 END PROCESS;
+output<= sigOut;
 end Imp;
