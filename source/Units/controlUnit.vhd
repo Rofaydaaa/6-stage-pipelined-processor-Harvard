@@ -58,7 +58,7 @@ process(opcode,interuptSignal)
 begin
   
   IF interuptSignal = '1' THEN
-    controlSignal <= "0100000001001001010";
+    controlSignal <= "0100010001001001010";
 
     ELSE
   case opcode is
