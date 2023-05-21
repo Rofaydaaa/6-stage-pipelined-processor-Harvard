@@ -68,7 +68,7 @@ ARCHITECTURE imp OF Decode_Excute_Buffer IS
 BEGIN
 PROCESS (clk,rst,flushSignal)
 BEGIN
-IF rst = '1' or flushSignal='1' THEN
+IF rst = '1' THEN
 pushout<='0';
 popout<='0';
 SPout<='0';
@@ -81,6 +81,33 @@ portFlagout<='0';
 returnOIout<='0';
 callout<='0';
 No_Cond_Branchout<='0';
+Men_to_Regout<='0';
+Intout<='0';
+Rtiout<='0';
+forCallout<= (OTHERS=>'0');
+Rsrc1out <= (OTHERS=>'0');
+Rsrc2out  <= (OTHERS=>'0');
+memoryWireout<=(OTHERS=>'0');
+ALU_selectionout <= (OTHERS=>'0');
+data1out <= (OTHERS=>'0');
+data2out <= (OTHERS=>'0');
+rdstout <= (OTHERS=>'0');
+restofIRout <= (OTHERS=>'0');
+IN_Portsout<=(OTHERS=>'0');
+
+ELsIF  flushSignal='1' then
+pushout<='0';
+popout<='0';
+SPout<='0';
+WBout<='0';
+memReadout<='0';
+memWriteout<='0';
+EXout<='0';
+branchout<=branch;
+portFlagout<='0';
+returnOIout<='0';
+callout<='0';
+No_Cond_Branchout<=No_Cond_Branch;
 Men_to_Regout<='0';
 Intout<='0';
 Rtiout<='0';

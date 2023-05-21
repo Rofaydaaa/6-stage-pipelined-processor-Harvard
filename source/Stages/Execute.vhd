@@ -10,6 +10,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
+
 ENTITY Execute IS
   PORT (
     clk,rst : IN STD_LOGIC;
@@ -142,7 +143,6 @@ ARCHITECTURE IMP_Execute OF Execute IS
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------END Components---------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
-
     SIGNAL Data_A : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL Data_B : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL dummySignal : STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -156,9 +156,9 @@ ARCHITECTURE IMP_Execute OF Execute IS
     sIGNAL FRWD_OUT_S2 : std_logic_vector(2 DOWNTO 0); --selector signal of muxDataB (the A of the ALU)
     SIGNAL CCR_EXTENDED_SIGNAL_temp : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL CCR_EXTENDED_SIGNAL : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    signal flag : boolean := false;
 
     BEGIN 
-
         -- NOP_FLAG indicates the operations that doesn't change IN the CCR
         process(DE_SelectionLines)
         begin
@@ -184,8 +184,9 @@ ARCHITECTURE IMP_Execute OF Execute IS
     
         process(DE_SelectionLines)
         begin
-            if DE_SelectionLines = "0000" then
+            if DE_SelectionLines = "0000" and flag = false then
                 FIRSTTIME_FLAG <= '1';
+                flag<=true;
             else
                 FIRSTTIME_FLAG <= '0';
         end if;
