@@ -17,18 +17,16 @@ Architecture Imp of PC is
     signal ram : ram_type;
 BEGIN
 
-PROCESS (Clk, Rst)
+PROCESS (Clk,freeze_hdu_data,freeze_hdu_structural,Rst)
 BEGIN
 IF Rst = '1' THEN
     output<= M_Of_0;
     ram(0) <= M_Of_0;
+ELSIF freeze_hdu_data = '1' OR freeze_hdu_structural= '1' THEN
+    output<= ram(0);
 ELSIF rising_edge(Clk) THEN
-    IF freeze_hdu_data = '1' OR freeze_hdu_structural= '1' THEN
-        output<= ram(0);
-    ELSE
-        output<= input;
-        ram(0) <= input;
-    END IF;
+    output<= input;
+    ram(0) <= input;
 END IF;
 END PROCESS;
 end Imp;

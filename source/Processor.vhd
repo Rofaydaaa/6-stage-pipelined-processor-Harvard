@@ -191,7 +191,7 @@ WB: entity work.WriteBack port map(Output_from_MWB_ReadDataAfter32, Output_from_
 
 
 --Hazard unit 
-HazardDetectionUnitData: entity work.HDUdata port map(rst,output_from_DE_Rdst, output_from_EM_Rdst, output_from_DE_memRead, output_from_EM_memRead, Output_From_FD_Instruction(25 downto 23),Output_From_FD_Instruction(22 downto 20), freeze_pc_hdu,stopCu_hdu);
+HazardDetectionUnitData: entity work.HDUdata port map(rst,output_from_DE_Rdst, output_from_EM_Rdst, output_from_DE_memRead, output_from_EM_memRead, Output_From_F_Instruction(25 downto 23),Output_From_F_Instruction(22 downto 20), freeze_pc_hdu,stopCu_hdu);
 
 HazardDetectionUnitStru: entity work.HDUstructural port map(rst,output_from_DE_memRead, Output_from_D_memRead, output_from_DE_memWrite ,Output_from_D_memWrite, freeze_pc_hsu, stopCu_hsu);
 
