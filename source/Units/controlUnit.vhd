@@ -67,7 +67,7 @@ begin
     when setc_operation =>
       controlSignal <= "0000000000000000100";
     when clrc_operation =>
-      controlSignal <= "0000000000000001010";
+      controlSignal <= "0000000000000000110";
     when out_operation =>
       controlSignal <= "0000000000000001110";
     when in_operation =>
@@ -103,15 +103,15 @@ begin
     when jz_operation =>
       controlSignal <= "0000000010000001010";
     when jc_operation =>
-      controlSignal <= "0000000010000011010";
+      controlSignal <= "0000000010000001010";
     when jmp_operation =>
       controlSignal <= "0000000100000001010";
     when call_operation =>
-      controlSignal <= "0000000101001011010";
+      controlSignal <= "0000000101001011110";
     when ret_operation =>
       controlSignal <= "0000100001010101010";
     when rti_operation =>
-      controlSignal <= "1000100001000001010";
+      controlSignal <= "1000100001010101010";
     when int_operation =>
       controlSignal <= "0100000001001001010";
     when others =>
