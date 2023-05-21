@@ -137,11 +137,11 @@ signal Or_big : std_logic;
 signal flushSignal: std_logic;
 
 --stop cu signal 
-
+signal stopCU: std_logic;
 signal FDbufferstall: std_logic;
 signal Or_bigreset: std_logic;
 BEGIN
-
+stopCU<=stopCu_hdu or stopCu_hsu;
 Or_big <= Output_from_E_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
 Or_bigreset<=Output_from_E_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret or rst;
 flushSignal<=Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
@@ -155,7 +155,7 @@ FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interru
 
 
 --Decode and D/E buffer are already integrated in the decode module
-D: entity work.Decode port map(clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_bigreset,
+D: entity work.Decode port map(stopCU,clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_bigreset,
                                 Output_from_FD_For_call, Output_from_FD_Inport, output_From_DE_Push, output_From_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
                                 output_from_DE_Imm, output_from_DE_Branch, output_from_DE_PortFlag, output_from_DE_RET, output_from_DE_call, output_from_DE_No_cond_jum, output_from_DE_WB_MemtoReg, output_from_DE_INT, 
                                 output_from_DE_RTI, output_from_DE_SelectionLines, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_Rdst, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, output_from_DE_M1, 

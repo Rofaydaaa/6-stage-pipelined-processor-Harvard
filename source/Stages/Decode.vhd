@@ -4,6 +4,7 @@ USE IEEE.numeric_std.all;
 
 ENTITY Decode IS
 PORT (
+  stopCU: IN std_logic;
 clk,Rst,en: IN std_logic;
 interuptSignal: in std_logic;
 reg_to_regin:IN std_logic;
@@ -89,6 +90,46 @@ COMPONENT registerFile is
   );
 end COMPONENT;
 
+COMPONENT CUmux is
+  port (
+    stopCU: in std_logic;
+    push: in std_logic;
+    pop: in std_logic;
+    SP: in std_logic;
+    WB: in std_logic;
+    memRead: in std_logic;
+    memWrite: in std_logic;
+    EX: in std_logic;
+    branch: in std_logic;
+    portFlag: in std_logic;
+    returnOI: in std_logic;
+    call: in std_logic;
+    No_Cond_Branch: in std_logic;
+    Men_to_Reg: in std_logic;
+    Int: in std_logic;
+    Ret: in std_logic;
+    ALU_selection: in std_logic_vector(3 downto 0);
+
+    pushout: out std_logic;
+    popout: out std_logic;
+    SPout: out std_logic;
+    WBout: out std_logic;
+    memReadout: out std_logic;
+    memWriteout: out std_logic;
+    EXout: out std_logic;
+    branchout: out std_logic;
+    portFlagout: out std_logic;
+    returnOIout: out std_logic;
+    callout: out std_logic;
+    No_Cond_Branchout: out std_logic;
+    Men_to_Regout: out std_logic;
+    Intout: out std_logic;
+    Retout: out std_logic;
+    ALU_selectionout: out std_logic_vector(3 downto 0)
+     
+  );
+end COMPONENT;
+
 COMPONENT Decode_Excute_Buffer IS
 PORT( clk,rst,en: std_logic;
       push: in std_logic;
@@ -155,12 +196,20 @@ END COMPONENT;
 signal pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire:std_logic;
 signal ALU_selectionwire : std_logic_vector(3 downto 0);
 
+signal pushwiremux,popwiremux,SPwiremux,WBwiremux,memReadwiremux,memWritewiremux,EXwiremux,branchwiremux,portFlagwiremux,returnOIwiremux,callwiremux,No_Cond_Branchwiremux, Men_to_Regwiremux,Intwiremux,Rtiwiremux:std_logic;
+signal ALU_selectionwiremux : std_logic_vector(3 downto 0);
+
 signal data1wire,data2wire : std_logic_vector(15 downto 0);
 BEGIN
 
 CU : controlUnit port map (interuptSignal,Instruction_After(31 downto 26),pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire ,ALU_selectionwire);
+
+cumuxloop : CUmux port map (stopCU,pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire ,ALU_selectionwire,pushwiremux,popwiremux,SPwiremux,WBwiremux,memReadwiremux,memWritewiremux,EXwiremux,branchwiremux,portFlagwiremux,returnOIwiremux,callwiremux,No_Cond_Branchwiremux, Men_to_Regwiremux,Intwiremux,Rtiwiremux ,ALU_selectionwiremux);
+
+
+
 RF : registerFile port map (clk,rst,writeReg,en,reg_to_regin,Instruction_After(25 downto 23),Instruction_After(22 downto 20),WBvalue,data1wire,data2wire);
-buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwire,popwire,SPwire,WBwire,memReadwire,memWritewire,EXwire,branchwire,portFlagwire,returnOIwire,callwire,No_Cond_Branchwire, Men_to_Regwire,Intwire,Rtiwire,Instruction_After(25 downto 23),Instruction_After(22 downto 20),Instruction_After(31 downto 16),forCallinput,flushSignal,IN_Port, ALU_selectionwire,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
+buff: Decode_Excute_Buffer port map (clk,rst,'1',pushwiremux,popwiremux,SPwiremux,WBwiremux,memReadwiremux,memWritewiremux,EXwiremux,branchwiremux,portFlagwiremux,returnOIwiremux,callwiremux,No_Cond_Branchwiremux, Men_to_Regwiremux,Intwiremux,Rtiwiremux,Instruction_After(25 downto 23),Instruction_After(22 downto 20),Instruction_After(31 downto 16),forCallinput,flushSignal,IN_Port, ALU_selectionwiremux,data1wire,data2wire,Instruction_After(19 downto 17),Instruction_After(15 downto 0)
 ,push,pop,SP,WB,memRead,memWrite,EX,branch,portFlag,returnOI,call,No_Cond_Branch, Men_to_Reg,Int,Rti,Rsrc1,Rsrc2,memoryWire, forCall,IN_Portsout,ALU_selection,data1,data2,rdst, restOfInstruction_After);
 
 memRead_CU <= memReadwire;
