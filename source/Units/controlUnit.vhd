@@ -6,7 +6,6 @@ entity controlUnit is
     port (
         interuptSignal: in std_logic;
         opcode: in std_logic_vector(5 downto 0);
-        stopCU: in std_logic;
         push: out std_logic;
         pop: out std_logic;
         SP: out std_logic;
@@ -58,12 +57,10 @@ architecture arch of controlUnit is
     constant int_operation : std_logic_vector(5 downto 0) := "011010"; --int has no opcode it should be just a wire and that wire if equal 1 ,release that control signal
     signal controlSignal: std_logic_vector(18 downto 0);
 begin
-process(stopCU,opcode,interuptSignal)
+process(opcode,interuptSignal)
 begin
-  IF stopCU = '1' THEN
-   controlSignal<= "0000000000000000000";
-   ELSIF stopCU = '0' THEN
-    IF interuptSignal = '1' THEN
+  
+  IF interuptSignal = '1' THEN
     controlSignal <= "0100000001001001010";
 
     ELSE
@@ -87,9 +84,9 @@ begin
     when mov_operation =>
       controlSignal <= "0001000000000001110";
     when add_operation =>
-      controlSignal <= "0001000000000000000";
+      controlSignal <= "0001000000000000010";
     when iadd_operation =>
-      controlSignal <= "0001001000000000000";
+      controlSignal <= "0001001000000000010";
     when sub_operation =>
       controlSignal <= "0001000000000000001";
     when and_operation =>
@@ -124,7 +121,6 @@ begin
       controlSignal <= "0000000000000000000";
   end case;
 
-end if;
 end if;
 end process;
     WB <= controlSignal(15);

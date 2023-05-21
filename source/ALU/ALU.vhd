@@ -56,7 +56,7 @@ BEGIN
     F <= (OTHERS => '0') when sel = "0101"
     -- 2. ADD
         else
-        S_add when sel = "0111"
+        S_add when sel = "0010"
     -- 3. SUB
         else
         S_sub when sel = "0001"

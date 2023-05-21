@@ -137,23 +137,25 @@ signal Or_big : std_logic;
 signal flushSignal: std_logic;
 
 --stop cu signal 
-signal stopCUSignal: std_logic;
+
+signal FDbufferstall: std_logic;
+signal Or_bigreset: std_logic;
 BEGIN
 
 Or_big <= Output_from_E_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
+Or_bigreset<=Output_from_E_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret or rst;
 flushSignal<=Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
-stopCUSignal<= stopCu_hdu or stopCu_hsu;
-
+FDbufferstall<= stopCu_hdu or stopCu_hsu or rst or Output_from_E_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
 -------------------to be rewrittennnnnnnnn -------------------
 --------------------Don't forget--------------------
 F: entity work.Fetch port map(Interrupt, clk, rst, Output_from_MWB_Int, Output_from_MWB_call, Output_from_MWB_Ret, Or_big, freeze_pc_hdu, freeze_pc_hsu, output_from_DE_Data1, Output_from_MWB_M1,Output_from_MWB_data_out,
                                 Output_from_MWB_ReadDataAfter32(15 downto 0),output_from_DE_Imm ,Output_from_F_For_call, Output_from_F_Instruction, Output_from_F_PC_For_int);
 
-FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,rst,en, Interrupt, Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);
+FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interrupt, Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);
 
 
 --Decode and D/E buffer are already integrated in the decode module
-D: entity work.Decode port map(clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_big,  stopCUSignal, 
+D: entity work.Decode port map(clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_bigreset,
                                 Output_from_FD_For_call, Output_from_FD_Inport, output_From_DE_Push, output_From_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
                                 output_from_DE_Imm, output_from_DE_Branch, output_from_DE_PortFlag, output_from_DE_RET, output_from_DE_call, output_from_DE_No_cond_jum, output_from_DE_WB_MemtoReg, output_from_DE_INT, 
                                 output_from_DE_RTI, output_from_DE_SelectionLines, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_Rdst, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, output_from_DE_M1, 

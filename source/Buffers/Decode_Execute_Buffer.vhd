@@ -66,7 +66,7 @@ END Decode_Excute_Buffer;
 
 ARCHITECTURE imp OF Decode_Excute_Buffer IS
 BEGIN
-PROCESS (clk,rst)
+PROCESS (clk,rst,flushSignal)
 BEGIN
 IF rst = '1' or flushSignal='1' THEN
 pushout<='0';

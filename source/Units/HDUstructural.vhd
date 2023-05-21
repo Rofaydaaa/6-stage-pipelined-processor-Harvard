@@ -19,8 +19,8 @@ architecture arch of HDUstructural is
     signal memRead: std_logic;
     signal memWrite: std_logic;
 begin
-    memRead <= memReadDE when memReadFD = '0' else memReadFD;
-    memWrite <= memWriteDE when memWriteFD = '0' else memWriteFD;
+    memRead <= memReadDE when memWriteDE = '0' else memReadFD;
+    memWrite <= memWriteFD when memReadFD = '0' else memWriteFD;
 
     process (rst,memRead, memWrite)
     begin
@@ -30,7 +30,7 @@ begin
             stopCU <= '0';
         else
 
-        if (memRead = '1' or memWrite = '1') then
+        if (memReadDE = '1' and memWrite = '1') then
             freeze_pc <= '1';
             
             stopCU <= '1';
