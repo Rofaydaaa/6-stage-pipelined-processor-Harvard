@@ -11,7 +11,6 @@ Branch_Addr: IN std_logic_vector (15 downto 0);
 M_Of_1: IN std_logic_vector (15 downto 0);
 WB_Data_For_Call: IN std_logic_vector (15 downto 0);
 WB_data: IN std_logic_vector (15 downto 0);
-Imm_From_Decode_stage: IN std_logic;
 For_Call: OUT std_logic_vector (15 downto 0);
 Instruction: out std_logic_vector (31 downto 0);
 PC_for_INT: out std_logic_vector (15 downto 0)
@@ -23,6 +22,7 @@ ARCHITECTURE Imp OF Fetch IS
 Signal pc_out,Add_sub_Result1,To_PC,Add_sub_Result2,Add_sub_Result_final: std_logic_vector (15 downto 0);
 Signal Int_from_Int_Reg: std_logic;
 Signal Intermediate_Inst: std_logic_vector (31 downto 0);
+Signal is_Immediate: std_logic;
 
 COMPONENT Mux2by1 IS 
 Generic ( n : Integer:=16);
@@ -39,11 +39,13 @@ Int_Reg0 : entity work.Interrupt_register port map (Int_port,Int_from_Int_Reg);
 
 AddSUB0 : entity work.Add_Sub port map ('0',b"01",pc_out,Add_sub_Result1);
 AddSUB1:  entity work.Add_Sub port map ('0',b"10",pc_out,Add_sub_Result2);
-Mux2by10 : Mux2by1 GENERIC MAP(16) PORT MAP(Add_sub_Result1, Add_sub_Result2, Imm_From_Decode_stage, Add_sub_Result_final);
+Mux2by10 : Mux2by1 GENERIC MAP(16) PORT MAP(Add_sub_Result1, Add_sub_Result2,is_Immediate,Add_sub_Result_final);
 
 ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,Branch_Addr,M_Of_1,WB_Data_For_Call,WB_data,Int_from_WB,Call,Ret,Branch,To_PC);
 
 Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_from_Int_Reg,pc_out,Intermediate_Inst);
+
+is_Immediate <= '1' when (Intermediate_Inst(15 downto 10) = "001011") else '1' when (Intermediate_Inst(15 downto 10) = "010001") else '0' ;
 
 Instruction <= Intermediate_Inst;
 
