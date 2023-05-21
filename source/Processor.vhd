@@ -162,9 +162,9 @@ D: entity work.Decode port map(clk, rst,en, Output_From_FD_INT, Output_from_MWB_
                                 output_from_DE_For_call, output_from_DE_In_port, Output_from_D_memRead, Output_from_D_memWrite);
   
 E: entity work.Execute port map(clk,rst, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, 
-                                output_from_DE_SelectionLines, output_from_DE_Branch, output_from_DE_No_cond_jum, output_from_DE_Imm, output_from_DE_INT, output_from_EM_WB_MemtoReg, 
+                                output_from_DE_SelectionLines, output_from_DE_Branch, output_from_DE_No_cond_jum, output_from_DE_Imm, output_from_DE_INT, output_from_EM_WB_RegtoReg, 
                                 output_from_EM_portFlag, output_from_EM_Rdst, output_from_EM_data_out, output_from_EM_Inport, output_from_MM_WB_RegtoReg, output_from_MM_memWrite, output_from_MM_memRead, 
-                                output_from_MM_portFlag, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_InPort, Output_from_MWB_memToreg, Output_from_MWB_Portflag, Output_from_MWB_RTI, 
+                                output_from_MM_portFlag, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_InPort, Output_from_MWB_WBregToreg, Output_from_MWB_Portflag, Output_from_MWB_RTI, 
                                 Output_from_MWB_Rdst, Output_from_MWB_data_out, Output_from_MWB_Inport, Output_from_WB_CCR,Output_from_E_PCsource, Output_from_E_dataOut, Output_from_E_CCR);
 
 EMBuffer: entity work.Execute_Memory_Buffer port map(clk, rst, en, output_from_DE_Push, output_from_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
