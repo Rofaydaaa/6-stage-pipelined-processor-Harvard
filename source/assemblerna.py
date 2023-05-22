@@ -128,7 +128,7 @@ def mainfunc():
                 elif (words[0] == "LDM"):
                     if words[1] in registers:
                         correctInstructions[index] = opCodes[words[0]
-                                                             ]+"000000"+registers[words[1]]+"0"
+                                                             ]+"XXXXXX"+registers[words[1]]+"0"
                         index += 1
                         if len(words) > 2:
                             correctInstructions[index] = bin(

@@ -46,7 +46,7 @@ END Mem_Mem_Buffer;
 
 ARCHITECTURE imp OF Mem_Mem_Buffer IS
 BEGIN
-PROCESS (Clk,Rst)
+PROCESS (Clk,Rst,flush)
 BEGIN
 IF Rst = '1' or flush='1' THEN
 WB_after <= '0';

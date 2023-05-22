@@ -102,6 +102,7 @@ signal Output_from_MWB_Rdst: std_logic_vector(2 downto 0);
 
 --Define signals for output of stages:
 --fetch
+signal Output_from_F_INT: std_logic;
 signal Output_from_F_For_call: std_logic_vector (15 downto 0);
 signal Output_from_F_Instruction: std_logic_vector(31 downto 0);
 signal Output_from_F_PC_For_int: std_logic_vector(15 downto 0);
@@ -151,7 +152,7 @@ FDbufferstall<= stopCu_hdu or stopCu_hsu or rst or Output_from_E_PCsource or  Ou
 F: entity work.Fetch port map(Interrupt, clk, rst, Output_from_MWB_Int, Output_from_MWB_call, Output_from_MWB_Ret, Or_big, freeze_pc_hdu, freeze_pc_hsu, output_from_DE_Data1, Output_from_MWB_M1,Output_from_MWB_data_out,
                                 Output_from_MWB_ReadDataAfter32(15 downto 0),Output_from_F_For_call, Output_from_F_Instruction, Output_from_F_PC_For_int);
 
-FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interrupt, Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);
+FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interrupt , Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);
 
 
 --Decode and D/E buffer are already integrated in the decode module
@@ -183,7 +184,7 @@ MMBuffer: entity work.Mem_Mem_Buffer port map(clk, rst, en, output_from_EM_WB_Re
                                                 output_from_MM_data_out, output_from_MM_M1,output_from_MM_data32, output_from_MM_Rdst, output_from_MM_WB_RegtoReg, output_from_MM_memRead, output_from_MM_memWrite, output_from_MM_WB_MemtoReg, output_from_MM_INT, 
                                                 output_from_MM_portFlag, output_from_MM_call, output_from_MM_RET, output_from_MM_RTI, output_from_MM_InPort);
 
-MwBuffer: entity work.Mem_WB_Buffer port map(clk, rst, en, Output_from_MM_WB_RegtoReg,flushSignal, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_M1, output_from_MM_data32, output_from_MM_WB_MemtoReg, 
+MwBuffer: entity work.Mem_WB_Buffer port map(clk, rst, en, Output_from_MM_WB_RegtoReg, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_M1, output_from_MM_data32, output_from_MM_WB_MemtoReg, 
                                             output_from_MM_INT, output_from_MM_portFlag, output_from_MM_call, output_from_MM_RTI, output_from_MM_RET, output_from_MM_InPort, Output_from_MWB_data_out,  Output_from_MWB_M1, Output_from_MWB_ReadDataAfter32, Output_from_MWB_Rdst, 
                                             Output_from_MWB_WBregToreg, Output_from_MWB_memToreg, Output_from_MWB_Int, Output_from_MWB_Portflag, Output_from_MWB_call, Output_from_MWB_Ret, Output_from_MWB_RTI, Output_from_MWB_Inport);
 

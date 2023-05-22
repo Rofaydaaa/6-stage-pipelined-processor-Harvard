@@ -71,7 +71,7 @@ END Execute_Memory_Buffer;
 
 ARCHITECTURE imp OF Execute_Memory_Buffer IS
 BEGIN
-PROCESS (clk,rst)
+PROCESS (clk,rst,flushSignal)
 BEGIN
 IF rst = '1' or flushSignal='1' THEN
     pushout<='0';
