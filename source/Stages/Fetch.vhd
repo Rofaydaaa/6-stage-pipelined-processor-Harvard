@@ -4,7 +4,6 @@ USE IEEE.numeric_std.all;
 
 ENTITY Fetch IS
 PORT (
-EM_Immediate:  in std_logic;
 Immediate: in std_logic;
 OPCode_HDU_Struct: in std_logic_vector (5 downto 0);
 Int_port: IN std_logic;
@@ -37,7 +36,7 @@ END COMPONENT;
 
 BEGIN
 
-PC0 :entity work.PC port map (EM_Immediate,Immediate,OPCode_HDU_Struct,freeze_hdu_data,freeze_hdu_structural,Rst,Intermediate_Inst(31 downto 16),To_PC,pc_out,clk);
+PC0 :entity work.PC port map (Immediate,OPCode_HDU_Struct,freeze_hdu_data,freeze_hdu_structural,Rst,Intermediate_Inst(31 downto 16),To_PC,pc_out,clk);
 
 --Int_Reg0 : entity work.Interrupt_register port map (Int_port,Int_from_Int_Reg);
 

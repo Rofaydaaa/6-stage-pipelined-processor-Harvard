@@ -5,7 +5,7 @@ USE IEEE.numeric_std.all;
 ENTITY Decode IS
 PORT (
   stopCU: IN std_logic;
-clk,Rst,en: IN std_logic;
+clk,Rst,en: IN std_logic; --en is the WB from WBM
 interuptSignal: in std_logic;
 reg_to_regin:IN std_logic;
 Instruction_After: in std_logic_vector (31 downto 0);
