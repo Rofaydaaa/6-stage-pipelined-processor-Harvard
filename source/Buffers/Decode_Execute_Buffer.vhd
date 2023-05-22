@@ -107,20 +107,20 @@ branchout<=branch;
 portFlagout<='0';
 returnOIout<='0';
 callout<='0';
+ALU_selectionout <= (OTHERS=>'0');
 No_Cond_Branchout<=No_Cond_Branch;
 Men_to_Regout<='0';
 Intout<='0';
 Rtiout<='0';
-forCallout<= (OTHERS=>'0');
-Rsrc1out <= (OTHERS=>'0');
-Rsrc2out  <= (OTHERS=>'0');
-memoryWireout<=(OTHERS=>'0');
-ALU_selectionout <= (OTHERS=>'0');
-data1out <= (OTHERS=>'0');
-data2out <= (OTHERS=>'0');
-rdstout <= (OTHERS=>'0');
-restofIRout <= (OTHERS=>'0');
-IN_Portsout<=(OTHERS=>'0');
+forCallout<= forCall;
+Rsrc1out <= Rsrc1;
+Rsrc2out  <= Rsrc2;
+memoryWireout<=memoryWire;
+data1out <= data1;
+data2out <= data2;
+rdstout <= rdst;
+restofIRout <= restofIR;
+IN_Portsout<=IN_Ports;
 
 ELSIF falling_edge(clk) THEN
 if (en='1') then

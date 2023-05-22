@@ -152,7 +152,7 @@ flushSignal<=Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
 FDbufferstall<= stopCu_hdu or stopCu_hsu or rst or Output_from_EM_PCsource or  Output_from_MWB_Int or Output_from_MWB_call or Output_from_MWB_Ret;
 -------------------to be rewrittennnnnnnnn -------------------
 --------------------Don't forget--------------------
-F: entity work.Fetch port map(output_from_DE_Imm,Output_From_FD_Instruction(31 downto 26),Interrupt, clk, rst, Output_from_MWB_Int, Output_from_MWB_call, Output_from_MWB_Ret, Or_big_branch, freeze_pc_hdu, freeze_pc_hsu, output_from_DE_Data1, Output_from_MWB_M1,Output_from_MWB_data_out,
+F: entity work.Fetch port map(Interrupt, clk, rst, Output_from_MWB_Int, Output_from_MWB_call, Output_from_MWB_Ret, Or_big_branch, freeze_pc_hdu, freeze_pc_hsu, output_from_DE_Data1, Output_from_MWB_M1,Output_from_MWB_data_out,
                                 Output_from_MWB_ReadDataAfter32(15 downto 0),Output_from_F_For_call, Output_from_F_Instruction, Output_from_F_PC_For_int);
 
 FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interrupt , Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);

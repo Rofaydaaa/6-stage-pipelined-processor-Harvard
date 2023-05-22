@@ -4,8 +4,6 @@ USE IEEE.numeric_std.all;
 
 ENTITY Fetch IS
 PORT (
-Immediate: in std_logic;
-OPCode_HDU_Struct: in std_logic_vector (5 downto 0);
 Int_port: IN std_logic;
 clk,Rst,Int_from_WB,Call,Ret,Branch: IN std_logic;
 freeze_hdu_data,freeze_hdu_structural: IN std_logic;
@@ -36,7 +34,7 @@ END COMPONENT;
 
 BEGIN
 
-PC0 :entity work.PC port map (Immediate,OPCode_HDU_Struct,freeze_hdu_data,freeze_hdu_structural,Rst,Intermediate_Inst(31 downto 16),To_PC,pc_out,clk);
+PC0 :entity work.PC port map (freeze_hdu_data,freeze_hdu_structural,Rst,Intermediate_Inst(31 downto 16),To_PC,pc_out,clk);
 
 --Int_Reg0 : entity work.Interrupt_register port map (Int_port,Int_from_Int_Reg);
 
@@ -48,7 +46,7 @@ ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,B
 
 Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_port,pc_out,Intermediate_Inst);
 
-is_Immediate <= '1' when (Intermediate_Inst(31 downto 26) = "001011") else '1' when (Intermediate_Inst(31 downto 26) = "010001") else '0' ;
+is_Immediate <= '1' when (Intermediate_Inst(15 downto 10) = "001011") else '1' when (Intermediate_Inst(15 downto 10) = "010001") else '0' ;
 
 Instruction <= Intermediate_Inst;
 

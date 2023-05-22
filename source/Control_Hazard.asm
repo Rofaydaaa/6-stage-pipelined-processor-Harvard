@@ -15,16 +15,16 @@
 	
 
 #test1  JC taken
-.org 100
-SETC
-LDM R1,0F0F                        #INTERRUPT HERE
-LDM R3,80
-NOT R2,R1
-JC R3				#this should be taken, forward
-OUT R3 			
+#.org 100
+#SETC
+#LDM R1,0F0F                        #INTERRUPT HERE
+#LDM R3,80
+#NOT R2,R1
+#JC R3				#this should be taken, forward
+#OUT R3 			
 
 #test2 JC not taken, JZ taken
-.org 80
+.org 100
 LDM R3,150
 JC R3				#NOT TAKEN, SINCE JC CLEAR CARRY
 LDM R4,08

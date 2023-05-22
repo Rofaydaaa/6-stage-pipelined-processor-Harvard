@@ -3,8 +3,6 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity PC is port(
-Immediate: in std_logic;
-OPCode_HDU_Struct:  in std_logic_vector (5 downto 0);
 freeze_hdu_data,freeze_hdu_structural: IN std_logic;
 Rst: in std_logic;
 M_Of_0: in std_logic_vector (15 downto 0);
@@ -24,18 +22,12 @@ BEGIN
 IF Rst = '1' THEN
     output<= M_Of_0;
     ram(0) <= M_Of_0;
-        
-ELSIF ((freeze_hdu_data = '1' OR freeze_hdu_structural= '1') and Immediate='1') THEN
-output<= std_logic_vector(unsigned(ram(0)) - 2) ;
-      
 ELSIF freeze_hdu_data = '1' OR freeze_hdu_structural= '1' THEN
-    output<= std_logic_vector(unsigned(ram(0)) - 1) ;
+    output<= std_logic_vector(unsigned(ram(0)) - 1);
     --output <= ram(0);
-
 ELSIF rising_edge(Clk) THEN
     output<= input;
     ram(0) <= input;
-  
 END IF;
 END PROCESS;
 end Imp;
