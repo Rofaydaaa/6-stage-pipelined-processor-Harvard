@@ -62,7 +62,8 @@ ENTITY Execute IS
     --Output Control signals
     PC_Source : OUT STD_LOGIC;
     DataOut : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-    CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+    CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+    flush_signal:IN std_logic
   );
 END Execute;
 
@@ -89,7 +90,8 @@ ARCHITECTURE IMP_Execute OF Execute IS
 		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
         F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
-		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+        flush_signal : IN STD_LOGIC
 		);
     END COMPONENT;
 
@@ -122,6 +124,8 @@ ARCHITECTURE IMP_Execute OF Execute IS
         --Outputs:
         FRWD_OUT_S1 : OUT std_logic_vector(2 DOWNTO 0); --selector of muxDataA (the A of the ALU)
         FRWD_OUT_S2 : OUT std_logic_vector(2 DOWNTO 0) --selector of muxDataB (the A of the ALU)
+
+
         );
     end COMPONENT;
 
@@ -156,7 +160,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
     sIGNAL FRWD_OUT_S2 : std_logic_vector(2 DOWNTO 0); --selector signal of muxDataB (the A of the ALU)
     SIGNAL CCR_EXTENDED_SIGNAL_temp : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL CCR_EXTENDED_SIGNAL : STD_LOGIC_VECTOR(15 DOWNTO 0);
-    signal flag : boolean := false;
+    signal flush_flag : boolean := false;
 
     BEGIN 
         -- NOP_FLAG indicates the operations that doesn't change IN the CCR
@@ -184,9 +188,9 @@ ARCHITECTURE IMP_Execute OF Execute IS
     
         process(DE_SelectionLines)
         begin
-            if DE_SelectionLines = "0000" and flag = false then
+            if DE_SelectionLines = "0000" and flush_flag = false then
                 FIRSTTIME_FLAG <= '1';
-                flag<=true;
+                flush_flag<=true;
             else
                 FIRSTTIME_FLAG <= '0';
         end if;
@@ -202,7 +206,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
         
         aluu : ALU GENERIC MAP(16) PORT MAP(Data_A, Data_B, DE_SelectionLines, '0', ALU_OUTPUT, C_out);
         
-        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
+        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR, flush_signal);
     
         ExtendCCR: Sign_Extend PORT MAP(FLAG_CCR, CCR_EXTENDED_SIGNAL_temp);
 
