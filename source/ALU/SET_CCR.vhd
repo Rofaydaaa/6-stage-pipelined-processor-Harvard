@@ -21,7 +21,8 @@ ENTITY SET_CCR IS
 		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
         F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
-		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+		flush_signal : IN STD_LOGIC
 		);
 END ENTITY SET_CCR;
 
@@ -49,12 +50,12 @@ BEGIN
 	--Negative Flag
 	--
 	Flag_Calc(1) <= '0' when rst='1'
-	else Previous_caryy(1) when NOP_FLAG = '1'
+	else Previous_caryy(1) when (NOP_FLAG = '1' or flush_signal = '1')
 	else F_ALU(n -1);
 
 	--Zero Flag
 	Flag_Calc(0) <= '0' when rst = '1'
-	else Previous_caryy(0) when NOP_FLAG = '1'
+	else Previous_caryy(0) when (NOP_FLAG = '1' or flush_signal = '1')
 	else '1' when (F_ALU="0000000000000000" and FIRSTTIME_FLAG = '0')
 	else '0';
 

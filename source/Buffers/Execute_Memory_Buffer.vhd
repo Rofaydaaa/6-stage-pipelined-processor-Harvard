@@ -59,7 +59,9 @@ PORT(
 
     dataoutOut : out std_logic_vector(15 downto 0); 
     WriteDataOut : out std_logic_vector(15 downto 0);
-    rdstOut : out std_logic_vector(2 downto 0)
+    rdstOut : out std_logic_vector(2 downto 0);
+    output_from_E_PCsource: in std_logic;
+    output_from_EM_PCsource : out std_logic
 
     --IN_Port_IN: in std_logic_vector (15 downto 0);
     --IN_Port_OUT: out std_logic_vector (15 downto 0)
@@ -93,6 +95,7 @@ IF rst = '1' or flushSignal='1' THEN
     --CCROut <= (OTHERS=>'0');
     rdstOut <= (OTHERS=>'0');
     IN_Portsout<=(OTHERS=>'0');
+    output_from_EM_PCsource<='0';
 ELSIF falling_edge(clk) THEN
 if (en='1') then
     pushout<=push;
@@ -114,6 +117,7 @@ if (en='1') then
     WriteDataOut <= WriteData;
     --CCROut <= CCR;
     rdstOut <= rdst;
+    output_from_EM_PCsource <= output_from_E_PCsource;
     --IN_Port_OUT <= IN_Port_IN;
 
 end if;
