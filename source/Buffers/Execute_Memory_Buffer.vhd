@@ -13,7 +13,6 @@ ENTITY Execute_Memory_Buffer IS
 PORT( 
     clk,Rst,en: IN std_logic;
     -- Buffer INPUT
-    imm: in std_logic;
     push: in std_logic;
     pop: in std_logic;
     SP: in std_logic;
@@ -68,8 +67,6 @@ PORT(
     --IN_Port_OUT: out std_logic_vector (15 downto 0)
     --CCROut : out std_logic_vector(15 downto 0); 
 
-    imm_out: out std_logic;
-
 );
 END Execute_Memory_Buffer;
 
@@ -79,7 +76,6 @@ BEGIN
 PROCESS (clk,rst,flushSignal)
 BEGIN
 IF rst = '1' or flushSignal='1' THEN
-    imm_out<='0';
     pushout<='0';
     popout<='0';
     SPout<='0';
@@ -102,7 +98,6 @@ IF rst = '1' or flushSignal='1' THEN
     output_from_EM_PCsource<='0';
 ELSIF falling_edge(clk) THEN
 if (en='1') then
-    imm_out<=imm;
     pushout<=push;
     popout<=pop;
     SPout<=SP;
