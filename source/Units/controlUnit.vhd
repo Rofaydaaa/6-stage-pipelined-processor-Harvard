@@ -95,7 +95,7 @@ begin
     when pop_operation =>
       controlSignal <= "0011100001000101010";
     when ldm_operation =>
-      controlSignal <= "0001001000000001000";
+      controlSignal <= "0001101000000001000";
     when ldd_operation =>
       controlSignal <= "0011100000000001110";
     when std_operation =>
