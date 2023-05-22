@@ -165,7 +165,7 @@ D: entity work.Decode port map(stopCU,clk, rst,Output_from_MWB_WBregToreg, Outpu
                                 output_from_DE_RTI, output_from_DE_SelectionLines, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_Rdst, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, output_from_DE_M1, 
                                 output_from_DE_For_call, output_from_DE_In_port, Output_from_D_memRead, Output_from_D_memWrite);
   
-E: entity work.Execute port map(clk,rst, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, 
+E: entity work.Execute port map(output_from_DE_memRead,clk,rst, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, 
                                 output_from_DE_SelectionLines, output_from_DE_Branch, output_from_DE_No_cond_jum, output_from_DE_Imm, output_from_DE_INT, output_from_EM_WB_RegtoReg, 
                                 output_from_EM_portFlag, output_from_EM_Rdst, output_from_EM_data_out, output_from_EM_Inport, output_from_MM_WB_RegtoReg, output_from_MM_memWrite, output_from_MM_memRead, 
                                 output_from_MM_portFlag, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_InPort, Output_from_MWB_WBregToreg, Output_from_MWB_Portflag, Output_from_MWB_RTI, 

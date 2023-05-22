@@ -13,6 +13,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY Execute IS
   PORT (
+    memReadDE: in std_logic;
     clk,rst : IN STD_LOGIC;
 
 
@@ -97,7 +98,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
 
     COMPONENT ForwardUnit is
         port (
-            
+            memReadDE: in std_logic;
         --Addresses coming from buffers that need to be compared
         DE_RSrc1:IN std_logic_vector(2 DOWNTO 0);
         DE_RSrc2:IN std_logic_vector(2 DOWNTO 0);
@@ -198,7 +199,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
 
 
 
-        forwardData : ForwardUnit PORT MAP (DE_RSrc1, DE_RSrc2, EM1_Dest, M1M2_Dest, M2WB_Dest, EM1_WB_RegtoReg, M1M2_WB_regtoreg, M1M2_memWrite, M1M2_memRead, M2WB_WB_RegtoReg, EM1_INPort, M1M2_INPort, M2WB_INPort, DE_IMM, FRWD_OUT_S1, FRWD_OUT_S2);
+        forwardData : ForwardUnit PORT MAP (memReadDE,DE_RSrc1, DE_RSrc2, EM1_Dest, M1M2_Dest, M2WB_Dest, EM1_WB_RegtoReg, M1M2_WB_regtoreg, M1M2_memWrite, M1M2_memRead, M2WB_WB_RegtoReg, EM1_INPort, M1M2_INPort, M2WB_INPort, DE_IMM, FRWD_OUT_S1, FRWD_OUT_S2);
         
         Data_A_mux : Mux8by1 PORT MAP(DE_Data1, dummySignal, EM1_DataOut, EM1_InPort_Data, M1M2_DataOut, M1M2_InPort_Data, M2WB_DataOut, M2WB_InPort_Data, FRWD_OUT_S1, Data_A);
         
