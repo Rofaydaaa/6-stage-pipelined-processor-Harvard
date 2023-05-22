@@ -13,6 +13,9 @@ USE ieee.numeric_std.ALL;
 
 ENTITY Execute IS
   PORT (
+    outputPCint:in std_logic_vector(15 downto 0);
+    forCallWB : in std_logic_vector(15 downto 0);
+    callWB:IN std_logic;
     clk,rst : IN STD_LOGIC;
 
 
@@ -62,7 +65,8 @@ ENTITY Execute IS
     --Output Control signals
     PC_Source : OUT STD_LOGIC;
     DataOut : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-    CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+    CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+    callMuxout: out STD_LOGIC_VECTOR(15 downto 0)
   );
 END Execute;
 
@@ -71,7 +75,15 @@ ARCHITECTURE IMP_Execute OF Execute IS
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------Start Components-------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
-
+COMPONENT CallMUX is
+    port (
+      forCall: IN std_logic_vector(15 DOWNTO 0);
+      PCforINT: IN std_logic_vector(15 DOWNTO 0);
+      call: IN std_logic;
+      output: OUT std_logic_vector(15 DOWNTO 0)
+       
+    );
+  end COMPONENT;
     COMPONENT ALU IS
     GENERIC (n : INTEGER := 16);
     PORT (
@@ -193,7 +205,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
         end process;
 
 
-
+        callloop: CallMUX port map(forCallWB,outputPCint,callWB,callMuxout);
         forwardData : ForwardUnit PORT MAP (DE_RSrc1, DE_RSrc2, EM1_Dest, M1M2_Dest, M2WB_Dest, EM1_WB_RegtoReg, M1M2_WB_regtoreg, M1M2_memWrite, M1M2_memRead, M2WB_WB_RegtoReg, EM1_INPort, M1M2_INPort, M2WB_INPort, DE_IMM, FRWD_OUT_S1, FRWD_OUT_S2);
         
         Data_A_mux : Mux8by1 PORT MAP(DE_Data1, dummySignal, EM1_DataOut, EM1_InPort_Data, M1M2_DataOut, M1M2_InPort_Data, M2WB_DataOut, M2WB_InPort_Data, FRWD_OUT_S1, Data_A);

@@ -20,6 +20,7 @@ signal Output_from_FD_For_call: std_logic_vector(15 downto 0);
 signal Output_From_FD_Instruction: std_logic_vector(31 downto 0);
 signal Output_from_FD_Inport: std_logic_vector(15 downto 0);
 signal Output_From_FD_INT: std_logic;
+signal Output_from_FD_PC_For_int: std_logic_vector(15 downto 0);
 
 --D/E
 signal output_from_DE_For_call: std_logic_vector(15 downto 0);
@@ -47,6 +48,7 @@ signal output_from_DE_RS1                 : std_logic_vector(2 downto 0);
 signal output_from_DE_RS2                 : std_logic_vector(2 downto 0);              
 signal output_from_DE_Rdst                : std_logic_vector(2 downto 0);                
 signal output_from_DE_M1                  : std_logic_vector(15 downto 0); 
+signal Output_from_DE_PC_For_int          : std_logic_vector(15 downto 0); 
 
 --E/M1
 signal output_from_EM_for_call: std_logic_vector(15 downto 0);
@@ -67,7 +69,7 @@ signal output_from_EM_data_out: std_logic_vector(15 downto 0);
 signal output_from_EM_data1: std_logic_vector(15 downto 0);
 signal output_from_EM_Rdst: std_logic_vector(2 downto 0);
 signal output_from_EM_M1: std_logic_vector(15 downto 0);
-
+signal Output_from_EM_PC_For_int: std_logic_vector(15 downto 0);
 
 --M1/M2
 signal output_from_MM_RTI: std_logic;
@@ -113,6 +115,7 @@ signal Output_from_D_memWrite: std_logic;
 signal Output_from_E_PCsource: std_logic;
 signal Output_from_E_dataOut: std_logic_vector(15 downto 0);
 signal Output_from_E_CCR: std_logic_vector(15 downto 0);
+signal Output_from_E_PC_For_int: std_logic_vector(15 downto 0);
 
 --Memory
 signal Output_from_M_readData: std_logic_vector(31 downto 0);
@@ -151,31 +154,31 @@ FDbufferstall<= stopCu_hdu or stopCu_hsu or rst or Output_from_E_PCsource or  Ou
 F: entity work.Fetch port map(Interrupt, clk, rst, Output_from_MWB_Int, Output_from_MWB_call, Output_from_MWB_Ret, Or_big, freeze_pc_hdu, freeze_pc_hsu, output_from_DE_Data1, Output_from_MWB_M1,Output_from_MWB_data_out,
                                 Output_from_MWB_ReadDataAfter32(15 downto 0),Output_from_F_For_call, Output_from_F_Instruction, Output_from_F_PC_For_int);
 
-FDBuffer: entity work.Fetch_Decode_Buffer port map(clk,FDbufferstall,en, Interrupt, Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call);
+FDBuffer: entity work.Fetch_Decode_Buffer port map(Output_from_F_PC_For_int,clk,FDbufferstall,en, Interrupt, Output_from_F_Instruction,IN_Port, Output_from_F_For_call, Output_From_FD_Instruction, Output_From_FD_INT, Output_from_FD_Inport, Output_from_FD_For_call,Output_from_FD_PC_For_int);
 
 
 --Decode and D/E buffer are already integrated in the decode module
-D: entity work.Decode port map(stopCU,clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_bigreset,
+D: entity work.Decode port map(Output_from_FD_PC_For_int,Output_from_MWB_data_out,Output_from_MWB_call,stopCU,clk, rst,en, Output_From_FD_INT, Output_from_MWB_WBregToreg, Output_From_FD_Instruction, Output_from_MWB_Rdst, Output_from_WB_WBvalue, Or_bigreset,
                                 Output_from_FD_For_call, Output_from_FD_Inport, output_From_DE_Push, output_From_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
                                 output_from_DE_Imm, output_from_DE_Branch, output_from_DE_PortFlag, output_from_DE_RET, output_from_DE_call, output_from_DE_No_cond_jum, output_from_DE_WB_MemtoReg, output_from_DE_INT, 
                                 output_from_DE_RTI, output_from_DE_SelectionLines, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_Rdst, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, output_from_DE_M1, 
-                                output_from_DE_For_call, output_from_DE_In_port, Output_from_D_memRead, Output_from_D_memWrite);
+                                output_from_DE_For_call, output_from_DE_In_port, Output_from_D_memRead, Output_from_D_memWrite,Output_from_DE_PC_For_int);
   
-E: entity work.Execute port map(clk,rst, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, 
+E: entity work.Execute port map(Output_from_DE_PC_For_int,Output_from_MWB_data_out,Output_from_MWB_call,clk,rst, output_from_DE_Data1, output_from_DE_Data2, output_from_DE_ImmediateValue, output_from_DE_RS1, output_from_DE_RS2, 
                                 output_from_DE_SelectionLines, output_from_DE_Branch, output_from_DE_No_cond_jum, output_from_DE_Imm, output_from_DE_INT, output_from_EM_WB_RegtoReg, 
                                 output_from_EM_portFlag, output_from_EM_Rdst, output_from_EM_data_out, output_from_EM_Inport, output_from_MM_WB_RegtoReg, output_from_MM_memWrite, output_from_MM_memRead, 
                                 output_from_MM_portFlag, output_from_MM_Rdst, output_from_MM_data_out, output_from_MM_InPort, Output_from_MWB_WBregToreg, Output_from_MWB_Portflag, Output_from_MWB_RTI, 
-                                Output_from_MWB_Rdst, Output_from_MWB_data_out, Output_from_MWB_Inport, Output_from_WB_CCR,Output_from_E_PCsource, Output_from_E_dataOut, Output_from_E_CCR);
+                                Output_from_MWB_Rdst, Output_from_MWB_data_out, Output_from_MWB_Inport, Output_from_WB_CCR,Output_from_E_PCsource, Output_from_E_dataOut, Output_from_E_CCR,Output_from_E_PC_For_int);
 
-EMBuffer: entity work.Execute_Memory_Buffer port map(clk, rst, en, output_from_DE_Push, output_from_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
+EMBuffer: entity work.Execute_Memory_Buffer port map(Output_from_E_PC_For_int,clk, rst, en, output_from_DE_Push, output_from_DE_Pop, output_from_DE_SP, output_from_DE_WB_RegToReg, output_from_DE_memRead, output_from_DE_memWrite, 
                                                       output_from_DE_PortFlag, output_from_DE_RET, output_from_DE_Call, output_from_DE_WB_MemtoReg, output_from_DE_INT, output_from_DE_RTI, output_from_DE_M1 ,
                                                       output_from_DE_For_call,flushSignal, output_from_DE_In_port, Output_from_E_dataOut, output_from_DE_Data1, 
                                                       output_from_DE_Rdst, output_from_EM_PUSH, output_from_EM_POP, output_from_EM_SP, output_from_EM_WB_RegtoReg, output_from_EM_memRead, output_from_EM_memWrite, output_from_EM_portFlag, 
                                                       output_from_EM_RET, output_from_EM_Call, output_from_EM_WB_MemtoReg, output_from_EM_INT, output_from_EM_RTI, output_from_EM_M1, output_from_EM_for_call, output_from_EM_Inport, output_from_EM_data_out, 
-                                                      output_from_EM_data1, output_from_EM_Rdst);
+                                                      output_from_EM_data1, output_from_EM_Rdst,Output_from_EM_PC_For_int);
 
 
-M: entity work.MemoryStage port map(clk, rst, output_from_EM_memRead, output_from_EM_memWrite, output_from_EM_SP, output_from_EM_PUSH, output_from_EM_POP, output_from_EM_Call, output_from_EM_RTI, output_from_EM_INT, output_from_EM_data1, output_from_EM_data_out,
+M: entity work.MemoryStage port map(Output_from_EM_PC_For_int,Output_from_MWB_data_out,Output_from_MWB_call,clk, rst, output_from_EM_memRead, output_from_EM_memWrite, output_from_EM_SP, output_from_EM_PUSH, output_from_EM_POP, output_from_EM_Call, output_from_EM_RTI, output_from_EM_INT, output_from_EM_data1, output_from_EM_data_out,
                                      output_from_EM_for_call, Output_from_F_PC_For_int, Output_from_M_readData);
 
 MMBuffer: entity work.Mem_Mem_Buffer port map(clk, rst, en, output_from_EM_WB_RegtoReg,flushSignal , output_from_EM_Rdst, output_from_EM_data_out, output_from_EM_M1, Output_from_M_readData, 

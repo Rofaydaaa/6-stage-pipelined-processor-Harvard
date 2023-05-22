@@ -11,6 +11,7 @@ use ieee.std_logic_1164.all;
 
 ENTITY Execute_Memory_Buffer IS
 PORT( 
+    callMux:in std_logic_vector(15 downto 0);
     clk,Rst,en: IN std_logic;
     -- Buffer INPUT
     push: in std_logic;
@@ -59,7 +60,8 @@ PORT(
 
     dataoutOut : out std_logic_vector(15 downto 0); 
     WriteDataOut : out std_logic_vector(15 downto 0);
-    rdstOut : out std_logic_vector(2 downto 0)
+    rdstOut : out std_logic_vector(2 downto 0);
+    callMuxout:out std_logic_vector(15 downto 0)
 
     --IN_Port_IN: in std_logic_vector (15 downto 0);
     --IN_Port_OUT: out std_logic_vector (15 downto 0)
@@ -93,6 +95,7 @@ IF rst = '1' or flushSignal='1' THEN
     --CCROut <= (OTHERS=>'0');
     rdstOut <= (OTHERS=>'0');
     IN_Portsout<=(OTHERS=>'0');
+    callMuxout<=(OTHERS=>'0');
 ELSIF falling_edge(clk) THEN
 if (en='1') then
     pushout<=push;
@@ -115,7 +118,7 @@ if (en='1') then
     --CCROut <= CCR;
     rdstOut <= rdst;
     --IN_Port_OUT <= IN_Port_IN;
-
+    callMuxout<=callMux;
 end if;
 END IF;
 END PROCESS;
