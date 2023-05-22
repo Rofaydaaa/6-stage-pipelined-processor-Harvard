@@ -1,0 +1,15 @@
+.org 0
+0002
+0008
+
+.org 2
+ADD R1,R2,R3
+ADD R2,R3,R3
+NOP
+NOP
+NOP
+NOP
+
+.org 8
+IN R4
+IN R5

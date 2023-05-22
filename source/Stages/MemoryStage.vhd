@@ -60,7 +60,6 @@ signal add : std_logic_vector(9 downto 0);
  TYPE ram_type IS ARRAY(0 TO 1023) of std_logic_vector(15 DOWNTO 0);
  SIGNAL ram : ram_type ;
  SIGNAL POP_Or_RTI : std_logic;
-
 BEGIN
 
 PROCESS(clk,Rst) IS 
@@ -69,13 +68,13 @@ IF Rst = '1' THEN
 	ram <= (others=>(others => '0'));
 
 ELSIF rising_edge(clk) THEN 
-	if  (Mem_Write = '1' and  INT_or_RTI='1') THEN  -- write in 2 consecutive addresses
-					ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
-					ram(to_integer(unsigned(address(9 downto 0))) +1)<= data_to_write(31 downto 16);
+	if  (Mem_Write = '1' and  INT='1') THEN  -- write in 2 consecutive addresses
+					ram(to_integer(unsigned((address(9 downto 0))))-1) <= data_to_write(15 downto 0);--PC
+					ram(to_integer(unsigned(address(9 downto 0))))<= data_to_write(31 downto 16);--CCR
 	elsif Mem_Write = '1' THEN -- write in 1 address
 			ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
 
-	elsif  (Mem_read = '1' and  INT_or_RTI='1') THEN -- read from 2 consecutive addresses
+	elsif  (Mem_read = '1' and  RTI='1') THEN -- read from 2 consecutive addresses
 				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
 				read_data(31 downto 16) <=  ram(to_integer(unsigned(address(9 downto 0))) +1);
 	elsif Mem_read ='1' then -- read from 1 address
@@ -105,8 +104,8 @@ Push_or_NotPop <= Push or (not Pop);
 INT_or_RTI <= INT or RTI;
 POP_Or_RTI <= Pop or RTI;
 
---PC from [31:16], Data from [15:0] 
-Data_concatenated<=PC_for_int & address_from_ALU;
+-- Data from(CCR) [31:16],PC from [15:0] 
+Data_concatenated<= address_from_ALU & PC_for_int;
 
 Write_data32<= x"0000"&Write_data;
 data_from_call32<=x"0000" & data_from_call;

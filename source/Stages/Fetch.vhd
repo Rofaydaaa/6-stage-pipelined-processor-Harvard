@@ -35,7 +35,7 @@ BEGIN
 
 PC0 :entity work.PC port map (freeze_hdu_data,freeze_hdu_structural,Rst,Intermediate_Inst(31 downto 16),To_PC,pc_out,clk);
 
-Int_Reg0 : entity work.Interrupt_register port map (Int_port,Int_from_Int_Reg);
+---Int_Reg0 : entity work.Interrupt_register port map (Int_port,Int_from_Int_Reg);
 
 AddSUB0 : entity work.Add_Sub port map ('0',b"01",pc_out,Add_sub_Result1);
 AddSUB1:  entity work.Add_Sub port map ('0',b"10",pc_out,Add_sub_Result2);
@@ -43,7 +43,7 @@ Mux2by10 : Mux2by1 GENERIC MAP(16) PORT MAP(Add_sub_Result1, Add_sub_Result2,is_
 
 ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,Branch_Addr,M_Of_1,WB_Data_For_Call,WB_data,Int_from_WB,Call,Ret,Branch,To_PC);
 
-Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_from_Int_Reg,pc_out,Intermediate_Inst);
+Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_port,pc_out,Intermediate_Inst);
 
 is_Immediate <= '1' when (Intermediate_Inst(15 downto 10) = "001011") else '1' when (Intermediate_Inst(15 downto 10) = "010001") else '0' ;
 
