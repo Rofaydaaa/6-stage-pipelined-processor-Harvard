@@ -75,7 +75,7 @@ ARCHITECTURE imp OF Execute_Memory_Buffer IS
 BEGIN
 PROCESS (clk,rst,flushSignal)
 BEGIN
-IF rst = '1' or flushSignal='1' THEN
+IF rst = '1' THEN
     pushout<='0';
     popout<='0';
     SPout<='0';
@@ -96,6 +96,27 @@ IF rst = '1' or flushSignal='1' THEN
     rdstOut <= (OTHERS=>'0');
     IN_Portsout<=(OTHERS=>'0');
     output_from_EM_PCsource<='0';
+ELSIF flushSignal='1' THEN
+    pushout<='0';
+    popout<='0';
+    SPout<='0';
+    WBout<=WB;
+    memReadout<='0';
+    memWriteout<='0';
+    portFlagout<='0';
+    returnOIout<='0';
+    callout<='0';
+    Men_to_Regout<='0';
+    Intout<='0';
+    Rtiout<='0';
+    forCallout<=(OTHERS=>'0');
+    memoryWireout<=(OTHERS=>'0');
+    dataoutOut <= (OTHERS=>'0');
+    WriteDataOut <= (OTHERS=>'0');
+    --CCROut <= (OTHERS=>'0');
+    rdstOut <= (OTHERS=>'0');
+    IN_Portsout<=(OTHERS=>'0');
+    output_from_EM_PCsource<= output_from_E_PCsource;
 ELSIF falling_edge(clk) THEN
 if (en='1') then
     pushout<=push;

@@ -48,8 +48,27 @@ ARCHITECTURE imp OF Mem_Mem_Buffer IS
 BEGIN
 PROCESS (Clk,Rst,flush)
 BEGIN
-IF Rst = '1' or flush='1' THEN
+IF Rst = '1' THEN
 WB_after <= '0';
+Rdst_after <= (OTHERS=>'0');
+data_out_after <= (OTHERS=>'0');
+M1_after <= (OTHERS=>'0');
+Read_data_after <= (OTHERS=>'0');
+
+memReadout<='0';
+memWriteout<='0';
+
+Mem_to_Regout<='0';
+Intout<='0';
+portFlagout<='0';
+
+callout<='0';
+RTIout<='0';
+RETout<='0';
+IN_Port_OUT <= (OTHERS=>'0');
+
+elsif flush='1' THEN
+WB_after <= WB;
 Rdst_after <= (OTHERS=>'0');
 data_out_after <= (OTHERS=>'0');
 M1_after <= (OTHERS=>'0');

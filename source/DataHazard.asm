@@ -22,21 +22,21 @@ ADD R3,R2,R0				# R3 <- 0A,forward on both parameters,flags -> 0
 IADD R4, R2,FF00				# R4 <- FF09  m2-alu forward, flags->2
 
 # test case 2
-#IN R1						# R1<-44H, INPUT PORT 44h
-#MOV 	R4,R1					# R4 <- 44H, Alu-alu forward
-#OR      R5, R4,R2				# R5 <- 4D ,  flags → 0
-#OUT   	R4					# m1-alu forward	
+IN R1						# R1<-44H, INPUT PORT 44h
+MOV 	R4,R1					# R4 <- 44H, Alu-alu forward
+OR      R5, R4,R2				# R5 <- 4D ,  flags → 0
+OUT   	R4					# m1-alu forward	
 
 #test case 3, load use test
-#Push R1
-#POP R7					    #structural hazard
-#AND R1, R5, R7				#load use
-#OR   R2,R1,R7				#load use and forward
+Push R1
+POP R7					    #structural hazard
+AND R1, R5, R7				#load use
+OR   R2,R1,R7				#load use and forward
 
 #test case 4, structural hazard with data hazard
-#STD R0, R4					#store in memory					
-#LDD R6,R0					#structural hazard
-#STD R3, R6					#structural hazard and load use
-#SUB R5,R6,R3				# 🙂 forward m2-alu 🙂 after stall
-#NOP
-#NOP 
+STD R0, R4					#store in memory					
+LDD R6,R0					#structural hazard
+STD R3, R6					#structural hazard and load use
+SUB R5,R6,R3				# 🙂 forward m2-alu 🙂 after stall
+NOP
+NOP 
