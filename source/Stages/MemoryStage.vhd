@@ -75,8 +75,8 @@ ELSIF rising_edge(clk) THEN
 			ram(to_integer(unsigned((address(9 downto 0))))) <= data_to_write(15 downto 0);
 
 	elsif  (Mem_read = '1' and  RTI='1') THEN -- read from 2 consecutive addresses
-				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
-				read_data(31 downto 16) <=  ram(to_integer(unsigned(address(9 downto 0))) +1);
+				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))) - 1);
+				read_data(31 downto 16) <=  ram(to_integer(unsigned(address(9 downto 0))));
 	elsif Mem_read ='1' then -- read from 1 address
 				read_data(15 downto 0) <= ram(to_integer(unsigned((address(9 downto 0)))));
 				read_data(31 downto 16) <=(others => '0');

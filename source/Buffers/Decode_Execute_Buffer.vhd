@@ -96,10 +96,10 @@ restofIRout <= (OTHERS=>'0');
 IN_Portsout<=(OTHERS=>'0');
 
 ELsIF  flushSignal='1' then
-pushout<='0';
-popout<='0';
+pushout<= push;
+popout<= pop;
 SPout<='0';
-WBout<='0';
+WBout<=WB;
 memReadout<='0';
 memWriteout<='0';
 EXout<='0';
@@ -114,10 +114,10 @@ Rtiout<='0';
 forCallout<= (OTHERS=>'0');
 Rsrc1out <= (OTHERS=>'0');
 Rsrc2out  <= (OTHERS=>'0');
-memoryWireout<=(OTHERS=>'0');
+memoryWireout<=memoryWire;
 ALU_selectionout <= (OTHERS=>'0');
-data1out <= (OTHERS=>'0');
-data2out <= (OTHERS=>'0');
+data1out <= data1;
+data2out <= data2;
 rdstout <= (OTHERS=>'0');
 restofIRout <= (OTHERS=>'0');
 IN_Portsout<=(OTHERS=>'0');

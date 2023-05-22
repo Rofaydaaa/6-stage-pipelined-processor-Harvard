@@ -28,8 +28,10 @@ OR      R5, R4,R2				# R5 <- 4D ,  flags → 0
 OUT   	R4					# m1-alu forward	
 
 #test case 3, load use test
-Push R1
-POP R7					    #structural hazard
+#Push R1
+#POP R7					    #structural hazard
+MOV R7, R7
+MOV R7, R1
 AND R1, R5, R7				#load use
 OR   R2,R1,R7				#load use and forward
 

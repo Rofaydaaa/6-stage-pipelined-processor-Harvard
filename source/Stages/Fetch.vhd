@@ -48,7 +48,7 @@ ToPCDecisionUnit0: entity work.ToPCDecisionUnit port map (Add_sub_Result_final,B
 
 Instruction_Mem0 : entity work.Instruction_Mem port map (clk,Rst,Int_port,pc_out,Intermediate_Inst);
 
-is_Immediate <= '1' when (Intermediate_Inst(31 downto 26) = "001011") else '1' when (Intermediate_Inst(31 downto 26) = "010001") else '0' ;
+is_Immediate <= '1' when (Intermediate_Inst(15 downto 10) = "001011") else '1' when (Intermediate_Inst(15 downto 10) = "010001") else '0' ;
 
 Instruction <= Intermediate_Inst;
 
