@@ -14,13 +14,13 @@ The data memory in our processor is slow, so we split the memory stage into two 
 * Forward unit
 * PC decision unit
 
-Below you can find PDF For the design, in addition to signals and instructions design
+Below you can find PDF For the design for clearer view, in addition to signals and instructions design
 
-![Design PDF Preview](./Design.pdf)
+[Design PDF Preview](./Design.pdf)
 
 [Download Design PDF](./Design.pdf)
  
-![Signals and Instruction Design PDF Preview](./ControlSignals_multiplexers_units.pdf)
+[Signals and Instruction Design PDF Preview](./ControlSignals_multiplexers_units.pdf)
 
 [Download Signals and Instruction PDF](./ControlSignals_multiplexers_units.pdf)
 
