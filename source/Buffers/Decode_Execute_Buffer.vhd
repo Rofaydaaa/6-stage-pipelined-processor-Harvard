@@ -2,7 +2,9 @@ Library IEEE;
 use ieee.std_logic_1164.all;
 
 ENTITY Decode_Excute_Buffer IS
-PORT( clk,rst,en: std_logic;
+PORT( 
+        callMux:in std_logic_vector(15 downto 0);
+        clk,rst,en: std_logic;
         push: in std_logic;
         pop: in std_logic;
         SP: in std_logic;
@@ -57,8 +59,8 @@ PORT( clk,rst,en: std_logic;
         ALU_selectionout:out std_logic_vector(3 downto 0);
         data1out,data2out: out std_logic_vector(15 downto 0); 
         rdstout: out std_logic_vector(2 downto 0); 
-        restofIRout: out  std_logic_vector(15 downto 0) 
-        
+        restofIRout: out  std_logic_vector(15 downto 0) ;
+        callMuxout:out std_logic_vector(15 downto 0)
        
 );
 END Decode_Excute_Buffer;
@@ -94,7 +96,7 @@ data2out <= (OTHERS=>'0');
 rdstout <= (OTHERS=>'0');
 restofIRout <= (OTHERS=>'0');
 IN_Portsout<=(OTHERS=>'0');
-
+callMuxout<=(OTHERS=>'0');
 ELsIF  flushSignal='1' then
 pushout<= push;
 popout<= pop;
@@ -121,7 +123,7 @@ data2out <= data2;
 rdstout <= (OTHERS=>'0');
 restofIRout <= (OTHERS=>'0');
 IN_Portsout<=(OTHERS=>'0');
-
+callMuxout<=(OTHERS=>'0');
 ELSIF falling_edge(clk) THEN
 if (en='1') then
 pushout<=push;
@@ -150,6 +152,7 @@ Rsrc2out  <= Rsrc2;
 memoryWireout<=memoryWire;
 IN_Portsout<=IN_Ports;
 forCallout<=forCall;
+callMuxout<=callMux;
 end if;
 END IF;
 END PROCESS;

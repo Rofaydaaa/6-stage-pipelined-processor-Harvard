@@ -4,6 +4,9 @@ USE IEEE.numeric_std.all;
 
 ENTITY MemoryStage IS
 PORT (
+	outputPCint:in std_logic_vector(15 downto 0);
+    forCallWB : in std_logic_vector(15 downto 0);
+    callWB:IN std_logic;
 clk,Rst, Mem_Read,Mem_Write, S_P,Push,Pop,call,RTI,INT: IN std_logic;
 Write_data,address_from_ALU,data_from_call, PC_for_int: in std_logic_vector (15 downto 0);
 --read data was 16 in phase 1
@@ -12,6 +15,16 @@ read_data: out std_logic_vector (31 downto 0)
 END ENTITY MemoryStage;
 
 ARCHITECTURE Imp OF MemoryStage IS
+
+COMPONENT CallMUX is
+    port (
+      forCall: IN std_logic_vector(15 DOWNTO 0);
+      PCforINT: IN std_logic_vector(15 DOWNTO 0);
+      call: IN std_logic;
+      output: OUT std_logic_vector(15 DOWNTO 0)
+       
+    );
+  end COMPONENT;
 component Mux2by1 IS 
 	Generic ( n : Integer:=16);
 	PORT ( in0,in1 : IN std_logic_vector (n-1 DOWNTO 0);
@@ -45,6 +58,7 @@ END component;
 
 
 signal address: std_logic_vector(15 downto 0);
+signal forcallwire: std_logic_vector(15 downto 0);
 signal address_from_SP,Add_sub_Result: std_logic_vector(15 downto 0);
 
 --/////////in phase 1 data_to_write was 16 bits
@@ -85,7 +99,7 @@ ELSIF rising_edge(clk) THEN
 	end if;
 end if;
 END PROCESS;
-
+callloop: CallMUX port map(forCallWB,outputPCint,callWB,forcallwire);
 Mux0: Mux4by1 generic map (16) port map(address_from_ALU,address_from_SP,Add_sub_Result,POP_Or_RTI,S_P,address); -- normal address vs SP
 --Mux1: Mux2by1 generic map (16) port map(write_data,data_from_call,call,data_to_write);
 Mux1: Mux4by1 generic map (32) port map(write_data32, data_from_call32, Data_concatenated,INT,call,data_to_write);
@@ -105,7 +119,7 @@ INT_or_RTI <= INT or RTI;
 POP_Or_RTI <= Pop or RTI;
 
 -- Data from(CCR) [31:16],PC from [15:0] 
-Data_concatenated<= address_from_ALU & PC_for_int;
+Data_concatenated<= address_from_ALU & forcallwire;
 
 Write_data32<= x"0000"&Write_data;
 data_from_call32<=x"0000" & data_from_call;
