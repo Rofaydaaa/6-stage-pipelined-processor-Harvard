@@ -23,3 +23,5 @@ Below you can find PDF For the design, in addition to signals and instructions d
 ![Signals and Instruction Design PDF Preview](./ControlSignals_multiplexers_units.pdf)
 
 [Download Signals and Instruction PDF](./ControlSignals_multiplexers_units.pdf)
+
+![Alt Text](design.png)
