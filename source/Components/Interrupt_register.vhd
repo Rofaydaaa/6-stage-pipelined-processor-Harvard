@@ -14,7 +14,9 @@ Architecture arch of Interrupt_register is
 BEGIN 
 PROCESS(input)
 BEGIN
+if input = '1' then
     ram(0) <= input;
+end if;
 END PROCESS;
     output <= ram(0); -- Assign the output value
 END arch;

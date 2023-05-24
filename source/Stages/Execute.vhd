@@ -13,9 +13,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY Execute IS
   PORT (
-    outputPCint:in std_logic_vector(15 downto 0);
-    forCallWB : in std_logic_vector(15 downto 0);
-    callWB:IN std_logic;
+    memReadDE: in std_logic;
     clk,rst : IN STD_LOGIC;
 
 
@@ -66,7 +64,7 @@ ENTITY Execute IS
     PC_Source : OUT STD_LOGIC;
     DataOut : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
     CCR_OUT : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-    callMuxout: out STD_LOGIC_VECTOR(15 downto 0)
+    flush_signal:IN std_logic
   );
 END Execute;
 
@@ -75,15 +73,7 @@ ARCHITECTURE IMP_Execute OF Execute IS
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------Start Components-------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
-COMPONENT CallMUX is
-    port (
-      forCall: IN std_logic_vector(15 DOWNTO 0);
-      PCforINT: IN std_logic_vector(15 DOWNTO 0);
-      call: IN std_logic;
-      output: OUT std_logic_vector(15 DOWNTO 0)
-       
-    );
-  end COMPONENT;
+
     COMPONENT ALU IS
     GENERIC (n : INTEGER := 16);
     PORT (
@@ -101,13 +91,14 @@ COMPONENT CallMUX is
 		NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG : IN STD_LOGIC; --This flag should preserve the Value of the flag or carry flag
         F_ALU : IN STD_LOGIC_VECTOR (n-1 DOWNTO 0);
 		Cout_ALU : IN STD_LOGIC;
-		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+		FLAG_OUT : OUT STD_LOGIC_VECTOR (2 DOWNTO 0);
+        flush_signal : IN STD_LOGIC
 		);
     END COMPONENT;
 
     COMPONENT ForwardUnit is
         port (
-            
+            memReadDE: in std_logic;
         --Addresses coming from buffers that need to be compared
         DE_RSrc1:IN std_logic_vector(2 DOWNTO 0);
         DE_RSrc2:IN std_logic_vector(2 DOWNTO 0);
@@ -134,6 +125,8 @@ COMPONENT CallMUX is
         --Outputs:
         FRWD_OUT_S1 : OUT std_logic_vector(2 DOWNTO 0); --selector of muxDataA (the A of the ALU)
         FRWD_OUT_S2 : OUT std_logic_vector(2 DOWNTO 0) --selector of muxDataB (the A of the ALU)
+
+
         );
     end COMPONENT;
 
@@ -168,7 +161,7 @@ COMPONENT CallMUX is
     sIGNAL FRWD_OUT_S2 : std_logic_vector(2 DOWNTO 0); --selector signal of muxDataB (the A of the ALU)
     SIGNAL CCR_EXTENDED_SIGNAL_temp : STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL CCR_EXTENDED_SIGNAL : STD_LOGIC_VECTOR(15 DOWNTO 0);
-    signal flag : boolean := false;
+    signal flush_flag : boolean := false;
 
     BEGIN 
         -- NOP_FLAG indicates the operations that doesn't change IN the CCR
@@ -196,17 +189,17 @@ COMPONENT CallMUX is
     
         process(DE_SelectionLines)
         begin
-            if DE_SelectionLines = "0000" and flag = false then
+            if DE_SelectionLines = "0000" and flush_flag = false then
                 FIRSTTIME_FLAG <= '1';
-                flag<=true;
+                flush_flag<=true;
             else
                 FIRSTTIME_FLAG <= '0';
         end if;
         end process;
 
 
-        callloop: CallMUX port map(forCallWB,outputPCint,callWB,callMuxout);
-        forwardData : ForwardUnit PORT MAP (DE_RSrc1, DE_RSrc2, EM1_Dest, M1M2_Dest, M2WB_Dest, EM1_WB_RegtoReg, M1M2_WB_regtoreg, M1M2_memWrite, M1M2_memRead, M2WB_WB_RegtoReg, EM1_INPort, M1M2_INPort, M2WB_INPort, DE_IMM, FRWD_OUT_S1, FRWD_OUT_S2);
+
+        forwardData : ForwardUnit PORT MAP (memReadDE,DE_RSrc1, DE_RSrc2, EM1_Dest, M1M2_Dest, M2WB_Dest, EM1_WB_RegtoReg, M1M2_WB_regtoreg, M1M2_memWrite, M1M2_memRead, M2WB_WB_RegtoReg, EM1_INPort, M1M2_INPort, M2WB_INPort, DE_IMM, FRWD_OUT_S1, FRWD_OUT_S2);
         
         Data_A_mux : Mux8by1 PORT MAP(DE_Data1, dummySignal, EM1_DataOut, EM1_InPort_Data, M1M2_DataOut, M1M2_InPort_Data, M2WB_DataOut, M2WB_InPort_Data, FRWD_OUT_S1, Data_A);
         
@@ -214,7 +207,7 @@ COMPONENT CallMUX is
         
         aluu : ALU GENERIC MAP(16) PORT MAP(Data_A, Data_B, DE_SelectionLines, '0', ALU_OUTPUT, C_out);
         
-        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR);
+        set_CCRM: SET_CCR GENERIC MAP(16) PORT MAP(clk,rst, NOP_FLAG, UNCHANGE_CARRY, FIRSTTIME_FLAG, ALU_OUTPUT, C_out, FLAG_CCR, flush_signal);
     
         ExtendCCR: Sign_Extend PORT MAP(FLAG_CCR, CCR_EXTENDED_SIGNAL_temp);
 

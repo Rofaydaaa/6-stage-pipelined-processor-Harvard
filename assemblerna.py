@@ -134,7 +134,6 @@ def mainfunc():
                             correctInstructions[index] = bin(
                                 int(words[2], 16))[2:].zfill(16)
                             index += 1
-
                 elif (words[0] == "STD"):
                     if words[1] in registers and words[2] in registers:
                         correctInstructions[index] = opCodes[words[0]] + \

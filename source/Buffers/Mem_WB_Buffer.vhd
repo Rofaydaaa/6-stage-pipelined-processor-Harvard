@@ -2,7 +2,7 @@ Library IEEE;
 use ieee.std_logic_1164.all;
 
 ENTITY Mem_WB_Buffer IS
-PORT( Clk,Rst,en,WB,flush : IN std_logic;
+PORT( Clk,Rst,en,WB: IN std_logic;
 Rdst: in std_logic_vector (2 downto 0);
 Data_out,M1: in std_logic_vector (15 downto 0);
 Read_data: in std_logic_vector (31 downto 0);
@@ -44,7 +44,7 @@ ARCHITECTURE imp OF Mem_WB_Buffer IS
 BEGIN
 PROCESS (Clk,Rst)
 BEGIN
-IF Rst = '1' or flush='1' THEN
+IF Rst = '1' THEN
 WB_after <= '0';
 Rdst_after <= (OTHERS=>'0');
 data_out_after <= (OTHERS=>'0');
